@@ -1,0 +1,116 @@
+---
+import { getLangFromUrl, useTranslations, path, LOGIN_URL, signupUrl } from '@/i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const here = Astro.url.pathname;
+const other = lang === 'en' ? 'km' : 'en';
+const rest = here.replace(/^\/(en|km)\//, '');
+const nav = [
+  { href: path(lang), key: 'nav.home' as const },
+  { href: path(lang, 'product/accounting/'), key: 'nav.product' as const, match: 'product/' },
+  { href: path(lang, 'pricing/'), key: 'nav.pricing' as const, match: 'pricing/' },
+  { href: path(lang, 'company/'), key: 'nav.company' as const, match: 'company/' },
+  { href: path(lang, 'news/'), key: 'nav.news' as const, match: 'news/' },
+  { href: path(lang, 'support/'), key: 'nav.support' as const, match: 'support/' },
+];
+const isCurrent = (m?: string) => (m ? here.includes(`/${m}`) : here === path(lang));
+---
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="mark" href={path(lang)}><img src="/assets/logo-full.png" alt="Vithean" width="440" height="129" /></a>
+    <nav class="nav" aria-label={t('a11y.mainNav')}>
+      {nav.map((n) => (
+        <a href={n.href} aria-current={isCurrent(n.match) ? 'page' : undefined}>{t(n.key)}</a>
+      ))}
+    </nav>
+    <div class="hdr-act">
+      <div class="lang" role="group" aria-label={t('a11y.language')}>
+        <a href={path(lang, rest)} aria-current="true">{lang === 'en' ? 'EN' : 'ខ្មែរ'}</a>
+        <a href={path(other, rest)}>{other === 'en' ? 'EN' : 'ខ្មែរ'}</a>
+      </div>
+      <a class="quiet" href={LOGIN_URL} data-login>{t('cta.login')}</a>
+      <a class="btn btn-fill" href={signupUrl({ lang })}>{t('cta.trial')}</a>
+    </div>
+
+    {/* Shown below 980px. The panel repeats the nav plus everything that gets
+        hidden from .hdr-act at that width, so nothing is only reachable on a
+        wide screen. */}
+    <button class="burger" type="button" aria-expanded="false" aria-controls="mobile-nav"
+            aria-label={t('a11y.menu')}>
+      <span class="burger-box" aria-hidden="true"><span class="burger-bar"></span></span>
+    </button>
+  </div>
+
+  <div class="mnav" id="mobile-nav" hidden>
+    <nav class="mnav-in" aria-label={t('a11y.mainNav')}>
+      {nav.map((n) => (
+        <a href={n.href} aria-current={isCurrent(n.match) ? 'page' : undefined}>{t(n.key)}</a>
+      ))}
+      <hr />
+      <a href={LOGIN_URL} data-login-m>{t('cta.login')}</a>
+      <div class="mnav-foot">
+        <div class="lang" role="group" aria-label={t('a11y.language')}>
+          <a href={path(lang, rest)} aria-current="true">{lang === 'en' ? 'EN' : 'ខ្មែរ'}</a>
+          <a href={path(other, rest)}>{other === 'en' ? 'EN' : 'ខ្មែរ'}</a>
+        </div>
+        <a class="btn btn-fill" href={signupUrl({ lang })} data-cta-m>{t('cta.trial')}</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .lang a{font-size:.9rem; padding:.3rem .7rem; color:var(--ink-muted); text-decoration:none}
+  .lang a[aria-current]{background:var(--plum-600); color:var(--on-plum)}
+</style>
+
+<script>
+  /* Auth-aware CTA: if the platform master-token cookie is present on
+     .vithean.com, collapse "Log in / Start free trial" to one link. Nothing
+     else personalises, and no content is gated. */
+  if (document.cookie.includes('vth_master')) {
+    const go = 'https://app.vithean.com';
+    document.querySelectorAll('[data-login],[data-login-m]').forEach((el) => el.remove());
+    document.querySelectorAll('.hdr-act .btn-fill, [data-cta-m]').forEach((cta) => {
+      cta.textContent = 'Go to Vithean →';
+      cta.setAttribute('href', go);
+    });
+  }
+
+  /* Mobile menu. Kept in plain JS: it is three event listeners, and shipping a
+     framework to open a panel would cost more than the panel. */
+  const burger = document.querySelector<HTMLButtonElement>('.burger');
+  const panel = document.querySelector<HTMLElement>('#mobile-nav');
+
+  if (burger && panel) {
+    const setOpen = (open: boolean) => {
+      burger.setAttribute('aria-expanded', String(open));
+      panel.hidden = !open;
+      /* Stops the page behind the panel from scrolling under it. */
+      document.body.classList.toggle('nav-open', open);
+    };
+
+    burger.addEventListener('click', () => setOpen(burger.getAttribute('aria-expanded') !== 'true'));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && burger.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        burger.focus();
+      }
+    });
+
+    /* Tapping the page behind the panel closes it, which is what the gesture
+       means on a phone. */
+    document.addEventListener('click', (e) => {
+      const target = e.target as Node;
+      if (burger.getAttribute('aria-expanded') !== 'true') return;
+      if (panel.contains(target) || burger.contains(target)) return;
+      setOpen(false);
+    });
+
+    /* Rotating to landscape can cross the breakpoint with the panel open,
+       which would otherwise leave it stuck open behind the desktop header. */
+    const wide = window.matchMedia('(min-width: 981px)');
+    wide.addEventListener('change', (e) => { if (e.matches) setOpen(false); });
+  }
+</script>

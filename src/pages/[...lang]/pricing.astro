@@ -1,0 +1,91 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import PlanCard from '@/components/PlanCard.astro';
+import PriceMatrix from '@/components/PriceMatrix.astro';
+import plansData from '@/data/plans.json';
+import {getLangFromUrl, useTranslations, pick, type Lang } from '@/i18n/utils';
+import { copy, c } from '@/i18n/copy';
+
+export async function getStaticPaths() {
+  // `undefined` renders the route with no locale segment — English at the root.
+  return [{ params: { lang: undefined } }, { params: { lang: 'km' } }];
+}
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const plans = (await getCollection('plans')).sort((a, b) => a.data.order - b.data.order);
+const site = Astro.site ?? new URL('https://vithean.com');
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  '@id': new URL('/#software', site).href,
+  name: 'Vithean',
+  alternateName: ['Vithean ERP', 'Vithean Accounting System'],
+  applicationCategory: 'BusinessApplication',
+  applicationSubCategory: 'Accounting Software, ERP',
+  operatingSystem: 'Web browser',
+  url: site.href,
+  softwareHelp: 'https://help.vithean.com/',
+  inLanguage: ['en', 'km'],
+  datePublished: plans[0]?.data.createdAt.slice(0, 10),
+  dateModified: plans.map((p) => p.data.updatedAt).sort().at(-1)?.slice(0, 10),
+  publisher: { '@id': new URL('/#organization', site).href },
+  offers: {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'USD',
+    lowPrice: Math.min(...plans.map((p) => p.data.price.monthlyBase)).toFixed(2),
+    highPrice: Math.max(...plans.map((p) => p.data.price.monthlyBase)).toFixed(2),
+    offerCount: plans.length,
+    offers: plans.map((p) => ({
+      '@type': 'Offer',
+      name: p.data.name.en,
+      price: p.data.price.monthlyBase.toFixed(2),
+      priceCurrency: p.data.price.currency,
+      availability: 'https://schema.org/InStock',
+      url: new URL(`/${lang}/pricing/`, site).href,
+      eligibleRegion: { '@type': 'Country', name: 'Cambodia' },
+    })),
+  },
+};
+---
+<Base home title={c(copy.meta.pricingTitle, lang)} route="pricing/" schemas={[schema]}
+      description={c(copy.meta.pricingDesc, lang)}>
+  <section class="band band-tint" style="padding-top:var(--s6)"><div class="wrap">
+    <p class="eyebrow">{t('nav.pricing')}</p>
+    <h1 class="band-h" style="max-width:26ch">{c(copy.home.plansH2, lang)}</h1>
+    <p class="band-p">{c(copy.pricing.lead, lang)}</p>
+
+    <div class="plans">
+      {plans.map((p) => <PlanCard plan={p.data} lang={lang} full showBuy />)}
+    </div>
+
+    <p class="priceline">{c(copy.pricing.priceline, lang)}</p>
+    <p class="priceline" style="margin-top:.4rem;color:var(--ink-muted)">{c(copy.pricing.vatNote, lang)}</p>
+
+    <h2 style="margin-top:var(--s6);font-size:1.2rem">{c(copy.pricing.addonsH, lang)}</h2>
+    <p class="band-p" style="margin-top:.35rem">{c(copy.pricing.addonsP, lang)}</p>
+    <div class="addons">
+      {plansData.addOns.map((a) => (
+        <div class="addon">
+          <h3 style="font-size:1rem">{pick(a.label, lang)}</h3>
+          <p class="addon-price fig">${a.monthlyPrice}<span class="per"> {c(
+            a.perUser ? copy.pricing.perUserMonth : copy.pricing.perMonth, lang)}</span></p>
+        </div>
+      ))}
+    </div>
+
+    <PriceMatrix plans={plans.map((p) => p.data)} lang={lang} />
+
+    <div class="plan-note">
+      <p>{c(copy.pricing.note, lang)}</p>
+      <p>{c(copy.pricing.caminvTrial, lang)}</p>
+    </div>
+  </div></section>
+</Base>
+
+<style>
+  .addon-price{margin-top:.35rem; font-size:1.25rem; color:var(--ink-strong); font-weight:700}
+  .addon-price .per{font-size:.9rem; font-weight:400; color:var(--ink-muted)}
+  .quote-link{color:var(--plum-600); font-weight:600}
+</style>

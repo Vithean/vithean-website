@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import NewsFilter from '@/components/vue/NewsFilter.vue';
+import { getLangFromUrl, useTranslations, path, fmtDate } from '@/i18n/utils';
+import { copy, c } from '@/i18n/copy';
+
+export async function getStaticPaths() {
+  // `undefined` renders the route with no locale segment — English at the root.
+  return [{ params: { lang: undefined } }, { params: { lang: 'km' } }];
+}
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const articles = (await getCollection('news'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .map((a) => ({
+    slug: a.id,
+    title: a.data.title,
+    date: a.data.date.toISOString().slice(0, 10),
+    dateLabel: fmtDate(a.data.date, lang, 'short'),
+    category: a.data.category,
+    lang: a.data.lang,
+    excerpt: a.data.excerpt,
+    href: path(lang, `news/${a.id}/`),
+  }));
+
+const labels = {
+  all: t('news.all'), press: t('news.press'), event: t('news.event'),
+  article: t('news.article'), count: t('news.count'),
+  filterAria: t('news.filterAria'),
+};
+---
+<Base title={c(copy.meta.newsTitle, lang)} route="news/"
+      description={c(copy.meta.newsDesc, lang)}>
+  <section class="band"><div class="wrap">
+    <p class="eyebrow">{t('nav.news')}</p>
+    <h1 class="band-h">{c(copy.news.h1, lang)}</h1>
+    <p class="band-p">{c(copy.news.lead, lang)}</p>
+    <NewsFilter client:load articles={articles} labels={labels} />
+  </div></section>
+</Base>

@@ -1,0 +1,181 @@
+{
+  "schemaVersion": "1.0.0",
+  "note": "Khmer accounting vocabulary, extracted from the product's own locale files. The website MUST use these words. Two terminologies for the same thing across the product, the site and support is the most common self-inflicted trust problem in bilingual finance software — and in a finance product it reads as unreliability.",
+  "sources": [
+    "vithean-ui/src/locale/km.js",
+    "vithean-myweb/i18n/km.json",
+    "vithean-central-web/i18n/km/*.js"
+  ],
+  "rule": "If a term is here, use it verbatim. If it is not, translate it properly and add it here so the next person does not invent a second word.",
+  "englishByDefault": {
+    "decision": "Demo figures, document references and account names stay in ENGLISH on both locales.",
+    "why": "Most Cambodian accountants work in English for the ledger itself. INV-2026-0412, 'Accounts receivable' and '3,960.00' read correctly to the audience in English, and translating them would make the example harder to verify, not easier.",
+    "applies": [
+      "journal cards",
+      "the margin report",
+      "the approval trail",
+      "document references"
+    ]
+  },
+  "terms": {
+    "account": {
+      "km": "គណនី",
+      "source": [
+        "vithean-myweb"
+      ]
+    },
+    "approve": {
+      "km": "អនុម័ត",
+      "source": [
+        "vithean-central-web"
+      ]
+    },
+    "bank": {
+      "km": "ធនាគារ",
+      "source": [
+        "vithean-central-web"
+      ]
+    },
+    "close": {
+      "km": "បិទ",
+      "source": [
+        "vithean-central-web",
+        "vithean-ui"
+      ]
+    },
+    "collection": {
+      "km": "ការប្រមូលប្រាក់",
+      "source": [
+        "vithean-central-web"
+      ]
+    },
+    "currency": {
+      "km": "រូបិយប័ណ្ណ",
+      "source": [
+        "vithean-central-web"
+      ]
+    },
+    "dashboard": {
+      "km": "ផ្ទាំងគ្រប់គ្រង",
+      "source": [
+        "vithean-central-web"
+      ]
+    },
+    "export": {
+      "km": "ទាញចេញ",
+      "source": [
+        "vithean-central-web"
+      ]
+    },
+    "inventory": {
+      "km": "សន្និធិ",
+      "source": [
+        "vithean-central-web"
+      ]
+    },
+    "invoice": {
+      "km": "វិក្កយបត្រ",
+      "source": [
+        "vithean-central-web",
+        "vithean-myweb"
+      ]
+    },
+    "journal": {
+      "km": "ទិនានុប្បវត្តិ",
+      "source": [
+        "vithean-central-web"
+      ]
+    },
+    "language": {
+      "km": "ភាសា",
+      "source": [
+        "vithean-myweb"
+      ]
+    },
+    "payment": {
+      "km": "ការទូទាត់",
+      "source": [
+        "vithean-central-web"
+      ]
+    },
+    "period": {
+      "km": "រយៈពេល",
+      "source": [
+        "vithean-central-web"
+      ]
+    },
+    "plan": {
+      "km": "គម្រោង",
+      "source": [
+        "vithean-myweb"
+      ]
+    },
+    "price": {
+      "km": "តម្លៃ",
+      "source": [
+        "vithean-myweb"
+      ]
+    },
+    "sales": {
+      "km": "ការលក់",
+      "source": [
+        "vithean-central-web"
+      ]
+    },
+    "security": {
+      "km": "សុវត្តិភាព",
+      "source": [
+        "vithean-central-web"
+      ]
+    },
+    "settings": {
+      "km": "ការកំណត់",
+      "source": [
+        "vithean-central-web"
+      ]
+    },
+    "subscription": {
+      "km": "ការជាវ",
+      "source": [
+        "vithean-central-web",
+        "vithean-myweb"
+      ]
+    },
+    "users": {
+      "km": "អ្នកប្រើប្រាស់",
+      "source": [
+        "vithean-myweb"
+      ]
+    },
+    "vat": {
+      "km": "អាករលើតម្លៃបន្ថែម",
+      "source": [
+        "vithean-central-web"
+      ]
+    },
+    "warehouse": {
+      "km": "ឃ្លាំង",
+      "source": [
+        "vithean-central-web"
+      ]
+    }
+  },
+  "conflictsInProduct": {
+    "period": {
+      "រយៈពេល": [
+        "vithean-central-web"
+      ],
+      "រយៈពេលវិក្កយបត្រ": [
+        "vithean-myweb"
+      ]
+    },
+    "security": {
+      "សុវត្តិភាព": [
+        "vithean-central-web"
+      ],
+      "សុវត្ថិភាព": [
+        "vithean-myweb"
+      ]
+    }
+  }
+}

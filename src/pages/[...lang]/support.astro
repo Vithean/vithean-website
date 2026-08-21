@@ -1,0 +1,102 @@
+---
+import Base from '@/layouts/Base.astro';
+import FaqAccordion from '@/components/vue/FaqAccordion.vue';
+import support from '@/data/support.json';
+import company from '@/data/company.json';
+import { getLangFromUrl, useTranslations, path, pick, DOCS_URL } from '@/i18n/utils';
+import { copy, c } from '@/i18n/copy';
+
+export async function getStaticPaths() {
+  return [{ params: { lang: undefined } }, { params: { lang: 'km' } }];
+}
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const site = Astro.site ?? new URL('https://vithean.com');
+
+const faq = support.faq.map((f) => ({
+  id: f.id, category: f.category, q: pick(f.q, lang), a: pick(f.a, lang),
+}));
+const hours = `${pick(support.officeHours.days, lang)}, ${pick(support.officeHours.hours, lang)}`;
+/** Grouped rather than filtered — every answer stays in the static HTML. */
+const groups = support.faqCategories.map((c) => ({
+  id: c.id,
+  label: pick(c.label, lang),
+  items: faq.filter((f) => f.category === c.id),
+})).filter((g) => g.items.length > 0);
+
+/** FAQPage schema — the questions are exactly what an assistant is asked. */
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: lang === 'km' ? 'km-KH' : 'en-US',
+  mainEntity: faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+<Base title={c(copy.meta.supportTitle, lang)} route="support/" schemas={[schema]}
+      description={c(copy.meta.supportDesc, lang)}>
+  <section class="band" style="padding-bottom:var(--s5)"><div class="wrap">
+    <p class="eyebrow">Support</p>
+    <h1 class="band-h">{c(copy.support.h1, lang)}</h1>
+    <p class="band-p">{c(copy.support.lead, lang).replace("{hours}", hours)}</p>
+
+    <div class="channels">
+      <a class="channel channel-primary" href={company.contact.mapUrl}
+         target="_blank" rel="noopener">
+        <span class="pi pi-map-marker" aria-hidden="true"></span>
+        <h2>{c(copy.support.visitH, lang)}</h2>
+        <p>{c(copy.support.visitP, lang)}</p>
+        <span class="channel-cta">{c(copy.support.visitCta, lang)}</span>
+      </a>
+      {support.channels.map((c) => (
+        <a class={`channel${c.primary ? ' channel-primary' : ''}`} href={c.href}>
+          <span class={`pi ${c.icon}`} aria-hidden="true"></span>
+          <h2>{pick(c.title, lang)}</h2>
+          <p>{pick(c.body, lang)}</p>
+          <span class="channel-cta">{pick(c.action, lang)} &rarr;</span>
+        </a>
+      ))}
+    </div>
+  </div></section>
+
+  <section class="band band-tint"><div class="wrap">
+    <p class="eyebrow">{c(copy.support.qEyebrow, lang)}</p>
+    <h2 class="band-h">{c(copy.support.qH2, lang)}</h2>
+    <p class="band-p">{c(copy.support.qP, lang)}</p>
+    <div style="margin-top:var(--s4)">
+      <FaqAccordion client:visible groups={groups} />
+    </div>
+  </div></section>
+
+  <section class="band"><div class="wrap"><div class="close">
+    <div>
+      <h2>{c(copy.support.closeH2, lang)}</h2>
+      <p>{c(copy.support.closeP, lang)}</p>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-fill btn-lg" href={company.contact.telegram}>{c(copy.support.closeCta, lang)}</a>
+      <a class="btn btn-line btn-lg" href={path(lang, 'company/#contact')}>{c(copy.support.closeAlt, lang)}</a>
+    </div>
+  </div></div></section>
+</Base>
+
+<style>
+  .channels{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:var(--s3);
+    margin-top:var(--s5)}
+  .channel{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md);
+    padding:1.4rem; box-shadow:var(--shadow-card); text-decoration:none; display:block;
+    transition:transform .12s, border-color .12s}
+  .channel:hover{transform:translateY(-2px); border-color:var(--plum-600)}
+  .channel-primary{border-color:var(--line-strong)}
+  .channel .pi{font-size:1.5rem; color:var(--plum-600); display:block; margin-bottom:.8rem}
+  .channel h2{font-size:1.1rem}
+  .channel p{margin-top:.4rem; font-size:.95rem; color:var(--ink-muted)}
+  .channel-cta{display:block; margin-top:1rem; font-weight:700; color:var(--plum-600); font-size:.95rem}
+  .inline-link{color:var(--plum-600); font-weight:600}
+  @media (max-width:980px){ .channels{grid-template-columns:1fr 1fr} }
+  /* Two 240px-minimum cards cannot fit a phone; this forced them to anyway. */
+  @media (max-width:640px){ .channels{grid-template-columns:1fr} }
+</style>

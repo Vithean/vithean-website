@@ -1,0 +1,365 @@
+{
+  "schemaVersion": "1.0.0",
+  "publishedAt": "2026-08-16T09:00:00+07:00",
+  "note": "Support channels and the commercial FAQ. Sourced from the live Help & Support page (docs/existing/pages/help-and-support.md), re-classified and extended. CamInv is excluded from trial tenants in the core (V1.26.10__issue1968_trial_tenant_exclu_caminv_module.sql); connecting requires the business to be registered with CamInv at the MEF. Say so wherever the trial is offered.",
+  "splitRule": {
+    "summary": "help.vithean.com answers 'how does it work?'. vithean.com answers 'should we buy it, and can we trust you?'.",
+    "consequence": "Only commercial questions live here. Operational ones — 'why can't I change decimals?' — belong on the docs site, and this page links out rather than duplicating them.",
+    "source": "vithean-special-docs/08-marketing/15-marketing-website-architecture.md §2"
+  },
+  "officeHours": {
+    "days": {
+      "en": "Monday to Friday",
+      "km": "ចន្ទ ដល់ សុក្រ"
+    },
+    "hours": {
+      "en": "08:30 – 17:30",
+      "km": "០៨:៣០ – ១៧:៣០"
+    },
+    "timezone": "Asia/Phnom_Penh"
+  },
+  "channels": [
+    {
+      "id": "telegram",
+      "icon": "pi-send",
+      "title": {
+        "en": "Telegram",
+        "km": "តេឡេក្រាម"
+      },
+      "body": {
+        "en": "How most Cambodian businesses actually reach us. Fastest during office hours.",
+        "km": "របៀបដែលអាជីវកម្មកម្ពុជាភាគច្រើនទាក់ទងមកយើង — លឿនបំផុតក្នុងម៉ោងធ្វើការ"
+      },
+      "action": {
+        "en": "Message us",
+        "km": "ផ្ញើសារមកយើង"
+      },
+      "href": "https://t.me/vithean_official",
+      "primary": true
+    },
+    {
+      "id": "phone",
+      "icon": "pi-phone",
+      "title": {
+        "en": "Phone",
+        "km": "ទូរស័ព្ទ"
+      },
+      "body": {
+        "en": "Talk to someone in Khmer or English.",
+        "km": "និយាយជាមួយបុគ្គលិកជាភាសាខ្មែរ ឬអង់គ្លេស"
+      },
+      "action": {
+        "en": "+855 95 569 568",
+        "km": "+855 95 569 568"
+      },
+      "href": "tel:+85595569568",
+      "primary": true
+    },
+    {
+      "id": "email",
+      "icon": "pi-envelope",
+      "title": {
+        "en": "Email",
+        "km": "អ៊ីមែល"
+      },
+      "body": {
+        "en": "For quotes, onboarding scope and anything with an attachment.",
+        "km": "សម្រាប់សំណើតម្លៃ វិសាលភាពដំឡើង និងឯកសារភ្ជាប់"
+      },
+      "action": {
+        "en": "info@vithean.com",
+        "km": "info@vithean.com"
+      },
+      "href": "mailto:info@vithean.com",
+      "primary": true
+    },
+    {
+      "id": "docs",
+      "icon": "pi-book",
+      "title": {
+        "en": "Documentation",
+        "km": "ឯកសារណែនាំ"
+      },
+      "body": {
+        "en": "How to do a specific thing in the system — step by step, with screens.",
+        "km": "របៀបធ្វើកិច្ចការជាក់លាក់ក្នុងប្រព័ន្ធ — ជំហានម្តងៗ ជាមួយរូបភាព"
+      },
+      "action": {
+        "en": "help.vithean.com",
+        "km": "help.vithean.com"
+      },
+      "href": "https://help.vithean.com",
+      "primary": false
+    }
+  ],
+  "faqCategories": [
+    {
+      "id": "getting-started",
+      "label": {
+        "en": "Getting started",
+        "km": "ការចាប់ផ្តើម"
+      }
+    },
+    {
+      "id": "plans-billing",
+      "label": {
+        "en": "Plans and billing",
+        "km": "គម្រោង និងការបង់ប្រាក់"
+      }
+    },
+    {
+      "id": "your-data",
+      "label": {
+        "en": "Your data",
+        "km": "ទិន្នន័យរបស់អ្នក"
+      }
+    },
+    {
+      "id": "the-product",
+      "label": {
+        "en": "The product",
+        "km": "អំពីផលិតផល"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "id": "what-is-vithean",
+      "category": "getting-started",
+      "q": {
+        "en": "What is Vithean?",
+        "km": "វិធាន គឺជាអ្វី?"
+      },
+      "a": {
+        "en": "A cloud accounting and ERP system built in Cambodia. Accounting, inventory, sales, purchasing and banking run on one double-entry ledger, with Cambodia E-Invoicing (CamInv) included. You use it in a browser, from anywhere.",
+        "km": "ប្រព័ន្ធគណនេយ្យ និង ERP លើពពក បង្កើតឡើងនៅកម្ពុជា។ គណនេយ្យ សន្និធិ ការលក់ ការទិញ និងធនាគារ ដំណើរការលើបញ្ជីគណនេយ្យទ្វេភាគីតែមួយ ភ្ជាប់ជាមួយវិក្កយបត្រអេឡិចត្រូនិកកម្ពុជា (CamInv)។ ប្រើតាមកម្មវិធីរុករក ពីគ្រប់ទីកន្លែង។"
+      }
+    },
+    {
+      "id": "trial",
+      "category": "getting-started",
+      "q": {
+        "en": "Is there a free trial?",
+        "km": "តើមានការសាកល្បងឥតគិតថ្លៃទេ?"
+      },
+      "a": {
+        "en": "Thirty days, no card required. Signing up asks for a name, an email address and a phone number — that is all. Cambodia E-Invoicing is the one part not switched on during a trial: connecting needs your business registered with CamInv at the Ministry of Economy and Finance, so it is enabled when you subscribe, and we take you through the registration.",
+        "km": "៣០ ថ្ងៃ ដោយមិនទាមទារកាតឥណទាន។ ការចុះឈ្មោះត្រូវការតែឈ្មោះ អ៊ីមែល និងលេខទូរស័ព្ទប៉ុណ្ណោះ។ វិក្កយបត្រអេឡិចត្រូនិកកម្ពុជា ជាផ្នែកតែមួយគត់ដែលមិនបើកក្នុងអំឡុងពេលសាកល្បង៖ ការតភ្ជាប់តម្រូវឲ្យអាជីវកម្មរបស់លោកអ្នកចុះបញ្ជីជាមួយ CamInv នៅក្រសួងសេដ្ឋកិច្ច និងហិរញ្ញវត្ថុ ដូច្នេះវាបើកនៅពេលលោកអ្នកជាវ ហើយយើងជួយណែនាំពីដំណើរការចុះបញ្ជី។"
+      }
+    },
+    {
+      "id": "no-accountant",
+      "category": "getting-started",
+      "q": {
+        "en": "We do not have an accountant or an IT person. Can we still use it?",
+        "km": "យើងគ្មានគណនេយ្យករ ឬបុគ្គលិកព័ត៌មានវិទ្យា តើនៅតែប្រើបានទេ?"
+      },
+      "a": {
+        "en": "Yes, and that is the normal case for a business this size. We set it up with you — opening balances, chart of accounts, master data — and we train the people who will actually do the work, in Khmer. What we do not do is keep your books: that stays with your team, or with your accounting firm.",
+        "km": "បាន ហើយនេះជារឿងធម្មតាសម្រាប់អាជីវកម្មខ្នាតនេះ។ យើងដំឡើងវាជាមួយលោកអ្នក — សមតុល្យដើមគ្រា តារាងគណនី ទិន្នន័យមេ — ហើយបណ្តុះបណ្តាលបុគ្គលិកដែលធ្វើការពិតប្រាកដ ជាភាសាខ្មែរ។ អ្វីដែលយើងមិនធ្វើគឺការកាន់បញ្ជីជំនួសលោកអ្នក។"
+      }
+    },
+    {
+      "id": "migrate-history",
+      "category": "getting-started",
+      "q": {
+        "en": "What happens to the records we already have?",
+        "km": "តើកំណត់ត្រាដែលយើងមានស្រាប់ទៅជាយ៉ាងណា?"
+      },
+      "a": {
+        "en": "Opening balances and master data come across from Excel, validated before anything is written — bad rows are reported and never reach the ledger. Prior-year detail stays where it is, referenced rather than re-keyed.",
+        "km": "សមតុល្យដើមគ្រា និងទិន្នន័យមេ ត្រូវបាននាំចូលពី Excel ដោយមានការត្រួតពិនិត្យមុននឹងកត់ត្រា — ជួរដែលមានកំហុសត្រូវរាយការណ៍ ហើយមិនចូលទៅក្នុងបញ្ជីគណនេយ្យទេ។"
+      }
+    },
+    {
+      "id": "how-long",
+      "category": "getting-started",
+      "q": {
+        "en": "How long does it take to go live?",
+        "km": "តើត្រូវការពេលប៉ុន្មានដើម្បីដំណើរការ?"
+      },
+      "a": {
+        "en": "It depends on how much history and master data comes across, so we scope it before quoting. One thing is fixed: we do not go live in a filing week.",
+        "km": "អាស្រ័យលើបរិមាណទិន្នន័យដែលត្រូវនាំចូល ដូច្នេះយើងកំណត់វិសាលភាពមុននឹងផ្តល់តម្លៃ។ រឿងមួយច្បាស់លាស់៖ យើងមិនចាប់ផ្តើមដំណើរការក្នុងសប្តាហ៍ប្រកាសពន្ធទេ។"
+      }
+    },
+    {
+      "id": "subscribe",
+      "category": "plans-billing",
+      "q": {
+        "en": "How do we subscribe?",
+        "km": "តើយើងជាវយ៉ាងដូចម្តេច?"
+      },
+      "a": {
+        "en": "Start the trial from the pricing page and choose a plan, or talk to us and we will scope it and quote properly — the published figures are starting prices.",
+        "km": "ចាប់ផ្តើមសាកល្បងពីទំព័រតម្លៃ ហើយជ្រើសរើសគម្រោង ឬទាក់ទងមកយើង យើងនឹងកំណត់វិសាលភាព និងផ្តល់តម្លៃត្រឹមត្រូវ — តួលេខដែលបង្ហាញគឺជាតម្លៃចាប់ផ្តើម។"
+      }
+    },
+    {
+      "id": "which-plan",
+      "category": "plans-billing",
+      "q": {
+        "en": "Which plan is right for us?",
+        "km": "តើគម្រោងណាសមនឹងយើង?"
+      },
+      "a": {
+        "en": "Broadly: Basic if you invoice and keep books, Standard once you hold stock, Advance once you run more than one location or need approvals before anything posts. The comparison table on the pricing page sets out every difference.",
+        "km": "ជាទូទៅ៖ Basic បើលោកអ្នកចេញវិក្កយបត្រ និងកាន់បញ្ជី, Standard នៅពេលមានស្តុក, Advance នៅពេលមានទីតាំងច្រើន ឬត្រូវការការអនុម័តមុនកត់ត្រា។"
+      }
+    },
+    {
+      "id": "change-plan",
+      "category": "plans-billing",
+      "q": {
+        "en": "Can we change plan later?",
+        "km": "តើអាចប្តូរគម្រោងពេលក្រោយបានទេ?"
+      },
+      "a": {
+        "en": "Yes, in either direction. Your data does not move and nothing is re-entered.",
+        "km": "បាន ទាំងឡើង និងចុះ។ ទិន្នន័យរបស់លោកអ្នកមិនផ្លាស់ទី ហើយគ្មានអ្វីត្រូវបញ្ចូលឡើងវិញទេ។"
+      }
+    },
+    {
+      "id": "what-changes-price",
+      "category": "plans-billing",
+      "q": {
+        "en": "What changes the price?",
+        "km": "តើអ្វីធ្វើឲ្យតម្លៃប្រែប្រួល?"
+      },
+      "a": {
+        "en": "How many people use it, which modules you need, and how much help you want setting it up. Onboarding and data migration are scoped and priced separately rather than bundled in.",
+        "km": "ចំនួនអ្នកប្រើ ម៉ូឌុលដែលត្រូវការ និងកម្រិតជំនួយក្នុងការដំឡើង។ ការដំឡើង និងការនាំចូលទិន្នន័យត្រូវកំណត់វិសាលភាព និងគិតថ្លៃដោយឡែក។"
+      }
+    },
+    {
+      "id": "customisation",
+      "category": "plans-billing",
+      "q": {
+        "en": "Can documents be customised to our business?",
+        "km": "តើឯកសារអាចកែតាមអាជីវកម្មយើងបានទេ?"
+      },
+      "a": {
+        "en": "Invoices can carry your own layout and fields. Beyond that we do build customisations for specific business models — tell us what you need and we will tell you honestly whether it is worth doing.",
+        "km": "វិក្កយបត្រអាចប្រើប្លង់ និងវាលរបស់លោកអ្នក។ លើសពីនេះ យើងក៏បង្កើតការកែសម្រួលតាមម៉ូដែលអាជីវកម្មជាក់លាក់ផងដែរ សូមប្រាប់យើងពីអ្វីដែលលោកអ្នកត្រូវការ ហើយយើងនឹងប្រាប់ដោយស្មោះថាតើវាសមនឹងធ្វើឬអត់។"
+      }
+    },
+    {
+      "id": "data-safe",
+      "category": "your-data",
+      "q": {
+        "en": "Is our data safe?",
+        "km": "តើទិន្នន័យយើងមានសុវត្ថិភាពទេ?"
+      },
+      "a": {
+        "en": "Each company's data is held in its own database rather than a shared table with a filter on it. Access is permissioned down to the field, and every change is logged with the name of whoever made it.",
+        "km": "ទិន្នន័យក្រុមហ៊ុននីមួយៗស្ថិតក្នុងមូលដ្ឋានទិន្នន័យដោយឡែក មិនមែនក្នុងតារាងរួមដែលមានតម្រងទេ។ សិទ្ធិចូលប្រើកំណត់ដល់កម្រិតវាល ហើយរាល់ការផ្លាស់ប្តូរត្រូវកត់ត្រាជាមួយឈ្មោះអ្នកធ្វើ។"
+      }
+    },
+    {
+      "id": "if-we-leave",
+      "category": "your-data",
+      "q": {
+        "en": "What if we decide to leave?",
+        "km": "បើយើងសម្រេចចិត្តចាកចេញវិញ?"
+      },
+      "a": {
+        "en": "Export is available on every module. Your data is your data.",
+        "km": "អាចនាំចេញទិន្នន័យបានគ្រប់ម៉ូឌុល។ ទិន្នន័យរបស់លោកអ្នក គឺជារបស់លោកអ្នក។"
+      }
+    },
+    {
+      "id": "updates",
+      "category": "your-data",
+      "q": {
+        "en": "Does an update disrupt our work?",
+        "km": "តើការធ្វើបច្ចុប្បន្នភាពរំខានដល់ការងារទេ?"
+      },
+      "a": {
+        "en": "No. Updates are applied without interrupting your work, and your data is unaffected.",
+        "km": "ទេ។ បច្ចុប្បន្នភាពត្រូវអនុវត្តដោយមិនរំខានដល់ការងារ ហើយទិន្នន័យរបស់លោកអ្នកមិនប៉ះពាល់ទេ។"
+      }
+    },
+    {
+      "id": "devices",
+      "category": "the-product",
+      "q": {
+        "en": "What do we need to run it?",
+        "km": "តើត្រូវការអ្វីខ្លះដើម្បីប្រើ?"
+      },
+      "a": {
+        "en": "A browser and an internet connection. It runs on a computer or a tablet — there is nothing to install and nothing tied to one machine.",
+        "km": "កម្មវិធីរុករក និងអ៊ីនធឺណិត។ ដំណើរការលើកុំព្យូទ័រ ឬថេប្លេត — គ្មានអ្វីត្រូវដំឡើង និងមិនចងភ្ជាប់ទៅម៉ាស៊ីនណាមួយឡើយ។"
+      }
+    },
+    {
+      "id": "languages",
+      "category": "the-product",
+      "q": {
+        "en": "What languages does the system work in?",
+        "km": "តើប្រព័ន្ធដំណើរការជាភាសាអ្វីខ្លះ?"
+      },
+      "a": {
+        "en": "The system interface is Khmer, English and Chinese — the labels and the data, not just the menus. Staff can work in Khmer while an accountant or a foreign owner reads the same records in English. This website and our support are Khmer and English.",
+        "km": "ផ្ទាំងប្រើប្រាស់របស់ប្រព័ន្ធមានជាភាសាខ្មែរ អង់គ្លេស និងចិន — ទាំងស្លាក និងទិន្នន័យ។ បុគ្គលិកអាចធ្វើការជាភាសាខ្មែរ ខណៈគណនេយ្យករ ឬម្ចាស់ជនបរទេសអានកំណត់ត្រាដដែលជាភាសាអង់គ្លេស។ វែបសាយ និងសេវាជំនួយរបស់យើង មានជាភាសាខ្មែរ និងអង់គ្លេស។"
+      }
+    },
+    {
+      "id": "caminv",
+      "category": "the-product",
+      "q": {
+        "en": "Does it handle Cambodia E-Invoicing?",
+        "km": "តើវាដោះស្រាយវិក្កយបត្រអេឡិចត្រូនិកកម្ពុជាទេ?"
+      },
+      "a": {
+        "en": "Yes, and it is included in every plan at no extra cost. You issue e-invoices, credit notes and debit notes from the same screen that raises the invoice, and the status comes back onto that record. CamInv is the national platform administered by the Ministry of Economy and Finance, so your business registers with CamInv first — that is why it is switched on when you subscribe rather than during the trial, and we take you through it.",
+        "km": "បាទ/ចាស ហើយរួមបញ្ចូលក្នុងគ្រប់គម្រោង ដោយមិនគិតថ្លៃបន្ថែម។ លោកអ្នកចេញវិក្កយបត្រ លិខិតឥណទាន និងលិខិតឥណពន្ធ ពីអេក្រង់ដដែល ហើយស្ថានភាពត្រឡប់មកកំណត់ត្រាដដែល។ CamInv គឺជាវេទិកាជាតិ គ្រប់គ្រងដោយក្រសួងសេដ្ឋកិច្ច និងហិរញ្ញវត្ថុ ដូច្នេះអាជីវកម្មរបស់លោកអ្នកត្រូវចុះបញ្ជីជាមួយ CamInv ជាមុនសិន — នេះជាមូលហេតុដែលវាបើកនៅពេលជាវ មិនមែនក្នុងអំឡុងពេលសាកល្បង ហើយយើងជួយណែនាំលោកអ្នក។"
+      }
+    },
+    {
+      "id": "vat",
+      "category": "the-product",
+      "q": {
+        "en": "Does it track VAT?",
+        "km": "តើវាតាមដានអាករលើតម្លៃបន្ថែមទេ?"
+      },
+      "a": {
+        "en": "VAT on sales and purchases is tracked as transactions are entered, so the figures come out of the ledger rather than being rebuilt in a workbook each month.",
+        "km": "អាករលើតម្លៃបន្ថែមលើការលក់ និងការទិញ ត្រូវតាមដានពេលបញ្ចូលប្រតិបត្តិការ ដូច្នេះតួលេខចេញពីបញ្ជីគណនេយ្យ មិនមែនសាងសង់ឡើងវិញក្នុងតារាងរាល់ខែទេ។"
+      }
+    },
+    {
+      "id": "bank-rec",
+      "category": "the-product",
+      "q": {
+        "en": "Can it reconcile bank transactions?",
+        "km": "តើវាអាចសម្របសម្រួលប្រតិបត្តិការធនាគារទេ?"
+      },
+      "a": {
+        "en": "Yes. You match what the bank says against what the ledger says and close the difference while it is still small.",
+        "km": "បាទ/ចាស។ លោកអ្នកផ្ទៀងផ្ទាត់អ្វីដែលធនាគារបញ្ជាក់ ជាមួយអ្វីដែលបញ្ជីគណនេយ្យបញ្ជាក់ ហើយបិទគម្លាតពេលវានៅតូច។"
+      }
+    }
+  ],
+  "$withheld": [
+    {
+      "id": "offline-access",
+      "q": "Is offline access available?",
+      "liveAnswer": "The current site answers: 'Absolutely, Vithean Accounting System can be accessed offline and your data will be backed-up into the cloud whenever your device is connected to the internet.'",
+      "status": "NEEDS_VERIFICATION",
+      "why": "Vithean is a browser-based system and the offline-capable POS is not built. This claim is republished nowhere on the new site until engineering confirms exactly what works without a connection. A capability claim with no screen behind it does not ship — see 07-site-content-spec.md rule 2."
+    },
+    {
+      "id": "tax-module",
+      "q": "Does Vithean have a Tax Module?",
+      "status": "NEEDS_SCOPE",
+      "why": "01-spec/01-spec-tax-module.md exists but the shipped scope is unclear. VAT tracking is answered above and is verified; a broader 'tax module' claim needs engineering to define what it covers before it is published."
+    }
+  ],
+  "khmer": {
+    "status": "NEEDS_NATIVE_REVIEW",
+    "glossary": "src/i18n/glossary.json — accounting terms extracted from the product's own km locale files. Those words are used verbatim here; do not substitute synonyms.",
+    "englishByDefault": "Demo figures, document references and account names stay in English on both locales — most Cambodian accountants work in English for the ledger itself, and translating INV-2026-0412 or 'Accounts receivable' would make the example harder to verify.",
+    "verified": "Strings marked VERIFIED were taken from the live vithean.com/km pages (archived in vithean-public/docs/existing/km/).",
+    "drafted": "Everything else is drafted. Rule 1 of the bilingual policy is 'write Khmer, do not translate English' — headlines and value propositions must be authored by a Khmer-native writer working from the message house, not reviewed as translations."
+  }
+}

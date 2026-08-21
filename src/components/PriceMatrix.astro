@@ -1,0 +1,74 @@
+---
+/**
+ * The comparison table.
+ *
+ * Rows, their order and their grouping all come from plans.json, which the
+ * pricing generator builds from the core. Nothing about the catalogue is
+ * hardcoded here: when the core adds a package, it appears on the next
+ * generator run.
+ *
+ * The header carries the price, the seat count and a call to action, so the
+ * table can be decided from — a reader who scrolls this far should not have to
+ * scroll back up to act. The recommended column runs as one tinted rail from
+ * the header to the last row, which is what gives the block a focal point.
+ */
+import plansData from '@/data/plans.json';
+import { pick, useTranslations, signupUrl, type Lang } from '@/i18n/utils';
+
+interface Props { plans: any[]; lang: Lang }
+const { plans, lang } = Astro.props;
+const t = useTranslations(lang);
+
+/** Groups in published order, each carrying the rows that belong to it. */
+const rows: any[] = plans[0]?.features ?? [];
+const groups = plansData.featureGroups
+  .map((g: any) => ({ label: g.label, items: rows.filter((f) => f.group === g.id) }))
+  .filter((g) => g.items.length);
+
+const has = (p: any, id: string) => !!p.features.find((f: any) => f.id === id)?.included;
+const money = (n: number) => '$' + (Number.isInteger(n) ? n : n.toFixed(2));
+/** A row where every plan agrees carries no decision — it is set quieter. */
+const uniform = (id: string) => plans.every((p) => has(p, id)) || plans.every((p) => !has(p, id));
+---
+<div class="matrix-wrap">
+  <table class="matrix">
+    <caption>{t('price.compareCaption')}</caption>
+    <thead>
+      <tr>
+        <th scope="col" class="mx-corner">{t('price.feature')}</th>
+        {plans.map((p) => (
+          <th scope="col" class={`mx-plan${p.recommended ? ' best' : ''}`}>
+            {p.recommended && <span class="mx-cap">{t('price.mostChosen')}</span>}
+            <span class="mx-name">{pick(p.name, lang)}</span>
+            <span class="mx-price">
+              <span class="mx-from">{t('price.from')}</span>
+              <b class="fig">{money(p.price.monthlyBase)}</b>
+              <span class="mx-per">{t('price.month')}</span>
+            </span>
+            <span class="mx-seats fig">{p.limits.users} {t('price.users')}</span>
+            <a class={`btn ${p.recommended ? 'btn-fill' : 'btn-line'} mx-cta`}
+               href={signupUrl({ packageId: p.packageId, lang })}>{t('cta.trial')}</a>
+          </th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {groups.map((g) => (
+        <>
+          <tr class="group"><th colspan={plans.length + 1} scope="colgroup">{pick(g.label, lang)}</th></tr>
+          {g.items.map((row: any) => (
+            <tr class={uniform(row.id) ? 'same' : 'differs'}>
+              <th scope="row">{pick(row.label, lang)}</th>
+              {plans.map((p) => (
+                <td class={`${has(p, row.id) ? 'y' : 'n'}${p.recommended ? ' best' : ''}`}>
+                  <span class="mark" aria-hidden="true">{has(p, row.id) ? '✓' : '·'}</span>
+                  <span class="vh">{has(p, row.id) ? t('price.included') : t('price.notIncluded')}</span>
+                </td>
+              ))}
+            </tr>
+          ))}
+        </>
+      ))}
+    </tbody>
+  </table>
+</div>

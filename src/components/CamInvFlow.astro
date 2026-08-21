@@ -1,0 +1,61 @@
+---
+// The CamInv flow, ported from the approved prototype.
+// Labels are short by necessity — the boxes are 103–198px wide, so Khmer is
+// phrased to fit rather than translated word for word.
+import { getLangFromUrl } from '@/i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const km = lang === 'km';
+const L = km
+  ? {
+      t: 'ទីតាំង វិធាន ក្នុងលំហូរវិក្កយបត្រអេឡិចត្រូនិក CamInv',
+      d: 'ការលក់មួយកត់ត្រាវិក្កយបត្រក្នុង វិធាន។ វិធាន បញ្ជូនវាទៅវេទិកា CamInv ថ្នាក់ជាតិ ដែលដំណើរការដោយក្រសួងសេដ្ឋកិច្ច និងហិរញ្ញវត្ថុ រួចវាឆ្លើយតបស្ថានភាពទទួលយក។ វិក្កយបត្រដែលបានទទួលយកទៅដល់អតិថិជនរបស់អ្នក។',
+      sale: 'ការលក់របស់អ្នក', saleSub: 'បញ្ជាទិញ ឬវិក្កយបត្រ',
+      vithean: 'វិធាន', vitheanSub1: 'វិក្កយបត្រ និងបញ្ជី', vitheanSub2: 'សកម្មភាពតែមួយ',
+      caminvSub1: 'វេទិកាថ្នាក់ជាតិ', caminvSub2: '(MEF)',
+      customer: 'អតិថិជន', customerSub: 'ទទួលបានវា',
+      submit: 'ដាក់ស្នើ', status: 'ស្ថានភាព',
+      postsL1: 'សកម្មភាពដដែលកត់ត្រា', postsL2: 'គណនីត្រូវទទួល ចំណូល អាករ សន្និធិ',
+    }
+  : {
+      t: 'Where Vithean sits in the CamInv e-invoicing flow',
+      d: 'A sale posts an invoice in Vithean. Vithean transmits it to the national CamInv platform, run by the Ministry of Economy and Finance, which returns an acceptance status. The accepted invoice reaches your customer.',
+      sale: 'Your sale', saleSub: 'an order, or an invoice',
+      vithean: 'Vithean', vitheanSub1: 'invoice + journal,', vitheanSub2: 'one action',
+      caminvSub1: 'national platform', caminvSub2: '(MEF)',
+      customer: 'Customer', customerSub: 'receives it',
+      submit: 'SUBMIT', status: 'STATUS',
+      postsL1: 'Same action posts', postsL2: 'AR, revenue, VAT and stock',
+    };
+---
+<svg class="flow" viewBox="0 0 660 200" role="img" aria-labelledby="ft fd">
+          <title id="ft">{L.t}</title>
+          <desc id="fd">{L.d}</desc>
+          <defs>
+            <marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0 0 8 4 0 8z" fill="#6F3075"/></marker>
+            <marker id="ahb" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M0 0 8 4 0 8z" fill="#8A6420"/></marker>
+          </defs>
+          <rect class="box" x="1" y="46" width="132" height="54" rx="8"/>
+          <text class="lbl" x="67" y="70" text-anchor="middle">{L.sale}</text>
+          <text class="sub" x="67" y="88" text-anchor="middle">{L.saleSub}</text>
+          <rect class="box" x="176" y="40" width="146" height="66" rx="8" stroke-width="1.8" style="stroke:#6F3075"/>
+          <text class="lbl" x="249" y="66" text-anchor="middle">{L.vithean}</text>
+          <text class="sub" x="249" y="84" text-anchor="middle">{L.vitheanSub1}</text>
+          <text class="sub" x="249" y="99" text-anchor="middle">{L.vitheanSub2}</text>
+          <rect class="box-b" x="366" y="40" width="146" height="66" rx="8"/>
+          <text class="lbl" x="439" y="66" text-anchor="middle">CamInv</text>
+          <text class="sub" x="439" y="84" text-anchor="middle">{L.caminvSub1}</text>
+          <text class="sub" x="439" y="99" text-anchor="middle">{L.caminvSub2}</text>
+          <rect class="box" x="556" y="46" width="103" height="54" rx="8"/>
+          <text class="lbl" x="607" y="70" text-anchor="middle">{L.customer}</text>
+          <text class="sub" x="607" y="88" text-anchor="middle">{L.customerSub}</text>
+          <path class="arw" d="M134 73 H168"/><path class="arw" d="M323 62 H358"/>
+          <path class="arw-b" d="M358 88 H325"/><path class="arw" d="M513 73 H548"/>
+          <text class="cap" x="341" y="32" text-anchor="middle">{L.submit}</text>
+          <text class="cap" x="341" y="116" text-anchor="middle" fill="#8A6420">{L.status}</text>
+          <path d="M249 116 V150" stroke="#DEDBE7" stroke-width="1" stroke-dasharray="3 3"/>
+          <rect class="box" x="150" y="150" width="198" height="42" rx="8"/>
+          <text class="sub" x="249" y="168" text-anchor="middle">{L.postsL1}</text>
+          <text class="sub" x="249" y="183" text-anchor="middle">{L.postsL2}</text>
+        </svg>

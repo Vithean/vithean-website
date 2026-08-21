@@ -1,0 +1,587 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Vithean design system.
+
+   Tailwind 4 + the design tokens in one file. `@theme` both generates the
+   utilities (bg-tint, text-ink, text-plum-600 …) AND emits the CSS custom
+   properties the hand-written component styles below already use — so there
+   is exactly one definition of every colour.
+
+   Tokens mirror vithean-myweb/tailwind.config.js and
+   vithean-central-web/config/theme.js. Marketing does not fork the product's
+   palette; PrimeVue is themed from the same ramp in src/vue-app.ts.
+   ═══════════════════════════════════════════════════════════════════ */
+
+@layer theme, base, primevue, components, utilities;
+@import "./fonts.css";
+@import "tailwindcss";
+
+@theme {
+  /* Brand plum — 600 is the product's --v-primary */
+  --color-plum-50:  #F9F3FA;
+  --color-plum-100: #F1E6F3;
+  --color-plum-200: #E1C8E5;
+  --color-plum-300: #C79BCD;
+  --color-plum-400: #A868AF;
+  --color-plum-500: #8A4291;
+  --color-plum-600: #6F3075;
+  --color-plum-700: #5B2761;
+  --color-plum-800: #4A2050;
+  --color-plum-900: #3D1B42;
+
+  /* Surface scale: 0 canvas · 1 tint · 2 surface · 3 tint-deep */
+  --color-canvas:        #FFFFFF;
+  --color-tint:          #F5F2F9;
+  --color-tint-deep:     #EDE9F3;
+  --color-surface:       #FFFFFF;
+  --color-surface-muted: #FAF8FC;
+
+  --color-ink-strong: #1A1720;
+  --color-ink:        #37333F;
+  --color-ink-muted:  #5C5768;
+  --color-ink-soft:   #7E798A;
+  --color-line:        #EDEBF3;
+  --color-line-strong: #DEDBE7;
+
+  /* Compliance mark — CamInv and nothing else */
+  --color-brass:      #8A6420;
+  --color-brass-tint: #F4EEE0;
+  --color-brass-line: #DFCEA6;
+
+  /* Semantic — borrowed from the product, never repurposed.
+     success-text is the same hue darkened so it clears 4.5:1 as small text. */
+  --color-success:      #41B883;
+  --color-success-text: #24704D;
+  --color-error:        #E91E63;
+  --color-on-plum:      #FFFFFF;
+
+  /* Mukta = Latin, Kantumruy Pro = Khmer, selected by unicode-range in fonts.css */
+  --font-sans: 'Mukta', 'Kantumruy Pro', 'Segoe UI', system-ui, -apple-system,
+               'Khmer OS Content', sans-serif;
+
+  --text-base: 1rem;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+
+  --shadow-card: 0 1px 2px 0 rgb(29 26 34/.04), 0 1px 3px 0 rgb(29 26 34/.06);
+  --shadow-soft: 0 4px 16px -4px rgb(29 26 34/.10);
+  --shadow-pop:  0 12px 32px -8px rgb(74 32 80/.22);
+  --shadow-hero: 0 1px 2px rgb(29 26 34/.05), 0 18px 44px -18px rgb(74 32 80/.28);
+}
+
+/* Aliases so the hand-written component CSS below keeps working unchanged.
+   Tailwind emits --color-*; these are the shorter names the components use. */
+:root {
+  --plum-50:var(--color-plum-50); --plum-100:var(--color-plum-100);
+  --plum-200:var(--color-plum-200); --plum-300:var(--color-plum-300);
+  --plum-500:var(--color-plum-500); --plum-600:var(--color-plum-600);
+  --plum-700:var(--color-plum-700); --plum-800:var(--color-plum-800);
+  --plum-900:var(--color-plum-900);
+  --canvas:var(--color-canvas); --tint:var(--color-tint);
+  --tint-deep:var(--color-tint-deep); --surface:var(--color-surface);
+  --surface-muted:var(--color-surface-muted);
+  --ink-strong:var(--color-ink-strong); --ink:var(--color-ink);
+  --ink-muted:var(--color-ink-muted); --ink-soft:var(--color-ink-soft);
+  --line:var(--color-line); --line-strong:var(--color-line-strong);
+  --brass:var(--color-brass); --brass-tint:var(--color-brass-tint);
+  --brass-line:var(--color-brass-line);
+  --success:var(--color-success); --success-text:var(--color-success-text);
+  --error:var(--color-error); --on-plum:var(--color-on-plum);
+  /* shadows come straight from @theme — no alias, that would be circular */
+  --sans:var(--font-sans);
+  --s1:.5rem; --s2:1rem; --s3:1.5rem; --s4:2rem; --s5:3rem; --s6:4rem; --s7:6rem;
+  --r-sm:8px; --r-md:12px; --r-pill:9999px; --wrap:1180px;
+  color-scheme:light;
+}
+
+/* ── Components. Ported from the approved prototype. ─────────────────── */
+@layer components {
+*,*::before,*::after{box-sizing:border-box}
+html{font-size:18px}
+body{margin:0; background:var(--canvas); color:var(--ink); font-family:var(--sans); line-height:1.62}
+/* ── Khmer typography ──────────────────────────────────────────────────
+   Kantumruy Pro is loaded on EVERY page, not only on /km/. The unicode-range
+   in fonts.css selects it for any Khmer codepoint wherever it appears, so a
+   Khmer business name inside an English sentence renders in the right face
+   without anything being tagged. That is the common case in Cambodia.
+
+   What tagging DOES change is leading and line breaking. Khmer stacks
+   subscripts and has no word spaces, so it needs ~1.75 leading and ICU line
+   breaking. Mark inline Khmer with lang="km" and it gets both:
+
+       <span lang="km">ក្រុមហ៊ុន ផុស្ការ</span>
+
+   Untagged Khmer still renders correctly — it just wraps on the English rules.
+   ────────────────────────────────────────────────────────────────────── */
+:lang(km){line-height:1.75; word-break:normal; overflow-wrap:break-word}
+:lang(km) h1,:lang(km) h2,:lang(km) h3,:lang(km) h4{line-height:1.4; letter-spacing:normal}
+
+/* Base leading is generous enough that occasional untagged Khmer never clips
+   its stacked marks against the line above. Do not tighten below 1.55. */
+h1,h2,h3,h4{color:var(--ink-strong); margin:0; font-weight:700; letter-spacing:-.018em;
+  line-height:1.16; text-wrap:balance}
+p{margin:0} a{color:inherit} img,svg{max-width:100%}
+:focus-visible{outline:2px solid var(--plum-600); outline-offset:3px; border-radius:4px}
+.wrap{max-width:var(--wrap); margin-inline:auto; padding-inline:var(--s3)}
+.fig{font-variant-numeric:tabular-nums lining-nums; font-feature-settings:"tnum" 1}
+.eyebrow{font-size:.8rem; font-weight:700; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--plum-600); display:flex; align-items:center; gap:.6rem; margin-bottom:var(--s2)}
+.eyebrow::after{content:""; flex:1; height:1px; background:var(--line-strong)}
+
+/* ── chrome ── */
+/* Header is min-height 70px + a 1px border, so anything the page scrolls
+   to must clear all 71 or it lands underneath it. */
+:root{--sticky-top:71px}
+[id]{scroll-margin-top:calc(var(--sticky-top) + 1rem)}
+
+.hdr{position:sticky; top:0; z-index:50; background:var(--tint);
+  backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid var(--line-strong);
+  box-shadow:0 1px 0 rgb(29 26 34/.03), 0 6px 20px -12px rgb(29 26 34/.18)}
+.hdr-in{display:flex; align-items:center; gap:var(--s3); min-height:70px}
+.mark{display:flex; align-items:center; flex-shrink:0; text-decoration:none}
+.mark img{height:30px; width:auto; display:block}
+.nav{display:flex; gap:1.4rem; margin-left:auto; font-size:1rem; font-weight:500}
+.nav a{color:var(--ink-muted); text-decoration:none; padding:.35rem 0; border-bottom:2px solid transparent;
+  cursor:pointer}
+.nav a:hover{color:var(--plum-600)}
+.nav a[aria-current="page"]{color:var(--plum-700); border-bottom-color:var(--plum-600); font-weight:600}
+.hdr-act{display:flex; align-items:center; gap:.9rem; font-size:.97rem}
+.lang{display:flex; border:1px solid var(--line-strong); border-radius:var(--r-pill); overflow:hidden}
+.lang button{border:0; background:none; font:inherit; font-size:.9rem; padding:.3rem .7rem;
+  color:var(--ink-muted); cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--plum-600); color:var(--on-plum)}
+.quiet{color:var(--ink-muted); text-decoration:none}
+.quiet:hover{color:var(--plum-600)}
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:.45rem; font:inherit;
+  font-weight:600; font-size:1rem; padding:.66rem 1.2rem; border-radius:var(--r-sm);
+  text-decoration:none; border:1px solid transparent; cursor:pointer; transition:transform .12s,box-shadow .12s}
+.btn-fill{background:var(--plum-600); color:var(--on-plum); box-shadow:0 1px 2px rgb(111 48 117/.3)}
+.btn-fill:hover{transform:translateY(-1px); box-shadow:var(--shadow-pop)}
+.btn-line{border-color:var(--line-strong); color:var(--ink-strong); background:var(--surface)}
+.btn-line:hover{border-color:var(--plum-600); color:var(--plum-600)}
+.btn-ghost{color:var(--plum-600); font-size:.95rem; padding:.4rem}
+.btn-ghost:hover{background:var(--plum-50)}
+.btn-lg{padding:.8rem 1.5rem}
+
+/* ── bands ── */
+.band{padding:var(--s7) 0}
+.band-tint{background:var(--tint)}
+.band-brass{background:var(--brass-tint); border-block:1px solid var(--brass-line)}
+.band-h{font-size:clamp(1.7rem,3vw,2.3rem); font-weight:800; letter-spacing:-.03em; max-width:22ch}
+.band-p{margin-top:var(--s2); color:var(--ink); max-width:58ch}
+.page{display:none} .page.on{display:block}
+
+/* ── hero ── */
+.hero{padding:var(--s5) 0 var(--s6);
+  background:linear-gradient(180deg,#F2E7F4 0%,#F9F4FA 42%,var(--canvas) 100%);
+  border-bottom:1px solid var(--line)}
+.hero .eyebrow{margin-bottom:.85rem}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.02fr); gap:var(--s6); align-items:start}
+.hero h1{font-size:clamp(2.4rem,4.6vw,3.55rem); font-weight:800; letter-spacing:-.035em}
+.hero h1 em{font-style:normal; color:var(--plum-600)}
+.hero-sub{margin-top:var(--s3); font-size:1.2rem; color:var(--ink); max-width:34ch}
+.hero-cta{margin-top:var(--s4); display:flex; gap:.75rem; flex-wrap:wrap}
+.provenance{margin-top:var(--s5); padding-top:var(--s3); border-top:1px solid var(--line);
+  font-size:.95rem; color:var(--ink); max-width:44ch}
+.provenance strong{color:var(--ink-strong); font-weight:600}
+
+/* ── journal card: the signature ── */
+.journal{background:var(--surface); border:1px solid var(--line-strong); border-radius:var(--r-md);
+  box-shadow:var(--shadow-hero); overflow:hidden}
+.j-head{display:flex; justify-content:space-between; align-items:baseline; gap:var(--s2); flex-wrap:wrap;
+  padding:.9rem 1.15rem; border-bottom:1px solid var(--line); background:var(--surface-muted)}
+.j-ref{font-weight:700; color:var(--ink-strong); font-size:1.02rem}
+.j-meta{font-size:.88rem; color:var(--ink-muted)}
+.j-cap{font-size:.79rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink-muted); padding:.75rem 1.15rem .35rem}
+.j-row{display:grid; grid-template-columns:1fr auto auto; gap:1rem; align-items:baseline;
+  padding:.45rem 1.15rem; font-size:1rem}
+/* real account names are long — wrap them rather than truncate */
+.j-row .acct{color:var(--ink)}
+.j-row .acct .no{color:var(--ink-muted); margin-right:.5rem; font-size:.85em}
+.j-row .dr,.j-row .cr{width:6.6rem; text-align:right; color:var(--ink-strong); font-weight:600}
+.j-row.credit .acct{padding-left:1.4rem; color:var(--ink-muted)}
+.j-cols{display:grid; grid-template-columns:1fr auto auto; gap:1rem; padding:.2rem 1.15rem .3rem;
+  font-size:.79rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-muted)}
+.j-cols span:nth-child(2),.j-cols span:nth-child(3){width:6.6rem; text-align:right}
+.j-total{display:grid; grid-template-columns:1fr auto auto; gap:1rem; padding:.55rem 1.15rem .85rem;
+  margin-top:.3rem; border-top:3px double var(--line-strong); font-size:1rem; font-weight:700;
+  color:var(--ink-strong)}
+.j-total span:nth-child(2),.j-total span:nth-child(3){width:6.6rem; text-align:right}
+.j-foot{display:flex; flex-wrap:wrap; gap:.5rem; padding:.85rem 1.15rem; border-top:1px solid var(--line);
+  background:var(--surface-muted)}
+.chip{display:inline-flex; align-items:center; gap:.4rem; font-size:.86rem; font-weight:600;
+  padding:.28rem .7rem; border-radius:var(--r-pill); border:1px solid var(--line-strong); color:var(--ink-muted)}
+.chip-ok{color:var(--success-text); border-color:currentColor}
+.chip-caminv{color:var(--brass); border-color:var(--brass-line); background:var(--brass-tint)}
+@media (prefers-reduced-motion:no-preference){
+  .post-in{opacity:0; transform:translateY(6px); animation:post .5s cubic-bezier(.2,.7,.3,1) forwards}
+  .post-in:nth-child(2){animation-delay:.15s} .post-in:nth-child(3){animation-delay:.3s}
+  .post-in:nth-child(5){animation-delay:.45s} .post-in:nth-child(6){animation-delay:.6s}
+  .post-in:nth-child(7){animation-delay:.75s}
+}
+@keyframes post{to{opacity:1; transform:none}}
+
+/* ── problem ledger ── */
+.probs{margin-top:var(--s5); border-top:3px double var(--line-strong)}
+.prob{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:var(--s4); align-items:baseline;
+  padding:1.15rem .6rem; border-bottom:1px solid var(--line); text-decoration:none; transition:background .12s}
+.prob:hover{background:var(--tint)}
+.prob q{font-size:1.14rem; color:var(--ink-strong); font-style:italic}
+.prob .fix{font-size:.94rem; font-weight:700; color:var(--plum-600); white-space:nowrap}
+.prob:hover .fix{text-decoration:underline}
+.converge{margin-top:var(--s3); padding:1rem 1.15rem; border:1px solid var(--plum-600);
+  border-radius:var(--r-md); background:var(--plum-50); display:flex; align-items:center;
+  justify-content:center; gap:.6rem; font-weight:600; color:var(--plum-700); text-align:center}
+
+/* ── caminv flow ── */
+.caminv{display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:var(--s6); align-items:center}
+.caminv .eyebrow{color:var(--brass)} .caminv .eyebrow::after{background:var(--brass-line)}
+.flow{width:100%; height:auto}
+.flow .box{fill:var(--surface); stroke:var(--line-strong)}
+.flow .box-b{fill:#FBF6EA; stroke:var(--brass-line)}
+.flow .lbl{fill:var(--ink-strong); font:600 14.5px var(--sans)}
+.flow .sub{fill:var(--ink-muted); font:400 12.5px var(--sans)}
+.flow .arw{stroke:var(--plum-600); stroke-width:1.6; fill:none; marker-end:url(#ah)}
+.flow .arw-b{stroke:var(--brass); stroke-width:1.6; fill:none; stroke-dasharray:4 3; marker-end:url(#ahb)}
+.flow .cap{fill:var(--ink-muted); font:700 11.5px var(--sans); letter-spacing:.06em}
+
+/* ── implementation steps ── */
+.impl{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.92fr); gap:var(--s6); align-items:start}
+.steps{list-style:none; margin:0; padding:0; counter-reset:step; border-top:3px double var(--line-strong)}
+.steps li{counter-increment:step; display:grid; grid-template-columns:2rem 1fr; gap:1rem;
+  padding:1rem .2rem; border-bottom:1px solid var(--line); align-items:baseline}
+.steps li::before{content:counter(step); font-variant-numeric:tabular-nums; font-weight:800;
+  color:var(--plum-600); font-size:1rem}
+.steps b{grid-column:2; color:var(--ink-strong); font-size:1.08rem; margin-bottom:.15rem}
+.steps span{grid-column:2; font-size:.97rem; color:var(--ink)}
+
+/* ── reviews ── */
+.reviews{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--s3); margin-top:var(--s5)}
+.review{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md);
+  padding:1.4rem; box-shadow:var(--shadow-card); display:flex; flex-direction:column}
+.review blockquote{margin:0; font-size:1.04rem; color:var(--ink-strong); flex:1}
+.review blockquote::before{content:"\201C"; color:var(--plum-300); font-size:2.4rem; line-height:0;
+  vertical-align:-.35em; margin-right:.15rem}
+.review footer{margin-top:1.1rem; padding-top:.9rem; border-top:1px solid var(--line);
+  display:flex; align-items:center; gap:.75rem}
+.review .av{width:52px; height:52px; border-radius:var(--r-pill); object-fit:cover; flex-shrink:0;
+  border:2px solid var(--plum-100)}
+.review .who b{display:block; color:var(--ink-strong); font-size:.98rem}
+.review .who span{font-size:.9rem; color:var(--ink-muted)}
+
+/* ── pricing ── */
+.price-head{display:flex; justify-content:space-between; align-items:flex-end; gap:var(--s3); flex-wrap:wrap}
+.plans{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--s3); margin-top:var(--s5)}
+.plan{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md);
+  padding:1.45rem; display:flex; flex-direction:column; box-shadow:var(--shadow-card)}
+.plan-best{border:1.5px solid var(--plum-600); position:relative; transform:translateY(-6px);
+  box-shadow:0 2px 4px rgb(29 26 34/.04), 0 20px 40px -20px rgb(74 32 80/.35)}
+.plan-badge{position:absolute; top:-.75rem; left:1.45rem;
+  background:var(--plum-600); color:var(--on-plum); font-size:.7rem; font-weight:700;
+  letter-spacing:.08em; text-transform:uppercase; padding:.2rem .65rem; border-radius:var(--r-pill)}
+.plan h3{font-size:1.18rem}
+.plan .who{font-size:.95rem; color:var(--ink); margin-top:.3rem; min-height:2.8em}
+.plan .amt{margin-top:1rem; display:flex; align-items:baseline; gap:.35rem}
+.plan .from{font-size:.85rem; color:var(--ink-muted); font-weight:600}
+.plan .amt b{font-size:2.5rem; font-weight:800; letter-spacing:-.04em; color:var(--ink-strong)}
+.plan .amt span{font-size:.85rem; color:var(--ink-muted)}
+.plan .seats{font-size:.94rem; color:var(--ink-muted); margin-top:.15rem}
+.plan ul{list-style:none; margin:1.1rem 0 0; padding:0; border-top:1px solid var(--line);
+  padding-top:.9rem; font-size:.97rem; display:grid; gap:.55rem}
+.plan li{display:flex; gap:.5rem; align-items:flex-start; color:var(--ink)}
+.plan li::before{content:"\2014"; color:var(--ink-soft); flex-shrink:0}
+.plan li.on::before{content:"\2713"; color:var(--success-text); font-weight:700}
+.plan li.brass{color:var(--brass); font-weight:600}
+.plan li.brass::before{content:"\2713"; color:var(--brass)}
+.plan-cta{margin-top:auto; padding-top:1.15rem; display:grid; gap:.45rem}
+.plan .btn{width:100%}
+.priceline{margin-top:var(--s3); font-size:.95rem; color:var(--ink); max-width:64ch}
+.addons{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--s2); margin-top:var(--s3)}
+.addon{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-sm);
+  padding:1rem 1.1rem; box-shadow:var(--shadow-card)}
+.addon h4{font-size:1rem; margin-bottom:.3rem}
+.addon .per{font-size:.87rem; color:var(--ink-muted)}
+.matrix-wrap{margin-top:var(--s5); overflow-x:auto; border:1px solid var(--line-strong);
+  border-radius:var(--r-md); background:var(--surface);
+  /* The wrap clips the table visually, but the table's overflow still
+     propagated scrollable width to the document, so the whole page scrolled
+     sideways on a phone. Containment stops that at this box. */
+  contain:paint}
+.matrix{width:100%; border-collapse:collapse; font-size:.97rem; min-width:660px}
+.matrix caption{text-align:left; font-size:.79rem; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-muted); padding:0 0 .7rem}
+
+/* ── plan header ──────────────────────────────────────────────────────
+   Carries the price, the seats and a CTA. A reader who has scrolled this
+   far should be able to decide here rather than scroll back up. */
+.matrix thead th{padding:1.15rem 1rem 1.25rem; vertical-align:bottom;
+  background:var(--surface-muted); border-bottom:1px solid var(--line-strong)}
+.mx-corner{font-size:.78rem; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--ink-muted); text-align:left; vertical-align:bottom}
+.mx-plan{position:relative; text-align:left}
+.mx-plan > *{display:block}
+.mx-cap{position:absolute; top:-.05rem; left:1rem; padding:.16rem .55rem;
+  border-radius:var(--r-pill); background:var(--plum-600); color:var(--on-plum);
+  font-size:.66rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase}
+.mx-name{font-size:1.05rem; font-weight:700; color:var(--ink-strong); margin-top:.35rem}
+.mx-price{margin-top:.15rem; white-space:nowrap}
+.mx-price .fig{font-size:1.45rem; font-weight:800; color:var(--ink-strong); letter-spacing:-.02em}
+.mx-from,.mx-per{font-size:.78rem; font-weight:500; color:var(--ink-muted)}
+.mx-seats{font-size:.82rem; color:var(--ink-muted); margin-top:.1rem}
+.mx-cta{margin-top:.8rem; width:100%; text-align:center; padding:.42rem .7rem; font-size:.86rem}
+
+/* ── body ─────────────────────────────────────────────────────────── */
+.matrix th,.matrix td{padding:.62rem 1rem; text-align:left; border-bottom:1px solid var(--line)}
+.matrix tbody th{font-weight:400; color:var(--ink); width:auto}
+/* Keeps the feature name in view while the marks scroll sideways on a phone. */
+.matrix tbody th[scope="row"],.matrix thead th:first-child{position:sticky; left:0; z-index:1}
+.matrix tbody th[scope="row"]{background:var(--surface)}
+.matrix thead th:first-child{background:var(--surface-muted)}
+.matrix td{text-align:center; width:11.5rem}
+/* Narrow screens: the marks matter more than a wide label column. */
+@media (max-width:900px){ .matrix td{width:7.5rem} .matrix th,.matrix td{padding-inline:.75rem} }
+.matrix tbody tr:hover th[scope="row"]{background:var(--tint)}
+.matrix tbody tr:hover td{background:rgb(111 48 117/.045)}
+.matrix tbody tr:last-child th,.matrix tbody tr:last-child td{border-bottom:0}
+
+/* The tick is the answer; the absence should not shout back. */
+.matrix .y .mark{color:var(--success-text); font-weight:700; font-size:1.05rem}
+.matrix .n .mark{color:var(--ink-soft); font-size:1.15rem; line-height:1}
+/* A row every plan agrees on carries no decision, so it sits back. */
+.matrix tr.same th[scope="row"]{color:var(--ink-muted)}
+.matrix tr.differs th[scope="row"]{color:var(--ink-strong); font-weight:500}
+
+/* ── the recommended column, as one rail ──────────────────────────── */
+.matrix .best{background:var(--plum-50); border-left:1.5px solid var(--plum-600);
+  border-right:1.5px solid var(--plum-600)}
+.matrix thead th.best{border-top:1.5px solid var(--plum-600)}
+.matrix tbody tr:last-child td.best{border-bottom:1.5px solid var(--plum-600)}
+.matrix tbody tr:hover td.best{background:var(--plum-100)}
+
+/* ── group bands ──────────────────────────────────────────────────── */
+.matrix tr.group th{font-weight:700; color:var(--ink-strong); font-size:.78rem;
+  letter-spacing:.09em; text-transform:uppercase; background:var(--tint);
+  padding:.5rem 1rem; border-bottom:1px solid var(--line-strong); position:static}
+.plan-note{margin-top:var(--s4); font-size:.95rem; color:var(--ink); display:grid; gap:.45rem; max-width:70ch}
+
+.subnav{background:var(--tint); border-bottom:1px solid var(--line-strong)}
+.subnav-in{display:flex; gap:.4rem; padding-block:.7rem; overflow-x:auto}
+.subnav button{font:inherit; font-size:.94rem; font-weight:600; white-space:nowrap;
+  padding:.42rem .95rem; border-radius:var(--r-pill); border:1px solid transparent;
+  background:none; color:var(--ink-muted); cursor:pointer}
+.subnav button:hover{color:var(--plum-700); background:var(--surface)}
+.subnav button[aria-pressed="true"]{background:var(--plum-600); color:var(--on-plum)}
+.prod-head{display:grid; grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  gap:var(--s6); align-items:start}
+.tiers{margin-top:var(--s3); font-size:.94rem; color:var(--ink-muted)}
+.tiers b{color:var(--plum-700)}
+.points{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--s3); margin-top:var(--s6);
+  border-top:3px double var(--line-strong); padding-top:var(--s4)}
+.point h3{font-size:1.1rem} .point p{margin-top:.4rem; color:var(--ink)}
+.footnote{margin-top:var(--s4); font-size:.92rem; color:var(--ink-muted); max-width:62ch;
+  padding-left:.9rem; border-left:3px solid var(--brass-line)}
+.footnote:empty{display:none}
+.prod-next{margin-top:var(--s6); padding-top:var(--s4); border-top:1px solid var(--line);
+  display:flex; gap:.6rem; flex-wrap:wrap}
+/* report + trail visuals */
+.rep table{width:100%; border-collapse:collapse; font-size:.95rem}
+.rep th,.rep td{padding:.5rem .8rem; border-bottom:1px solid var(--line); text-align:right}
+.rep th:first-child,.rep td:first-child{text-align:left}
+.rep thead th{font-size:.78rem; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-muted);
+  border-bottom:1px solid var(--line-strong)}
+.rep tfoot td{font-weight:700; color:var(--ink-strong); border-top:3px double var(--line-strong);
+  border-bottom:0; padding-top:.6rem}
+.rep .note{padding:.85rem 1.15rem; background:var(--surface-muted); border-top:1px solid var(--line);
+  font-size:.92rem; color:var(--ink)}
+.trail{padding:.5rem 0}
+.trail li{list-style:none; display:grid; grid-template-columns:7.2rem 1fr; gap:.9rem;
+  padding:.7rem 1.15rem; border-bottom:1px solid var(--line); align-items:baseline}
+.trail li:last-child{border-bottom:0}
+.trail .st{font-size:.8rem; font-weight:700; letter-spacing:.07em; text-align:center;
+  padding:.18rem .5rem; border-radius:var(--r-pill); border:1px solid var(--line-strong);
+  color:var(--ink-muted); background:var(--surface-muted)}
+.trail .st-APPROVED,.trail .st-POSTED{color:var(--success-text); border-color:currentColor; background:none}
+.trail .st-PENDING{color:var(--brass); border-color:var(--brass-line); background:var(--brass-tint)}
+.trail .st-EDITED{color:var(--plum-700); border-color:var(--plum-200); background:var(--plum-50)}
+.trail b{display:block; color:var(--ink-strong); font-size:.98rem}
+.trail span{font-size:.92rem; color:var(--ink-muted)}
+.trail .when{font-variant-numeric:tabular-nums}
+
+/* ── company ── */
+.lede{font-size:1.35rem; color:var(--ink-strong); max-width:30ch; font-weight:600}
+.story{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.15fr); gap:var(--s6); align-items:start}
+.story p + p{margin-top:1rem}
+.mvv{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--s3); margin-top:var(--s5)}
+.mvv div{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md);
+  padding:1.4rem; box-shadow:var(--shadow-card)}
+.mvv h3{font-size:.82rem; letter-spacing:.11em; text-transform:uppercase; color:var(--plum-600);
+  margin-bottom:.7rem}
+.people{display:grid; grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));
+  gap:var(--s3); margin-top:var(--s5)}
+.person{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md);
+  padding:1.4rem; box-shadow:var(--shadow-card)}
+.person .av{width:66px; height:66px; border-radius:var(--r-pill); object-fit:cover;
+  margin-bottom:.9rem; border:2px solid var(--plum-100); display:block}
+.person h3{font-size:1.08rem}
+.person .role{color:var(--plum-700); font-weight:600; font-size:.95rem; margin-top:.1rem}
+.person .cred{font-size:.92rem; color:var(--brass); font-weight:600; margin-top:.5rem}
+.person .bio{font-size:.95rem; color:var(--ink); margin-top:.7rem}
+.timeline{list-style:none; margin:var(--s5) 0 0; padding:0; border-top:3px double var(--line-strong)}
+.timeline li{display:grid; grid-template-columns:5rem 1fr; gap:var(--s3); padding:1rem .2rem;
+  border-bottom:1px solid var(--line); align-items:baseline}
+.timeline b{color:var(--plum-600); font-variant-numeric:tabular-nums; font-size:1.05rem}
+
+/* ── news ── */
+.filters{display:flex; gap:.5rem; margin-top:var(--s4); flex-wrap:wrap}
+.filters button{font:inherit; font-size:.92rem; font-weight:600; padding:.4rem .95rem;
+  border-radius:var(--r-pill); border:1px solid var(--line-strong); background:var(--surface);
+  color:var(--ink-muted); cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--plum-600); border-color:var(--plum-600); color:var(--on-plum)}
+.articles{margin-top:var(--s4); border-top:3px double var(--line-strong)}
+.article{display:grid; grid-template-columns:7.5rem minmax(0,1fr) auto; gap:var(--s3);
+  padding:1.3rem .3rem; border-bottom:1px solid var(--line); align-items:baseline;
+  text-decoration:none; transition:background .12s}
+.article:hover{background:var(--tint)}
+.article time{font-size:.92rem; color:var(--ink-muted); font-variant-numeric:tabular-nums}
+.article h3{font-size:1.1rem; font-weight:600}
+.article p{font-size:.95rem; color:var(--ink-muted); margin-top:.35rem}
+.article .tag{font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  padding:.16rem .6rem; border-radius:var(--r-pill); white-space:nowrap}
+.tag-press{color:var(--brass); background:var(--brass-tint); border:1px solid var(--brass-line)}
+.tag-event{color:var(--plum-700); background:var(--plum-50); border:1px solid var(--plum-200)}
+.tag-article{color:var(--ink-muted); background:var(--surface); border:1px solid var(--line-strong)}
+.kmflag{font-size:.78rem; color:var(--ink-muted); margin-left:.4rem}
+
+/* ── close + footer ── */
+.close{background:var(--plum-50); border:1px solid var(--line-strong); border-radius:var(--r-md);
+  padding:var(--s5) var(--s4); display:flex; justify-content:space-between; align-items:center;
+  gap:var(--s4); flex-wrap:wrap}
+.close h2{font-size:clamp(1.5rem,2.6vw,2rem); max-width:20ch}
+.close p{margin-top:.6rem; color:var(--ink); font-size:1.03rem}
+.ftr{background:var(--tint-deep); border-top:1px solid var(--line-strong); padding:var(--s6) 0 var(--s4)}
+.ftr-grid{display:grid; grid-template-columns:1.5fr repeat(3,1fr); gap:var(--s4)}
+.ftr img{height:30px; width:auto}
+.ftr h4{font-size:.82rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--plum-700); margin-bottom:.85rem}
+.ftr ul{list-style:none; margin:0; padding:0; display:grid; gap:.55rem; font-size:.97rem}
+.ftr a{color:var(--ink-muted); text-decoration:none} .ftr a:hover{color:var(--plum-600)}
+.ftr-strip{margin-top:var(--s5); padding-top:var(--s4); border-top:1px solid var(--line-strong);
+  display:flex; justify-content:space-between; gap:var(--s5); flex-wrap:wrap; align-items:flex-start}
+.ftr-strip .pay{height:30px; width:auto}
+.social{display:flex; gap:.55rem; flex-wrap:wrap}
+.social a{width:40px; height:40px; border-radius:var(--r-sm); background:var(--surface);
+  border:1px solid var(--line-strong); display:grid; place-items:center; color:var(--plum-700);
+  text-decoration:none; transition:transform .12s, border-color .12s}
+.social a:hover{transform:translateY(-2px); border-color:var(--plum-600); color:var(--plum-600)}
+.social svg{width:19px; height:19px; fill:currentColor}
+.ftr-bottom{margin-top:var(--s4); padding-top:var(--s3); border-top:1px solid var(--line-strong);
+  display:flex; justify-content:space-between; gap:var(--s3); flex-wrap:wrap;
+  font-size:.92rem; color:var(--ink-muted)}
+
+/* ── mobile navigation ─────────────────────────────────────────────────
+   Hidden above 980px, where the full nav fits in the bar. Below it the bar
+   keeps only the logo and the button, and everything else moves into the
+   panel — the nav used to be display:none with nothing in its place. */
+.burger{display:none; margin-left:auto; width:44px; height:44px; flex-shrink:0;
+  align-items:center; justify-content:center; padding:0;
+  background:none; border:1px solid var(--line-strong); border-radius:var(--r-sm);
+  color:var(--ink-strong); cursor:pointer}
+.burger:hover{border-color:var(--plum-300); color:var(--plum-600)}
+.burger:focus-visible{outline:2px solid var(--plum-600); outline-offset:2px}
+/* Three bars from one element: the middle bar is the box, the outer two are
+   its pseudo-elements, so the X is a rotation of the same shape. */
+.burger-box{position:relative; display:block; width:20px; height:2px}
+.burger-bar,.burger-bar::before,.burger-bar::after{position:absolute; left:0;
+  width:20px; height:2px; background:currentColor; border-radius:2px}
+.burger-bar{top:0}
+.burger-bar::before{content:""; top:-6px}
+.burger-bar::after{content:""; top:6px}
+@media (prefers-reduced-motion:no-preference){
+  .burger-bar,.burger-bar::before,.burger-bar::after{transition:transform .18s ease, opacity .18s ease}
+}
+[aria-expanded="true"] .burger-bar{transform:rotate(45deg)}
+[aria-expanded="true"] .burger-bar::before{transform:translateY(6px) rotate(-90deg)}
+[aria-expanded="true"] .burger-bar::after{opacity:0}
+
+.mnav{position:absolute; left:0; right:0; top:100%; z-index:49;
+  background:var(--surface); border-bottom:1px solid var(--line-strong);
+  box-shadow:0 18px 32px -20px rgb(29 26 34/.35);
+  max-height:calc(100dvh - var(--sticky-top)); overflow-y:auto}
+.mnav[hidden]{display:none}
+.mnav-in{display:flex; flex-direction:column; padding:.6rem var(--s3) var(--s3)}
+.mnav-in > a{padding:.85rem .2rem; font-size:1.05rem; font-weight:600;
+  color:var(--ink-strong); text-decoration:none; border-bottom:1px solid var(--line)}
+.mnav-in > a:last-of-type{border-bottom:0}
+.mnav-in > a[aria-current]{color:var(--plum-600)}
+.mnav-in hr{border:0; border-top:1px solid var(--line-strong); margin:.6rem 0 .2rem}
+.mnav-foot{display:flex; align-items:center; gap:var(--s3); margin-top:var(--s3); flex-wrap:wrap}
+.mnav-foot .btn{flex:1 1 auto; text-align:center}
+/* The panel scrolls itself; the page behind it must not. */
+body.nav-open{overflow:hidden}
+
+/* Grid and flex children default to min-width:auto, so a child refuses to
+   shrink below its own min-content width and pushes the page sideways. Every
+   one of these holds prose or a card that is allowed to wrap or scroll. */
+.hero-grid > *,.caminv > *,.impl > *,.story > *,.prod-head > *,
+.plans > *,.points > *,.mvv > *,.reviews > *,.probs > *{min-width:0}
+
+@media (max-width:980px){
+  .hero-grid,.caminv,.impl,.story{grid-template-columns:1fr; gap:var(--s4)}
+  .plans,.addons,.reviews,.mvv,.points{grid-template-columns:1fr}
+  .prod-head{grid-template-columns:1fr; gap:var(--s4)}
+  .ftr-grid{grid-template-columns:1fr 1fr}
+  .article,.prob{grid-template-columns:1fr; gap:.4rem}
+  .plan-best{transform:none}
+
+  .hdr-in{position:relative}
+  .nav{display:none}
+  .burger{display:inline-flex}
+  /* These live in the panel below this width. */
+  .hdr-act .lang,.hdr-act .quiet{display:none}
+  .hdr-act{gap:.6rem; margin-left:auto}
+}
+
+/* The news filter's four options overflow a phone in Khmer. */
+.articles-filter .p-selectbutton,
+.p-selectbutton{flex-wrap:wrap}
+
+/* ── phones ────────────────────────────────────────────────────────────
+   Measured at 375px: the header actions alone were 285px wide, which is
+   what pushed every page into a horizontal scroll. */
+@media (max-width:640px){
+  /* Keep the trial CTA in the bar — it is the page's job — but compact enough
+     that logo + button + toggle still fit a 360px phone in Khmer, which is the
+     longest label. It also stays in the panel for anyone who opens that. */
+  .hdr-act .btn{padding:.5rem .8rem; font-size:.9rem; white-space:nowrap}
+  .hdr-in{gap:.5rem}
+  .burger{margin-left:0}
+  .band{padding:var(--s5) 0}
+  h1{font-size:clamp(1.9rem,8vw,2.4rem)}
+  .hero-sub{font-size:1.05rem}
+  .band-h{font-size:clamp(1.5rem,6vw,1.9rem)}
+  .channels{grid-template-columns:1fr}
+  .figures{grid-template-columns:1fr}
+  .ftr-grid{grid-template-columns:1fr}
+  .ftr-strip{flex-direction:column; align-items:flex-start; gap:var(--s3)}
+  .ftr-bottom{flex-direction:column; gap:.5rem}
+  /* Debit and credit columns were a fixed 6.6rem each, which left nothing
+     for the account name on a phone. */
+  .j-row .dr,.j-row .cr,.j-total span:nth-child(2),.j-total span:nth-child(3){width:4.4rem}
+  .j-row,.j-cols,.j-total{gap:.5rem; padding-inline:.75rem}
+  .j-head,.j-foot{padding-inline:.75rem}
+  .journal{font-size:.94rem}
+  .plan{padding:1.25rem}
+  .timeline li{grid-template-columns:1fr; gap:.15rem}
+}
+
+/* Below 380px the CTA and the toggle stop fitting on one line together, and
+   the label must not wrap. The panel still carries the trial button. */
+@media (max-width:380px){
+  .hdr-act{display:none}
+  .burger{margin-left:auto}
+}
+}
+
+/* Screen-reader-only text. The comparison marks are glyphs; this gives them words. */
+.vh{position:absolute; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden;
+  clip-path:inset(50%); white-space:nowrap; border:0}

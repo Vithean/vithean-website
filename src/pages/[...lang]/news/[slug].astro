@@ -1,0 +1,76 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import { getLangFromUrl, useTranslations, path, fmtDate } from '@/i18n/utils';
+import { copy, c } from '@/i18n/copy';
+import { clampDescription, clampTitle } from '@/lib/seo';
+
+export async function getStaticPaths() {
+  const news = await getCollection('news');
+  return [undefined, 'km'].flatMap((lang) =>
+    news.map((a) => ({ params: { lang, slug: a.id }, props: { entry: a } })),
+  );
+}
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const site = Astro.site ?? new URL('https://vithean.com');
+
+const url = new URL(path(lang, `news/${entry.id}/`), site).href;
+/** A dated announcement with no description is a page an assistant will skip. */
+const description = clampDescription(
+  d.excerpt || `${d.title} — an announcement from Vithean, the Cambodian accounting and ERP system.`,
+);
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': d.category === 'press' ? 'NewsArticle' : 'Article',
+  headline: d.title.slice(0, 110),
+  description,
+  datePublished: d.date.toISOString(),
+  dateModified: d.date.toISOString(),
+  inLanguage: d.lang === 'km' ? 'km-KH' : 'en-US',
+  image: new URL('/assets/og-default.png', site).href,
+  author: { '@id': new URL('/#organization', site).href },
+  publisher: { '@id': new URL('/#organization', site).href },
+  isAccessibleForFree: true,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+};
+---
+<Base title={clampTitle(d.title)} description={description} ogType="article"
+      route={`news/${entry.id}/`} schemas={[schema]}>
+  <article class="band"><div class="wrap" style="max-width:760px">
+    <p class="eyebrow">{t(`news.${d.category}` as 'news.press')}</p>
+    <h1 class="band-h" style="max-width:none" lang={d.lang}>{d.title}</h1>
+    <p style="margin-top:var(--s2);color:var(--ink-muted)">
+      <time datetime={d.date.toISOString()}>
+        {fmtDate(d.date, lang)}
+      </time>
+      <span class="artlang">{d.lang === 'km' ? 'ភាសាខ្មែរ' : 'English'}</span>
+    </p>
+    <div class="prose" lang={d.lang}><Content /></div>
+    <p style="margin-top:var(--s5)"><a class="btn btn-line" href={path(lang, 'news/')}>← {c(copy.news.all, lang)}</a></p>
+  </div></article>
+</Base>
+
+<style is:global>
+  .prose{margin-top:var(--s4); font-size:1.05rem}
+  .prose > * + *{margin-top:1.1rem}
+  .prose h2{font-size:1.5rem; margin-top:2.2rem}
+  .prose h3{font-size:1.2rem; margin-top:1.8rem}
+  .prose ul,.prose ol{padding-left:1.4rem; display:grid; gap:.5rem}
+  .prose a{color:var(--plum-600); font-weight:600}
+  .prose img{border-radius:var(--r-md); border:1px solid var(--line);
+    max-width:100%; height:auto; display:block}
+  .prose figure{margin:var(--s4) 0}
+  .prose figcaption{margin-top:.7rem; font-size:.9rem; color:var(--ink-muted);
+    line-height:1.6; text-wrap:pretty}
+  /* youtube-nocookie: nothing is set on the visitor until they press play */
+  .prose .video{position:relative; padding-top:56.25%; margin:var(--s4) 0}
+  .prose .video iframe{position:absolute; inset:0; width:100%; height:100%;
+    border:0; border-radius:var(--r-md)}
+  .prose strong{color:var(--ink-strong)}
+  .artlang{margin-left:.7rem; font-size:.86rem; font-weight:600; padding:.14rem .6rem;
+    border-radius:var(--r-pill); border:1px solid var(--line-strong); color:var(--ink-muted)}
+</style>

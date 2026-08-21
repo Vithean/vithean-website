@@ -1,0 +1,15 @@
+---
+interface Props { r: any }
+const { r } = Astro.props;
+---
+<div class="journal rep">
+  <div class="j-head"><span class="j-ref">{r.caption}</span><span class="j-meta">{r.ref}</span></div>
+  <table>
+    <thead><tr>{r.cols.map((c: string) => <th>{c}</th>)}</tr></thead>
+    <tbody>{r.rows.map((row: string[]) => (
+      <tr>{row.map((c, i) => <td class={i ? 'fig' : ''}>{c}</td>)}</tr>
+    ))}</tbody>
+    <tfoot><tr>{r.total.map((c: string, i: number) => <td class={i ? 'fig' : ''}>{c}</td>)}</tr></tfoot>
+  </table>
+  <p class="note">{r.note}</p>
+</div>

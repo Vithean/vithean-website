@@ -1,0 +1,16 @@
+---
+interface Props { tr: any }
+const { tr } = Astro.props;
+---
+<div class="journal">
+  <div class="j-head"><span class="j-ref fig">{tr.ref}</span><span class="j-meta">{tr.meta}</span></div>
+  <ul class="trail">
+    {tr.steps.map((s: any) => (
+      <li>
+        <span class={`st st-${s.state}`}>{s.state}</span>
+        <div><b>{s.note}</b><span>{s.who} · <span class="when">{s.when}</span></span></div>
+      </li>
+    ))}
+  </ul>
+  <div class="j-foot"><span class="chip chip-ok">✓ Every step attributed</span></div>
+</div>

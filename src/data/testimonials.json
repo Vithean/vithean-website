@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "1.0.0",
+  "publishedAt": "2026-08-16T09:00:00+07:00",
+  "note": "The three testimonials published on vithean.com under 'Why people love Vithean'. Real named people with photos, already public with their agreement. Company name is an optional enhancement, not a precondition for publishing.",
+  "rules": {
+    "companyRequired": false,
+    "photoRequired": true,
+    "note": "Company name and a business outcome strengthen a testimonial and should be sought, but these three are publishable as they stand — they are already live."
+  },
+  "testimonials": [
+    {
+      "id": "chea-sopheak",
+      "status": "PUBLISHED",
+      "name": "Ms. Chea Sopheak",
+      "role": "Accounting Manager",
+      "company": null,
+      "companyLogo": null,
+      "segment": null,
+      "quote": {
+        "en": "As a bookkeeper, I find it convenient posting entries with the multiple entry types for each module. I can work everywhere, anytime with an internet connection. I love that the summary of key information for reporting to management can be found on the dashboard.",
+        "km": "ក្នុងនាមជាអ្នកកាន់បញ្ជី ខ្ញុំយល់ថាការបញ្ចូលទិន្នន័យមានភាពងាយស្រួល ដោយមានប្រភេទធាតុចូលច្រើនសម្រាប់ម៉ូឌុលនីមួយៗ។ ខ្ញុំអាចធ្វើការគ្រប់ទីកន្លែង គ្រប់ពេលវេលា ដរាបណាមានអ៊ីនធឺណិត។ ខ្ញុំចូលចិត្តដែលព័ត៌មានសំខាន់ៗសម្រាប់រាយការណ៍ទៅថ្នាក់ដឹកនាំ អាចរកឃើញនៅលើផ្ទាំងគ្រប់គ្រង។"
+      },
+      "photo": "assets/people/chea-sopheak.jpg",
+      "consentObtained": true,
+      "capturedAt": "2022-07-27",
+      "sourceUrl": "https://vithean.com/"
+    },
+    {
+      "id": "hor-sreyleak",
+      "status": "PUBLISHED",
+      "name": "Ms. Hor Sreyleak",
+      "role": "Senior Accountant",
+      "company": null,
+      "companyLogo": null,
+      "segment": null,
+      "quote": {
+        "en": "Vithean is a very helpful and accurate system. You can track and control your business without spending a lot of time. It has multiple languages, which is really convenient for government requirements and for a foreign owner. It is simple and easy to use.",
+        "km": "វិធាន គឺជាប្រព័ន្ធដ៏មានប្រយោជន៍ និងត្រឹមត្រូវ។ លោកអ្នកអាចតាមដាន និងគ្រប់គ្រងអាជីវកម្មដោយមិនចំណាយពេលច្រើន។ វាមានច្រើនភាសា ដែលងាយស្រួលសម្រាប់តម្រូវការរបស់រដ្ឋ និងសម្រាប់ម្ចាស់ជនបរទេស។ វាសាមញ្ញ និងងាយស្រួលប្រើ។"
+      },
+      "photo": "assets/people/hor-sreyleak.jpg",
+      "consentObtained": true,
+      "capturedAt": "2022-07-27",
+      "sourceUrl": "https://vithean.com/"
+    },
+    {
+      "id": "vithavath-sambun",
+      "status": "PUBLISHED",
+      "name": "Mr. Vithavath Sambun",
+      "role": "Accountant",
+      "company": null,
+      "companyLogo": null,
+      "segment": null,
+      "quote": {
+        "en": "Vithean is an accounting standard system and an accounting solution for any type of business. It can help all businesses, especially a company with a lot of transactions every day.",
+        "km": "វិធាន គឺជាប្រព័ន្ធគណនេយ្យតាមស្តង់ដារ និងជាដំណោះស្រាយសម្រាប់អាជីវកម្មគ្រប់ប្រភេទ។ វាអាចជួយអាជីវកម្មទាំងអស់ ជាពិសេសក្រុមហ៊ុនដែលមានប្រតិបត្តិការច្រើនរាល់ថ្ងៃ។"
+      },
+      "photo": "assets/people/vithavath-sambun.jpg",
+      "consentObtained": true,
+      "capturedAt": "2022-08-05",
+      "sourceUrl": "https://vithean.com/"
+    }
+  ],
+  "$exampleWhenComplete": {
+    "id": "example-trading",
+    "status": "PUBLISHED",
+    "name": "Full Name",
+    "role": "Finance Manager",
+    "company": "Named Business Co., Ltd.",
+    "companyLogo": "assets/customers/named-business.svg",
+    "segment": "trading-distribution",
+    "quote": {
+      "en": "One sentence they would repeat to someone else.",
+      "km": null
+    },
+    "metric": {
+      "label": "Month-end close",
+      "before": "9 days",
+      "after": "2 days"
+    },
+    "consentObtained": true,
+    "consentDate": "2026-09-01",
+    "capturedAt": "2026-09-01",
+    "note": "The stronger shape to aim for: company named and one number."
+  },
+  "khmer": {
+    "status": "NEEDS_NATIVE_REVIEW",
+    "glossary": "src/i18n/glossary.json — accounting terms extracted from the product's own km locale files. Those words are used verbatim here; do not substitute synonyms.",
+    "englishByDefault": "Demo figures, document references and account names stay in English on both locales — most Cambodian accountants work in English for the ledger itself, and translating INV-2026-0412 or 'Accounts receivable' would make the example harder to verify.",
+    "verified": "Strings marked VERIFIED were taken from the live vithean.com/km pages (archived in vithean-public/docs/existing/km/).",
+    "drafted": "Everything else is drafted. Rule 1 of the bilingual policy is 'write Khmer, do not translate English' — headlines and value propositions must be authored by a Khmer-native writer working from the message house, not reviewed as translations."
+  }
+}

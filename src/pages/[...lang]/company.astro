@@ -1,0 +1,120 @@
+---
+import Base from '@/layouts/Base.astro';
+import company from '@/data/company.json';
+import PartnerLogos from '@/components/PartnerLogos.astro';
+import { getLangFromUrl, useTranslations, pick } from '@/i18n/utils';
+import { copy, c } from '@/i18n/copy';
+
+export async function getStaticPaths() {
+  // `undefined` renders the route with no locale segment — English at the root.
+  return [{ params: { lang: undefined } }, { params: { lang: 'km' } }];
+}
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const photoName = (p: string) => p.split('/').pop();
+const storyParas = pick(company.story.body, lang).split('\n\n');
+const mvv = [
+  { h: c(copy.company.mvv[0], lang), body: pick(company.mission, lang) },
+  { h: c(copy.company.mvv[1], lang), body: pick(company.vision, lang) },
+  { h: c(copy.company.mvv[2], lang), body: pick(company.values, lang) },
+];
+---
+<Base title={c(copy.meta.companyTitle, lang)} route="company/"
+      description={c(copy.meta.companyDesc, lang)}>
+  <section class="band" style="padding-bottom:var(--s5)"><div class="wrap story">
+    <div>
+      <p class="eyebrow">{t('nav.company')}</p>
+      <a class="maker" href={company.maker.url} target="_blank" rel="noopener">
+        <img src={company.maker.logo} alt={company.maker.legalName} height="26" loading="lazy" />
+        <span>{pick(company.maker.line, lang)}</span>
+      </a>
+      <h1 class="band-h">{pick(company.story.lead, lang)}</h1>
+    </div>
+    <div style="font-size:1.05rem">
+      {storyParas.map((p) => <p style="margin-top:1rem">{p}</p>)}
+    </div>
+  </div></section>
+
+  <section class="band band-tint" style="padding-top:var(--s5)"><div class="wrap">
+    <p class="eyebrow">{c(copy.company.mvvEyebrow, lang)}</p>
+    <div class="mvv">
+      {mvv.map((m) => (
+        <div>
+          <h2 class="mvv-h">{m.h}</h2>
+          <p>{m.body}</p>
+        </div>
+      ))}
+    </div>
+  </div></section>
+
+  <section class="band"><div class="wrap">
+    <p class="eyebrow">{c(copy.company.peopleEyebrow, lang)}</p>
+    <h2 class="band-h">{c(copy.company.peopleH2, lang)}</h2>
+    <div class="people">
+      {company.team.map((m) => (
+        <article class="person">
+          <img class="av" src={`/assets/people/${photoName(m.photo)}`} alt={m.name}
+               width="132" height="132" loading="lazy" />
+          <h3>{lang === 'km' ? m.nameKm : m.name}</h3>
+          <p class="role">{lang === 'km' ? m.roleKm : m.role}</p>
+          <p class="cred">{lang === 'km' ? m.credentialKm : m.credential}</p>
+          <p class="bio">{lang === 'km' ? m.bioKm : m.bio}</p>
+        </article>
+      ))}
+    </div>
+  </div></section>
+
+  <section class="band band-tint"><div class="wrap">
+    <p class="eyebrow">{c(copy.company.recordEyebrow, lang)}</p>
+    <h2 class="band-h">{c(copy.company.recordH2, lang)}</h2>
+    <ul class="timeline">
+      {company.milestones.map((m) => (
+        <li><b class="fig">{m.year}</b><span>{lang === 'km' ? m.km : m.en}</span></li>
+      ))}
+    </ul>
+  </div></section>
+
+  <section class="band" id="partners"><div class="wrap">
+    <p class="eyebrow">{c(copy.company.partnersEyebrow, lang)}</p>
+    <h2 class="band-h">{c(copy.company.partnersH2, lang)}</h2>
+    <p class="band-p">{c(copy.company.partnersP, lang)}</p>
+    <div style="margin-top:var(--s4)"><PartnerLogos lang={lang} /></div>
+  </div></section>
+
+  <section class="band band-tint" id="contact"><div class="wrap story">
+    <div>
+      <p class="eyebrow">{c(copy.company.findEyebrow, lang)}</p>
+      <h2 class="band-h">{c(copy.company.findH2, lang)}</h2>
+    </div>
+    <div style="font-size:1.02rem">
+      <p>{lang === 'km' ? company.contact.addressKm : company.contact.address}</p>
+      <p style="margin-top:.8rem">
+        <a class="mail" href={company.contact.mapUrl} target="_blank" rel="noopener">
+          {c(copy.company.mapCta, lang)}</a>
+      </p>
+      <p style="margin-top:1rem">
+        <a href={`mailto:${company.contact.email}`} class="mail">{company.contact.email}</a>
+        &middot; {company.contact.phonePrimary}
+      </p>
+      <p style="margin-top:.4rem;color:var(--ink-muted)">{lang === 'km' ? company.contact.officeHoursKm : company.contact.officeHours}</p>
+      <p style="margin-top:1rem">
+        <a class="btn btn-line" href={company.contact.telegram}>{c(copy.company.telegramCta, lang)}</a>
+      </p>
+    </div>
+  </div></section>
+</Base>
+
+<style>
+  /* The maker, stated once and plainly. Vithean is a POSCAR Digital product;
+     everyone else on this page is a partner, which is a different thing. */
+  .maker{display:inline-flex; align-items:center; gap:.75rem; margin-bottom:1.1rem;
+    text-decoration:none; color:var(--ink-muted); font-size:.95rem}
+  .maker img{height:26px; width:auto; display:block}
+  .maker:hover span{color:var(--ink-strong)}
+  .maker:focus-visible{outline:2px solid var(--plum-600); outline-offset:3px; border-radius:4px}
+  .person .av{width:66px; height:66px; border-radius:var(--r-pill); object-fit:cover;
+    margin-bottom:.9rem; border:2px solid var(--plum-100); display:block}
+  .mvv-h{font-size:.82rem; letter-spacing:.11em; text-transform:uppercase;
+    color:var(--plum-600); margin-bottom:.7rem}
+  .mail{color:var(--plum-600); font-weight:600}
+</style>

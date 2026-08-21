@@ -1,0 +1,62 @@
+<svg class="figure" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" role="img" aria-labelledby="caminvflow-t caminvflow-d">
+<title id="caminvflow-t">How e-invoicing works in Vithean</title>
+<desc id="caminvflow-d">Four steps. One: record the invoice in Vithean as you already do. Two: Vithean sends it to CamInv from that same document. Three: CamInv, administered by the Ministry of Economy and Finance, validates and clears it. Four: the status and the official XML and PDF return to the same record. Documents suppliers send you arrive the same way and can be accepted or rejected inside Vithean.</desc>
+<style>
+/* Scoped. An inlined SVG stylesheet is NOT sandboxed: without the
+   svg.figure prefix these rules leak onto the page, where .band and
+   .flow collide with the site's own classes.
+   Do not write a style start-tag inside this comment. The HTML parser
+   does not treat SVG stylesheet content as raw text, so a literal one
+   opens a second element and every shape after it is swallowed into
+   it — the figure then renders as an empty box. */
+
+svg.figure .bg { fill: var(--surface); }
+svg.figure .title { font: 600 19px var(--sans); fill: var(--ink-strong); }
+svg.figure .card { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1.5; }
+svg.figure .cardGov { fill: var(--brass-tint); stroke: var(--brass); stroke-width: 1.5; }
+svg.figure .num { font: 700 13px var(--sans); fill: var(--plum-600); }
+svg.figure .numGov { font: 700 13px var(--sans); fill: var(--brass); }
+svg.figure .st { font: 600 15px var(--sans); fill: var(--ink-strong); }
+svg.figure .ss { font: 400 12.5px var(--sans); fill: var(--ink-muted); }
+svg.figure .arw { stroke: var(--plum-600); stroke-width: 2.5; fill: none; }
+svg.figure .hd { fill: var(--plum-600); }
+svg.figure .noteBox { fill: var(--tint); }
+svg.figure .noteTxt { font: 400 13px var(--sans); fill: var(--ink); }
+svg.figure .cap { font: 400 12px var(--sans); fill: var(--ink-muted); }
+
+</style>
+<defs>
+  <marker id="caminvflow-hd" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" class="hd"/>
+  </marker>
+</defs>
+<rect width="1000" height="360" class="bg"/>
+<rect x="24" y="118" width="214" height="104" rx="9" class="card"/>
+<text x="42" y="145" class="num">1</text>
+<text x="42" y="174" class="st">Record the invoice</text>
+<text x="42" y="196" class="ss">in Vithean, as you already do</text>
+<line x1="244" y1="170" x2="257" y2="170" class="arw" marker-end="url(#caminvflow-hd)"/>
+<rect x="272" y="118" width="214" height="104" rx="9" class="card"/>
+<text x="290" y="145" class="num">2</text>
+<text x="290" y="174" class="st">Vithean sends it</text>
+<text x="290" y="196" class="ss">to CamInv, from that same</text>
+<text x="290" y="212" class="ss">document</text>
+<line x1="492" y1="170" x2="505" y2="170" class="arw" marker-end="url(#caminvflow-hd)"/>
+<rect x="520" y="118" width="214" height="104" rx="9" class="cardGov"/>
+<text x="538" y="145" class="numGov">3</text>
+<text x="538" y="174" class="st">CamInv clears it</text>
+<text x="538" y="196" class="ss">validated and cleared by the</text>
+<text x="538" y="212" class="ss">MEF</text>
+<line x1="740" y1="170" x2="753" y2="170" class="arw" marker-end="url(#caminvflow-hd)"/>
+<rect x="768" y="118" width="214" height="104" rx="9" class="card"/>
+<text x="786" y="145" class="num">4</text>
+<text x="786" y="174" class="st">It comes back</text>
+<text x="786" y="196" class="ss">status, official XML and PDF,</text>
+<text x="786" y="212" class="ss">on the record</text>
+<path d="M 875 226 L 875 262 L 131 262 L 131 234" class="arw" stroke-dasharray="6 5" marker-end="url(#caminvflow-hd)"/>
+<text x="500" y="284" class="cap" text-anchor="middle">The same record carries the invoice, the VAT, the ledger entry and the e-invoice status</text>
+<rect x="24" y="298" width="952" height="42" rx="6" class="noteBox"/>
+<text x="44" y="324" class="noteTxt">Documents your suppliers send you arrive the same way — accept or reject them in Vithean, without leaving your books.</text>
+<text x="24" y="40" class="title">How e-invoicing works in Vithean</text>
+<text x="24" y="66" class="cap">Four steps, one system. CamInv is Cambodia’s national e-invoicing platform, administered by the Ministry of Economy and Finance.</text>
+</svg>

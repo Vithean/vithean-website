@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "1.0.0",
+  "publishedAt": "2026-08-16T09:00:00+07:00",
+  "note": "Organisations Vithean works with. Every entry here is evidenced by something that actually happened — a signed agreement, a shipped integration, or an event on the record. Do not add a logo because a conversation took place.",
+  "rules": {
+    "kinds": {
+      "partner": "A signed or standing working relationship.",
+      "integration": "A platform Vithean connects to. NOT an endorsement of Vithean, and must never be presented as one.",
+      "community": "An event, forum or programme Vithean took part in. Participation, not partnership."
+    },
+    "logo": "null until the artwork has been obtained from the organisation. The section renders a wordmark instead, so a missing file is never a broken image.",
+    "display": "false keeps an entry in the file but off the page. Integrations render under their own heading so a technical connection is never presented as an endorsement.",
+    "artwork": "Use the file the organisation supplies. Do not redraw, recolour or crop a logo — the same rule the acquiring bank sets for the payment marks in company.json.",
+    "maker": "POSCAR Digital Co., Ltd. is the maker of Vithean and is NOT listed here. A partner list is for other organisations; the company that builds the product belongs in company.json `maker`."
+  },
+  "partners": [
+    {
+      "id": "fii-associates",
+      "kind": "partner",
+      "order": 1,
+      "display": true,
+      "name": {
+        "en": "Fii & Associates",
+        "km": "ក្រុមហ៊ុន Fii & Associates"
+      },
+      "role": {
+        "en": "Accounting practice partner · co-builds the functional design",
+        "km": "ដៃគូវិជ្ជាជីវៈគណនេយ្យ · រួមរៀបចំមុខងារប្រព័ន្ធ"
+      },
+      "since": 2020,
+      "url": null,
+      "logo": "/assets/partners/fii-associates.png",
+      "logoSource": "Downloaded from https://fii-a.com/wp-content/uploads/2023/01/cropped-logo3png-01-01.png on 2026-08-16."
+    },
+    {
+      "id": "canadia-bank",
+      "kind": "partner",
+      "order": 2,
+      "display": true,
+      "name": {
+        "en": "Canadia Bank",
+        "km": "ធនាគារ កាណាឌីយ៉ា"
+      },
+      "role": {
+        "en": "Digital solutions for business, since 2023",
+        "km": "ដំណោះស្រាយឌីជីថលសម្រាប់អាជីវកម្ម តាំងពីឆ្នាំ២០២៣"
+      },
+      "since": 2023,
+      "url": "https://www.canadiabank.com.kh/",
+      "logo": "/assets/partners/canadia-bank.jpg",
+      "logoSource": "Downloaded from the bank site navigation on 2026-08-16. Low resolution (200x68) and not transparent — the mark is white and gold on red by design. Ask the bank for the approved brand pack and replace this."
+    },
+    {
+      "id": "kicpaa",
+      "kind": "partner",
+      "order": 3,
+      "display": true,
+      "name": {
+        "en": "KICPAA",
+        "km": "KICPAA"
+      },
+      "role": {
+        "en": "Kampuchea Institute of Certified Public Accountants and Auditors · MoU signed June 2026",
+        "km": "វិទ្យាស្ថានគណនេយ្យករជំនាញ និងសវនករកម្ពុជា · ចុះអនុស្សរណៈ មិថុនា ២០២៦"
+      },
+      "since": 2026,
+      "url": "https://www.kicpaa.org/en/about-us/about-kicpaa/",
+      "logo": "/assets/partners/kicpaa.png",
+      "logoSource": "Downloaded from https://www.kicpaa.org/wp-content/uploads/2023/07/kicpaas-logo.png on 2026-08-16."
+    },
+    {
+      "id": "ifa",
+      "kind": "partner",
+      "order": 4,
+      "display": true,
+      "name": {
+        "en": "Institute of Finance and Accounting (IFA)",
+        "km": "វិទ្យាស្ថានហិរញ្ញវត្ថុ និងគណនេយ្យ (IFA)"
+      },
+      "role": {
+        "en": "Internships, training and digital skills · MoU signed July 2026",
+        "km": "កម្មសិក្សា ការបណ្តុះបណ្តាល និងជំនាញឌីជីថល · ចុះអនុស្សរណៈ កក្កដា ២០២៦"
+      },
+      "since": 2026,
+      "url": "https://t.me/ifainfo",
+      "logo": "/assets/partners/ifa.png",
+      "logoSource": "Downloaded from https://www.ifa.edu.kh/web/img/logo.png on 2026-08-16."
+    },
+    {
+      "id": "caminv",
+      "kind": "partner",
+      "order": 5,
+      "display": true,
+      "name": {
+        "en": "Cambodia E-Invoicing (CamInv)",
+        "km": "ប្រព័ន្ធវិក្កយបត្រអេឡិចត្រូនិកកម្ពុជា (CamInv)"
+      },
+      "role": {
+        "en": "National e-invoicing platform · Vithean connects directly",
+        "km": "វេទិកាវិក្កយបត្រអេឡិចត្រូនិកថ្នាក់ជាតិ · វិធាន ភ្ជាប់ដោយផ្ទាល់"
+      },
+      "since": 2025,
+      "url": "https://e-invoice.gov.kh/",
+      "logo": "/assets/partners/caminv.png",
+      "logoSource": "Official CamInv wordmark from https://e-invoice.gov.kh/images/logo.png, downloaded 2026-08-16. This is the CamInv brand mark, NOT the Ministry of Economy and Finance state emblem (mef-logo.png on the same site) — never substitute that one. Keep written permission on file."
+    },
+    {
+      "id": "giz-icone",
+      "kind": "community",
+      "order": 6,
+      "display": true,
+      "name": {
+        "en": "GIZ ICONE",
+        "km": "គម្រោង GIZ ICONE"
+      },
+      "role": {
+        "en": "Digital training boot camp, Siem Reap 2024",
+        "km": "វគ្គបណ្តុះបណ្តាលឌីជីថល សៀមរាប ២០២៤"
+      },
+      "since": 2024,
+      "url": null,
+      "logo": null,
+      "logoSource": "Request from the ICONE programme team. Development-agency marks usually carry usage conditions — read them."
+    },
+    {
+      "id": "ccc",
+      "kind": "community",
+      "order": 7,
+      "display": true,
+      "name": {
+        "en": "Cambodia Chamber of Commerce",
+        "km": "សភាពាណិជ្ជកម្មកម្ពុជា"
+      },
+      "role": {
+        "en": "Seminar on online accounting for SMEs, 2026",
+        "km": "សិក្ខាសាលាស្តីពីគណនេយ្យលើអ៊ីនធឺណិតសម្រាប់ SMEs ឆ្នាំ២០២៦"
+      },
+      "since": 2026,
+      "url": "https://www.ccc.org.kh/",
+      "logo": "/assets/partners/ccc.png",
+      "logoSource": "Downloaded from https://www.ccc.org.kh/assets/img/ccc_logo_v1.png on 2026-08-16."
+    },
+    {
+      "id": "egd",
+      "kind": "community",
+      "order": 8,
+      "display": true,
+      "name": {
+        "en": "Enterprises Go Digital (EGD)",
+        "km": "បរិវត្តកម្មឌីជីថលសហគ្រាស (EGD)"
+      },
+      "role": {
+        "en": "POSCAR Digital is a listed service provider in the programme",
+        "km": "POSCAR Digital ជាអ្នកផ្តល់សេវាដែលបានចុះបញ្ជីក្នុងកម្មវិធីនេះ"
+      },
+      "since": 2025,
+      "url": "https://enterprisedigital.gov.kh/ecosystem/service-provider/list/3604",
+      "logo": "/assets/partners/egd.svg",
+      "logoSource": "Programme logo from https://enterprisedigital.gov.kh/_nuxt/img/egd-logo.b1dbaf8.svg, downloaded 2026-08-18. A government programme mark: it is shown because POSCAR is listed in the provider ecosystem, and the tile says exactly that. Do not reword it into anything that reads as a partnership or an endorsement."
+    }
+  ]
+}

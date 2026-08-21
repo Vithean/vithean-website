@@ -1,0 +1,233 @@
+{
+  "schemaVersion": "1.0.0",
+  "publishedAt": "2026-08-16T09:00:00+07:00",
+  "note": "Editorial content — humans own this file, not central. Sourced from the live About page (docs/existing/pages/about-us.md). Bios are condensed; the three typos on the live page (min-2020, interanl, Techincian) are corrected here.",
+  "legalName": "POSCAR Digital Co., Ltd.",
+  "brand": "Vithean",
+  "foundedYear": 2020,
+  "partnerFirm": {
+    "name": "Fii & Associates",
+    "role": "Accounting practice partner — co-builds the functional design",
+    "note": "An accounting and audit firm and a shareholder. Its practitioners shape what the system has to do; POSCAR builds and owns it. Do not describe Fii as a co-maker of the company or the software."
+  },
+  "provenance": {
+    "en": "Built in Cambodia by POSCAR Digital Co., Ltd.",
+    "km": "បង្កើតឡើងនៅកម្ពុជា ដោយក្រុមហ៊ុន POSCAR Digital Co., Ltd."
+  },
+  "story": {
+    "lead": {
+      "en": "POSCAR Digital builds Vithean — with practising accountants shaping what it does",
+      "km": "POSCAR Digital បង្កើត វិធាន — ដោយមានគណនេយ្យករជំនាញរួមរៀបចំមុខងារ"
+    },
+    "body": {
+      "en": "Vithean is built and supported by POSCAR Digital Co., Ltd., a Cambodian software company that also builds school, university, HR and attendance systems used across the country. Vithean is its accounting and ERP product.\n\nFii & Associates, a Cambodian accounting and audit firm, is Vithean’s accounting practice partner: its practitioners co-build the functional design. That is why the ledger behaves the way an accountant expects, and why the workflow matches how Cambodian businesses actually operate — the people who audit and keep books for a living decided what the system has to do.\n\nWe are not a foreign product with a local reseller, and we are not a bookkeeping service that also writes software. We build and support the system, we implement it with you, and the books stay yours.",
+      "km": "វិធាន ត្រូវបានបង្កើត និងគាំទ្រដោយក្រុមហ៊ុន POSCAR Digital Co., Ltd. ដែលជាក្រុមហ៊ុនកម្មវិធីកម្ពុជា ហើយក៏បង្កើតប្រព័ន្ធគ្រប់គ្រងសាលារៀន សាកលវិទ្យាល័យ ធនធានមនុស្ស និងវត្តមាន ដែលប្រើប្រាស់នៅទូទាំងប្រទេស។ វិធាន ជាផលិតផលគណនេយ្យ និង ERP របស់ខ្លួន។\n\nក្រុមហ៊ុន Fii & Associates ដែលជាក្រុមហ៊ុនគណនេយ្យ និងសវនកម្មកម្ពុជា គឺជាដៃគូវិជ្ជាជីវៈគណនេយ្យរបស់ វិធាន៖ អ្នកជំនាញរបស់ខ្លួនរួមរៀបចំមុខងាររបស់ប្រព័ន្ធ។ នេះជាមូលហេតុដែលបញ្ជីគណនេយ្យដំណើរការតាមអ្វីដែលគណនេយ្យករគិត ហើយលំហូរការងារត្រូវនឹងរបៀបដែលអាជីវកម្មកម្ពុជាដំណើរការពិតប្រាកដ — ដោយសារអ្នកដែលធ្វើសវនកម្ម និងកាន់បញ្ជីគណនេយ្យជាអាជីព ជាអ្នកកំណត់ថាប្រព័ន្ធត្រូវធ្វើអ្វីខ្លះ។\n\nយើងមិនមែនជាផលិតផលបរទេសដែលមានអ្នកលក់បន្តក្នុងស្រុកទេ ហើយក៏មិនមែនជាសេវាកម្មកាន់បញ្ជីដែលសរសេរកម្មវិធីផងដែរ។ យើងបង្កើត និងគាំទ្រប្រព័ន្ធ យើងដំឡើងវាជាមួយលោកអ្នក ហើយបញ្ជីគណនេយ្យនៅតែជារបស់លោកអ្នក។"
+    }
+  },
+  "mission": {
+    "en": "To create a user-friendly, customised and flexible platform with the analytic data needed for easy, time-saving and effective decision-making, while meeting local requirements.",
+    "km": "បង្កើតទម្រង់មុខងារមួយដែលមានភាពងាយស្រួល ស្របតាមតម្រូវការ និងបត់បែន ដោយផ្តល់ជូននូវបទពិសោធន៍ថ្មីមួយសម្រាប់ម្ចាស់អាជីវកម្ម និងការរីកចម្រើននៃសហគ្រាសធុនតូច និងមធ្យម តាមរយៈការគ្រប់គ្រង និងការរៀបចំផែនការហិរញ្ញវត្ថុ ដែលមានការវិភាគទិន្នន័យច្បាស់លាស់ ចំណេញពេលវេលា ដើម្បីងាយស្រួលក្នុងការសម្រេចចិត្តប្រកបដោយប្រសិទ្ធភាព និងធានាបាននូវការអនុលោមតាមបទប្បញ្ញត្តិនានាក្នុងស្រុក។"
+  },
+  "vision": {
+    "en": "To be the leading accounting system in Cambodia's digital market, providing single-package solutions that are innovative, customised and affordable.",
+    "km": "ក្លាយជាប្រព័ន្ធគណនេយ្យឈានមុខគេក្នុងទីផ្សារឌីជីថលនៅកម្ពុជា ដែលផ្ដល់នូវដំណោះស្រាយល្អបំផុតសម្រាប់សហគ្រាសធុនតូច និងមធ្យម ជាមួយផលិតផល និងសេវាកម្មប្រកបដោយភាពច្នៃប្រឌិត ស្របតាមតម្រូវការ និងតម្លៃសមរម្យ។"
+  },
+  "values": {
+    "en": "A flexible digital accounting system designed around what our customers actually need, combining practical experience and technical knowledge, for the growth of Cambodia's SME sector.",
+    "km": "យើងផ្ដល់នូវប្រព័ន្ធគណនេយ្យបែបឌីជីថលដែលមានភាពបត់បែន និងងាយស្រួល ដែលបង្កើតឡើងជាពិសេសដើម្បីបំពេញតម្រូវការរបស់អតិថិជន ដោយរួមបញ្ចូលនូវបទពិសោធន៍ប្រតិបត្តិផ្ទាល់ និងចំណេះដឹងបច្ចេកវិទ្យាពីគ្រប់វិស័យទាំងអស់ ដើម្បីភាពរីកចម្រើននៃវិស័យសហគ្រាសធុនតូច និងមធ្យមនៅកម្ពុជា។"
+  },
+  "team": [
+    {
+      "slug": "sisowath-chakara",
+      "name": "Mr. SISOWATH Chakara",
+      "role": "Chairman",
+      "credential": "CFA Charterholder · 30 years managing investments in Asia",
+      "bio": "Managing Partner of 3E:Fii Capital, responsible for valuation, financial advisory and research. Founded Jayu Management & Research in Phnom Penh in 2017. Graduate of EDHEC Business School, Lille, with an MBA from the University of Chicago Booth School of Business.",
+      "photo": "assets/people/sisowath-chakara.jpg",
+      "nameKm": "លោក ស៊ីសុវត្ថិ ចក្រការា",
+      "roleKm": "ប្រធានក្រុមប្រឹក្សាភិបាល",
+      "credentialKm": "អ្នកឯកទេសហិរញ្ញវត្ថុជាន់ខ្ពស់ (CFA) · គ្រប់គ្រងការវិនិយោគនៅអាស៊ី ៣០ឆ្នាំ",
+      "bioKm": "ដៃគូគ្រប់គ្រងនៃ 3E:Fii Capital ទទួលបន្ទុកការវាយតម្លៃ ការប្រឹក្សាហិរញ្ញវត្ថុ និងការស្រាវជ្រាវ។ លោកបានបង្កើតក្រុមហ៊ុន Jayu Management & Research នៅភ្នំពេញក្នុងឆ្នាំ២០១៧ ដើម្បីផ្ដល់សេវាកម្មប្រឹក្សា និងផ្ដល់យោបល់។ លោកបញ្ចប់ការសិក្សានៅសាលាពាណិជ្ជកម្ម EDHEC ក្រុងលីល ប្រទេសបារាំង និងបរិញ្ញាបត្រជាន់ខ្ពស់ពាណិជ្ជកម្មនៃសាកលវិទ្យាល័យ Chicago Booth។"
+    },
+    {
+      "slug": "heng-seida",
+      "name": "Ms. HENG Seida",
+      "role": "Board Director",
+      "credential": "Past President of KICPAA · FCCA (UK) · CIA (US)",
+      "bio": "Over 20 years in internal and external audit and in building internal control systems. Served as Vice President then President of KICPAA across two mandates; during her terms the national CPA and CAT qualifications were developed. Co-founder and Managing Partner of Fii & Associates.",
+      "photo": "assets/people/heng-seida.jpg",
+      "nameKm": "កញ្ញា ហេង សិតា",
+      "roleKm": "សមាជិកក្រុមប្រឹក្សាភិបាល",
+      "credentialKm": "អតីតប្រធាន KICPAA · FCCA (ចក្រភពអង់គ្លេស) · CIA (សហរដ្ឋអាមេរិក)",
+      "bioKm": "កញ្ញា សិតា មានបទពិសោធជាង ២០ឆ្នាំក្នុងផ្នែកសវនកម្មផ្ទៃក្នុង និងសវនកម្មខាងក្រៅ និងការកសាងប្រព័ន្ធត្រួតពិនិត្យផ្ទៃក្នុង។ កញ្ញាបានបំពេញតួនាទីជាអនុប្រធាន រួចជាប្រធាន KICPAA រយៈពេលពីរអាណត្តិ ដែលក្នុងអំឡុងនោះ វិជ្ជាជីវៈគណនេយ្យករ (CPA) និងបច្ចេកទេសគណនេយ្យ (CAT) ថ្នាក់ជាតិត្រូវបានបង្កើតឡើង។ កញ្ញាជាសហស្ថាបនិក និងជាដៃគូគ្រប់គ្រងនៃ Fii & Associates។"
+    },
+    {
+      "slug": "ngorn-moi",
+      "name": "Mr. NGORN Moi",
+      "role": "Founder",
+      "credential": "20 years in IT engineering and operations",
+      "bio": "Holds degrees in Physics and Computer Science, and Master's degrees in Computer Engineering and Information Technology from the Royal University of Phnom Penh and Lucian Blaga University of Sibiu, Romania. Founded the digital company that was registered as POSCAR Digital Co., Ltd. in 2020.",
+      "photo": "assets/people/ngorn-moi.jpg",
+      "nameKm": "លោក ងន់ ម័រ",
+      "roleKm": "ស្ថាបនិក",
+      "credentialKm": "បទពិសោធ ២០ឆ្នាំក្នុងវិស្វកម្ម និងបច្ចេកវិទ្យាប្រតិបត្តិការ",
+      "bioKm": "លោក ងន់ ម័រ បញ្ចប់ការសិក្សាថ្នាក់បរិញ្ញាបត្រចំនួនពីរគឺ រូបវិទ្យា និងវិទ្យាសាស្ត្រកុំព្យូទ័រ ព្រមទាំងថ្នាក់បរិញ្ញាបត្រជាន់ខ្ពស់ជំនាញវិស្វកម្មកុំព្យូទ័រពីសាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ និងជំនាញព័ត៌មានវិទ្យាពីសាកលវិទ្យាល័យ Lucian Blaga University of Sibiu ប្រទេសរ៉ូម៉ានី។ លោកបានបង្កើតក្រុមហ៊ុនឌីជីថល ដែលបានចុះបញ្ជីក្រោមពាណិជ្ជនាម POSCAR Digital Co., Ltd. ក្នុងឆ្នាំ២០២០។"
+    },
+    {
+      "slug": "sum-sipha",
+      "name": "Ms. SUM Sipha",
+      "role": "Chief Executive Officer",
+      "credential": "Formerly IT lead for PwC Cambodia and Laos",
+      "bio": "Co-founder and CEO. BSc from the Royal University of Phnom Penh and an MBA from the National University of Management. Spent most of her career at PricewaterhouseCoopers, managing all IT matters — software, systems and hardware — for the Cambodia and Laos offices.",
+      "photo": "assets/people/sum-sipha.jpg",
+      "nameKm": "អ្នកស្រី ស៊ុំ ស៊ីផា",
+      "roleKm": "នាយកប្រតិបត្តិ",
+      "credentialKm": "អតីតប្រធានផ្នែកព័ត៌មានវិទ្យារបស់ PwC កម្ពុជា និងឡាវ",
+      "bioKm": "សហស្ថាបនិក និងអគ្គនាយិកាប្រតិបត្តិ។ អ្នកស្រីបញ្ចប់បរិញ្ញាបត្រវិទ្យាសាស្ត្រនៅសាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ និងបរិញ្ញាបត្រជាន់ខ្ពស់ជំនាញរដ្ឋបាលពាណិជ្ជកម្មពីសាកលវិទ្យាល័យជាតិគ្រប់គ្រង។ អ្នកស្រីចំណាយអាជីពភាគច្រើននៅ PricewaterhouseCoopers ដោយគ្រប់គ្រងរាល់បញ្ហាព័ត៌មានវិទ្យា — Software System រហូតដល់ Hardware — សម្រាប់ការិយាល័យនៅកម្ពុជា និងឡាវ។"
+    },
+    {
+      "slug": "kim-meng",
+      "name": "Mr. KIM Meng",
+      "role": "Chief Technology Officer",
+      "credential": "20 years as a systems engineer · IT lecturer, RUPP",
+      "bio": "Co-founder and CTO. BSc in Computer Science from the Royal University of Phnom Penh and an MSc from Build Bright University. Specialises in operating systems, databases, application servers, security and networks, with experience across local and international organisations.",
+      "photo": "assets/people/kim-meng.jpg",
+      "nameKm": "លោក គឹម ម៉េង",
+      "roleKm": "នាយកបច្ចេកទេស",
+      "credentialKm": "វិស្វករប្រព័ន្ធ ២០ឆ្នាំ · សាស្ត្រាចារ្យព័ត៌មានវិទ្យា សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ",
+      "bioKm": "សហស្ថាបនិក និងនាយកបច្ចេកទេស។ លោកបញ្ចប់បរិញ្ញាបត្រវិទ្យាសាស្ត្រកុំព្យូទ័រពីសាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ និងបរិញ្ញាបត្រជាន់ខ្ពស់ពីសាកលវិទ្យាល័យបៀលប្រាយ។ លោកមានឯកទេសខាងប្រព័ន្ធប្រតិបត្តិការ មូលដ្ឋានទិន្នន័យ ម៉ាស៊ីនមេកម្មវិធី សុវត្ថិភាព និងបណ្ដាញ ដោយមានបទពិសោធជាមួយស្ថាប័នក្នុងស្រុក និងអន្តរជាតិ។"
+    },
+    {
+      "slug": "sok-pongsametrey",
+      "name": "Mr. SOK Pongsametrey",
+      "role": "Chief Operating Officer",
+      "credential": "20 years across architecture, engineering and UX",
+      "bio": "BSc in Computer Science & Engineering and MSc in Information Technology from the Royal University of Phnom Penh. Has led technical teams building ERP, learning management and school management systems, and data centre set-ups, for SMEs and corporates.",
+      "photo": "assets/people/sok-pongsametrey.jpg",
+      "nameKm": "លោក សុខ ពង្សាមេត្រី",
+      "roleKm": "នាយកប្រតិបត្តិការ",
+      "credentialKm": "២០ឆ្នាំក្នុងស្ថាបត្យកម្មប្រព័ន្ធ វិស្វកម្ម និង UX",
+      "bioKm": "លោកបញ្ចប់បរិញ្ញាបត្រជំនាញវិស្វកម្ម និងវិទ្យាសាស្ត្រកុំព្យូទ័រ ព្រមទាំងបរិញ្ញាបត្រជាន់ខ្ពស់ជំនាញព័ត៌មានវិទ្យាពីសាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ។ លោកបានដឹកនាំក្រុមបច្ចេកទេសអភិវឌ្ឍប្រព័ន្ធ ERP ប្រព័ន្ធគ្រប់គ្រងការសិក្សា និងសាលារៀន និងការបង្កើតមជ្ឈមណ្ឌលទិន្នន័យ សម្រាប់សហគ្រាសធុនតូច មធ្យម និងក្រុមហ៊ុនធំៗ។"
+    }
+  ],
+  "milestones": [
+    {
+      "year": "2020",
+      "en": "POSCAR Digital Co., Ltd. registered in Phnom Penh.",
+      "km": "POSCAR Digital Co., Ltd. ត្រូវបានចុះបញ្ជីនៅភ្នំពេញ"
+    },
+    {
+      "year": "2022",
+      "en": "Vithean launches publicly with three plans.",
+      "km": "វិធានចាប់ផ្តើមដំណើរការជាសាធារណៈ ជាមួយគម្រោងបីជម្រើស"
+    },
+    {
+      "year": "2023",
+      "en": "Partnership with Canadia Bank on digital solutions for business.",
+      "km": "កិច្ចសហការជាមួយធនាគារ កាណាឌីយ៉ា លើដំណោះស្រាយឌីជីថលសម្រាប់អាជីវកម្ម"
+    },
+    {
+      "year": "2024",
+      "en": "Vithean at the GIZ ICONE digital training boot camp, and the accounting system workshop in Siem Reap.",
+      "km": "វិធានចូលរួមក្នុងវគ្គបណ្តុះបណ្តាលឌីជីថល GIZ ICONE និងសិក្ខាសាលាប្រព័ន្ធគណនេយ្យនៅសៀមរាប"
+    },
+    {
+      "year": "2025",
+      "en": "Cambodia E-Invoicing (CamInv) integration goes live. Vithean presents at the ACAR forum.",
+      "km": "ការភ្ជាប់ជាមួយប្រព័ន្ធវិក្កយបត្រអេឡិចត្រូនិកកម្ពុជា (CamInv) ដំណើរការជាផ្លូវការ — វិធានធ្វើបទបង្ហាញនៅវេទិកា ACAR"
+    },
+    {
+      "year": "2026",
+      "en": "Seminar with the Cambodia Chamber of Commerce on online accounting for SMEs.",
+      "km": "សិក្ខាសាលាជាមួយសភាពាណិជ្ជកម្មកម្ពុជា ស្តីពីគណនេយ្យលើអ៊ីនធឺណិតសម្រាប់ SMEs"
+    },
+    {
+      "year": "2026",
+      "en": "Memorandum of understanding with KICPAA, the national accountancy body, on digital accounting training, workshops and a train-the-trainer programme",
+      "km": "អនុស្សរណៈយោគយល់ជាមួយ KICPAA ដែលជាស្ថាប័នវិជ្ជាជីវៈគណនេយ្យជាតិ ស្តីពីការបណ្តុះបណ្តាលគណនេយ្យឌីជីថល សិក្ខាសាលា និងកម្មវិធីបណ្តុះបណ្តាលគ្រូបណ្តុះបណ្តាល"
+    },
+    {
+      "year": "2026",
+      "en": "Memorandum of understanding with the Institute of Finance and Accounting (IFA) on internships, training and digital skills",
+      "km": "អនុស្សរណៈយោគយល់ជាមួយវិទ្យាស្ថានហិរញ្ញវត្ថុ និងគណនេយ្យ (IFA) ស្តីពីកម្មសិក្សា ការបណ្តុះបណ្តាល និងជំនាញឌីជីថល"
+    }
+  ],
+  "contact": {
+    "address": "3E:Fii Building, 6th–7th Floor, Street Vimean Ahha, Kien Klaing Village, Sangkat Chroy Changva, Khan Chroy Changvar, Phnom Penh, Cambodia",
+    "email": "info@vithean.com",
+    "phonePrimary": "+855 95 569 568",
+    "phoneSecondary": "UNCONFIRMED — footer says 081 569 568, contact page says +855 93 569 568",
+    "officeHours": "Monday to Friday, 08:30 – 17:30",
+    "telegram": "https://t.me/vithean_official",
+    "mapUrl": "https://maps.app.goo.gl/Vobse1xK3D4RXRtz7",
+    "mapNote": "Linked from the contact and support pages. A findable physical office is a trust signal in this market — people check whether a software vendor is real before they hand over their books.",
+    "addressKm": "អគារ 3E:Fii ជាន់ទី៦ និងជាន់ទី៧ ផ្លូវវិមានអាហារ ភូមិគៀនឃ្លាំង សង្កាត់ជ្រោយចង្វារ ខណ្ឌជ្រោយចង្វារ រាជធានីភ្នំពេញ កម្ពុជា",
+    "officeHoursKm": "ថ្ងៃធ្វើការ៖ ចន្ទ – សុក្រ · ម៉ោងធ្វើការ៖ ០៨:៣០ – ១៧:៣០"
+  },
+  "social": {
+    "facebook": "https://www.facebook.com/VitheanOfficial",
+    "linkedin": "https://www.linkedin.com/company/poscar",
+    "instagram": "https://www.instagram.com/vithean_official/",
+    "youtube": "https://www.youtube.com/@vithean_official",
+    "telegram": "https://t.me/vithean_official",
+    "tiktok": "https://www.tiktok.com/@vithean_official"
+  },
+  "platform": {
+    "app": "https://app.vithean.com",
+    "signup": "https://app.vithean.com/signup/register",
+    "login": "https://app.vithean.com/auth/login",
+    "docs": "https://help.vithean.com",
+    "portal": "https://my.vithean.com",
+    "portalLive": false,
+    "portalNote": "my.vithean.com is not public yet. While portalLive is false the 'My account' link is hidden from the footer. Flip it to true when the portal goes live — the URL is already correct."
+  },
+  "payments": {
+    "note": "Displayed under 'We accept'. Card-scheme and bank marks are shown per the acquiring bank's requirements — use the artwork supplied by the bank, do not redraw it.",
+    "artwork": "assets/we-accept.png",
+    "methods": [
+      "ABA Pay",
+      "KHQR",
+      "Visa",
+      "Mastercard",
+      "UnionPay",
+      "JCB"
+    ]
+  },
+  "linkedinNote": "Primary LinkedIn is the POSCAR Digital company page (/company/poscar) — a real entity anchor for sameAs. The Vithean showcase page (/showcase/vithean) hangs off it and is secondary; showcase pages are weak entity anchors.",
+  "showcasePage": "https://www.linkedin.com/showcase/vithean/",
+  "khmer": {
+    "status": "NEEDS_NATIVE_REVIEW",
+    "glossary": "src/i18n/glossary.json — accounting terms extracted from the product's own km locale files. Those words are used verbatim here; do not substitute synonyms.",
+    "englishByDefault": "Demo figures, document references and account names stay in English on both locales — most Cambodian accountants work in English for the ledger itself, and translating INV-2026-0412 or 'Accounts receivable' would make the example harder to verify.",
+    "verified": "Strings marked VERIFIED were taken from the live vithean.com/km pages (archived in vithean-public/docs/existing/km/).",
+    "drafted": "Everything else is drafted. Rule 1 of the bilingual policy is 'write Khmer, do not translate English' — headlines and value propositions must be authored by a Khmer-native writer working from the message house, not reviewed as translations."
+  },
+  "languages": {
+    "systemInterface": [
+      "km",
+      "en",
+      "zh"
+    ],
+    "website": [
+      "en",
+      "km"
+    ],
+    "support": [
+      "en",
+      "km"
+    ],
+    "articles": "Any language. Each article declares its own `lang`; both locales list all of them.",
+    "note": "The SYSTEM interface ships Khmer, English and Chinese — verified: zh locale files in vithean-ui, vithean-myweb and vithean-central-web. Worth stating as a product fact. The WEBSITE and SUPPORT are English and Khmer only: no /cn/ route, no Chinese switcher. Say 'the system interface' whenever Chinese is mentioned — dropping those two words is what turned the old site's 'KH, EN, CN' into a credibility bug when /cn/ returned 404."
+  },
+  "maker": {
+    "legalName": "POSCAR Digital Co., Ltd.",
+    "url": "https://poscardigital.com",
+    "logo": "/assets/poscar-logo.png",
+    "logoSource": "Downloaded from https://poscardigital.com/images/brand/01-Poscar.png on 2026-08-17.",
+    "note": "The maker of Vithean, not a partner. Vithean is one of POSCAR Digital's product brands; POSCAR is the contracting party on the CamInv integration, the Canadia Bank partnership and the IFA memorandum.",
+    "line": {
+      "en": "Vithean is a product of POSCAR Digital Co., Ltd.",
+      "km": "វិធាន ជាផលិតផលរបស់ក្រុមហ៊ុន POSCAR Digital Co., Ltd."
+    }
+  }
+}

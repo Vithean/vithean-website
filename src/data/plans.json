@@ -1,0 +1,712 @@
+{
+  "schemaVersion": "1.0.0",
+  "publishedAt": "2026-08-18T08:44:28+07:00",
+  "publishedBy": "tools/pricing/build_public_data.py",
+  "source": "https://api.vithean.com/api/pricing/packages",
+  "currency": "USD",
+  "note": "Generated from the core pricing API. Prices, user counts, plan membership and add-on prices come from the core and must be changed there. Khmer labels, plan taglines, the recommended flag, availability, price basis, VAT treatment and warehouse limits come from tools/pricing/overlay.json, because the core does not model them. Do not hand-edit this file.",
+  "featureGroups": [
+    {
+      "id": "included",
+      "label": {
+        "en": "Included everywhere",
+        "km": "មានគ្រប់គម្រោង"
+      }
+    },
+    {
+      "id": "money",
+      "label": {
+        "en": "Money in and out",
+        "km": "ប្រាក់ចូល និងប្រាក់ចេញ"
+      }
+    },
+    {
+      "id": "stock",
+      "label": {
+        "en": "Stock and cost",
+        "km": "សន្និធិ និងតម្លៃដើម"
+      }
+    },
+    {
+      "id": "scale",
+      "label": {
+        "en": "Scale and control",
+        "km": "ការពង្រីក និងការគ្រប់គ្រង"
+      }
+    }
+  ],
+  "plans": [
+    {
+      "packageId": "66e06e6c-0bd2-4377-8908-95d4a88ec3ac",
+      "slug": "basic",
+      "planLevel": "PROFESSIONAL",
+      "coreLevel": 1,
+      "order": 1,
+      "recommended": false,
+      "availability": "PUBLIC",
+      "createdAt": "2022-02-15T00:00:00+07:00",
+      "updatedAt": "2026-08-18T08:44:28+07:00",
+      "name": {
+        "en": "Basic",
+        "km": "Basic"
+      },
+      "tagline": {
+        "en": "Sole proprietorships, start-ups, and simpler transaction volumes",
+        "km": "សម្រាប់អាជីវកម្មម្ចាស់តែម្នាក់ អាជីវកម្មទើបចាប់ផ្តើម ឬក្រុមហ៊ុនដែលមានប្រតិបត្តិការមិនស្មុគស្មាញ"
+      },
+      "price": {
+        "basis": "FROM",
+        "currency": "USD",
+        "monthlyBase": 15,
+        "annualBase": null,
+        "effectiveMonthly": 15,
+        "previousMonthly": null,
+        "appliedPromotionId": null,
+        "vatTreatment": "EXCLUSIVE"
+      },
+      "limits": {
+        "users": 2,
+        "warehouses": 1
+      },
+      "features": [
+        {
+          "id": "languages",
+          "coreCode": "PKG_16",
+          "group": "included",
+          "label": {
+            "en": "Khmer, English and Chinese interface",
+            "km": "ផ្ទាំងប្រើប្រាស់ជាភាសាខ្មែរ អង់គ្លេស និងចិន"
+          },
+          "included": true,
+          "highlight": false
+        },
+        {
+          "id": "opening-balance",
+          "coreCode": "PKG_17",
+          "group": "included",
+          "label": {
+            "en": "Opening balance migration",
+            "km": "ការនាំចូលសមតុល្យដើមគ្រា"
+          },
+          "included": true,
+          "highlight": false
+        },
+        {
+          "id": "invoicing",
+          "coreCode": "PKG_18",
+          "group": "money",
+          "label": {
+            "en": "Issue invoices",
+            "km": "ចេញវិក្កយបត្រ"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "collections",
+          "coreCode": "PKG_19",
+          "group": "money",
+          "label": {
+            "en": "Collections and payments",
+            "km": "ការប្រមូលប្រាក់ និងការទូទាត់"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "vat",
+          "coreCode": "PKG_20",
+          "group": "money",
+          "label": {
+            "en": "VAT on sales and purchases",
+            "km": "អាករលើតម្លៃបន្ថែមលើការលក់ និងការទិញ"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "bank-rec",
+          "coreCode": "PKG_21",
+          "group": "money",
+          "label": {
+            "en": "Bank reconciliation",
+            "km": "ការផ្ទៀងផ្ទាត់ប្រតិបត្តិការធនាគារ"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "reports",
+          "coreCode": "PKG_22",
+          "group": "money",
+          "label": {
+            "en": "Financial reports",
+            "km": "របាយការណ៍ហិរញ្ញវត្ថុ"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "import",
+          "coreCode": "PKG_25",
+          "group": "included",
+          "label": {
+            "en": "Excel import with validation",
+            "km": "មុខងារនាំចូលទិន្នន័យ"
+          },
+          "included": true,
+          "highlight": false
+        },
+        {
+          "id": "caminv",
+          "coreCode": "PKG_32",
+          "group": "included",
+          "label": {
+            "en": "Cambodia E-Invoicing (CamInv)",
+            "km": "ប្រព័ន្ធវិក្កយបត្រអេឡិចត្រូនិកកម្ពុជា (CamInv)"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "inventory-standard",
+          "coreCode": "PKG_26",
+          "group": "stock",
+          "label": {
+            "en": "Standard inventory management",
+            "km": "ការគ្រប់គ្រងសន្និធិស្តង់ដារ"
+          },
+          "included": false,
+          "highlight": true
+        },
+        {
+          "id": "price-setting",
+          "coreCode": "PKG_27",
+          "group": "stock",
+          "label": {
+            "en": "Price setting",
+            "km": "ការកំណត់តម្លៃ"
+          },
+          "included": false,
+          "highlight": true
+        },
+        {
+          "id": "multi-location",
+          "coreCode": "PKG_28",
+          "group": "scale",
+          "label": {
+            "en": "Multiple locations",
+            "km": "ទីតាំងច្រើន"
+          },
+          "included": false,
+          "highlight": true
+        },
+        {
+          "id": "fixed-assets",
+          "coreCode": "PKG_29",
+          "group": "scale",
+          "label": {
+            "en": "Fixed asset management",
+            "km": "ការគ្រប់គ្រងទ្រព្យសកម្មថេរ"
+          },
+          "included": false,
+          "highlight": false
+        },
+        {
+          "id": "inventory-advanced",
+          "coreCode": "PKG_30",
+          "group": "stock",
+          "label": {
+            "en": "Advanced inventory management",
+            "km": "ការគ្រប់គ្រងសន្និធិកម្រិតខ្ពស់"
+          },
+          "included": false,
+          "highlight": true
+        },
+        {
+          "id": "authorisation",
+          "coreCode": "PKG_31",
+          "group": "scale",
+          "label": {
+            "en": "Control and authorisation",
+            "km": "ការគ្រប់គ្រង និងការអនុញ្ញាត"
+          },
+          "included": false,
+          "highlight": true
+        }
+      ]
+    },
+    {
+      "packageId": "40949891-b6ca-46a9-b627-a061ccaebe8d",
+      "slug": "standard",
+      "planLevel": "BUSINESS",
+      "coreLevel": 2,
+      "order": 2,
+      "recommended": true,
+      "availability": "PUBLIC",
+      "createdAt": "2022-02-15T00:00:00+07:00",
+      "updatedAt": "2026-08-18T08:44:28+07:00",
+      "name": {
+        "en": "Standard",
+        "km": "Standard"
+      },
+      "tagline": {
+        "en": "Growing businesses that hold stock and need price control",
+        "km": "សម្រាប់អាជីវកម្មដែលកំពុងរីកចម្រើន ដែលមានស្តុក និងត្រូវការគ្រប់គ្រងតម្លៃ"
+      },
+      "price": {
+        "basis": "FROM",
+        "currency": "USD",
+        "monthlyBase": 25,
+        "annualBase": null,
+        "effectiveMonthly": 25,
+        "previousMonthly": null,
+        "appliedPromotionId": null,
+        "vatTreatment": "EXCLUSIVE"
+      },
+      "limits": {
+        "users": 3,
+        "warehouses": 1
+      },
+      "features": [
+        {
+          "id": "languages",
+          "coreCode": "PKG_16",
+          "group": "included",
+          "label": {
+            "en": "Khmer, English and Chinese interface",
+            "km": "ផ្ទាំងប្រើប្រាស់ជាភាសាខ្មែរ អង់គ្លេស និងចិន"
+          },
+          "included": true,
+          "highlight": false
+        },
+        {
+          "id": "opening-balance",
+          "coreCode": "PKG_17",
+          "group": "included",
+          "label": {
+            "en": "Opening balance migration",
+            "km": "ការនាំចូលសមតុល្យដើមគ្រា"
+          },
+          "included": true,
+          "highlight": false
+        },
+        {
+          "id": "invoicing",
+          "coreCode": "PKG_18",
+          "group": "money",
+          "label": {
+            "en": "Issue invoices",
+            "km": "ចេញវិក្កយបត្រ"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "collections",
+          "coreCode": "PKG_19",
+          "group": "money",
+          "label": {
+            "en": "Collections and payments",
+            "km": "ការប្រមូលប្រាក់ និងការទូទាត់"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "vat",
+          "coreCode": "PKG_20",
+          "group": "money",
+          "label": {
+            "en": "VAT on sales and purchases",
+            "km": "អាករលើតម្លៃបន្ថែមលើការលក់ និងការទិញ"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "bank-rec",
+          "coreCode": "PKG_21",
+          "group": "money",
+          "label": {
+            "en": "Bank reconciliation",
+            "km": "ការផ្ទៀងផ្ទាត់ប្រតិបត្តិការធនាគារ"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "reports",
+          "coreCode": "PKG_22",
+          "group": "money",
+          "label": {
+            "en": "Financial reports",
+            "km": "របាយការណ៍ហិរញ្ញវត្ថុ"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "import",
+          "coreCode": "PKG_25",
+          "group": "included",
+          "label": {
+            "en": "Excel import with validation",
+            "km": "មុខងារនាំចូលទិន្នន័យ"
+          },
+          "included": true,
+          "highlight": false
+        },
+        {
+          "id": "caminv",
+          "coreCode": "PKG_32",
+          "group": "included",
+          "label": {
+            "en": "Cambodia E-Invoicing (CamInv)",
+            "km": "ប្រព័ន្ធវិក្កយបត្រអេឡិចត្រូនិកកម្ពុជា (CamInv)"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "inventory-standard",
+          "coreCode": "PKG_26",
+          "group": "stock",
+          "label": {
+            "en": "Standard inventory management",
+            "km": "ការគ្រប់គ្រងសន្និធិស្តង់ដារ"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "price-setting",
+          "coreCode": "PKG_27",
+          "group": "stock",
+          "label": {
+            "en": "Price setting",
+            "km": "ការកំណត់តម្លៃ"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "multi-location",
+          "coreCode": "PKG_28",
+          "group": "scale",
+          "label": {
+            "en": "Multiple locations",
+            "km": "ទីតាំងច្រើន"
+          },
+          "included": false,
+          "highlight": true
+        },
+        {
+          "id": "fixed-assets",
+          "coreCode": "PKG_29",
+          "group": "scale",
+          "label": {
+            "en": "Fixed asset management",
+            "km": "ការគ្រប់គ្រងទ្រព្យសកម្មថេរ"
+          },
+          "included": false,
+          "highlight": false
+        },
+        {
+          "id": "inventory-advanced",
+          "coreCode": "PKG_30",
+          "group": "stock",
+          "label": {
+            "en": "Advanced inventory management",
+            "km": "ការគ្រប់គ្រងសន្និធិកម្រិតខ្ពស់"
+          },
+          "included": false,
+          "highlight": true
+        },
+        {
+          "id": "authorisation",
+          "coreCode": "PKG_31",
+          "group": "scale",
+          "label": {
+            "en": "Control and authorisation",
+            "km": "ការគ្រប់គ្រង និងការអនុញ្ញាត"
+          },
+          "included": false,
+          "highlight": true
+        }
+      ]
+    },
+    {
+      "packageId": "10422bb4-256e-4e4f-a540-72f53528a11e",
+      "slug": "advance",
+      "planLevel": "ENTERPRISE",
+      "coreLevel": 3,
+      "order": 3,
+      "recommended": false,
+      "availability": "PUBLIC",
+      "createdAt": "2022-02-15T00:00:00+07:00",
+      "updatedAt": "2026-08-18T08:44:28+07:00",
+      "name": {
+        "en": "Advance",
+        "km": "Advance"
+      },
+      "tagline": {
+        "en": "Established businesses running more than one location",
+        "km": "សម្រាប់អាជីវកម្មធំដែលដំណើរការលើទីតាំងច្រើន"
+      },
+      "price": {
+        "basis": "FROM",
+        "currency": "USD",
+        "monthlyBase": 45,
+        "annualBase": null,
+        "effectiveMonthly": 45,
+        "previousMonthly": null,
+        "appliedPromotionId": null,
+        "vatTreatment": "EXCLUSIVE"
+      },
+      "limits": {
+        "users": 5,
+        "warehouses": null
+      },
+      "features": [
+        {
+          "id": "languages",
+          "coreCode": "PKG_16",
+          "group": "included",
+          "label": {
+            "en": "Khmer, English and Chinese interface",
+            "km": "ផ្ទាំងប្រើប្រាស់ជាភាសាខ្មែរ អង់គ្លេស និងចិន"
+          },
+          "included": true,
+          "highlight": false
+        },
+        {
+          "id": "opening-balance",
+          "coreCode": "PKG_17",
+          "group": "included",
+          "label": {
+            "en": "Opening balance migration",
+            "km": "ការនាំចូលសមតុល្យដើមគ្រា"
+          },
+          "included": true,
+          "highlight": false
+        },
+        {
+          "id": "invoicing",
+          "coreCode": "PKG_18",
+          "group": "money",
+          "label": {
+            "en": "Issue invoices",
+            "km": "ចេញវិក្កយបត្រ"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "collections",
+          "coreCode": "PKG_19",
+          "group": "money",
+          "label": {
+            "en": "Collections and payments",
+            "km": "ការប្រមូលប្រាក់ និងការទូទាត់"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "vat",
+          "coreCode": "PKG_20",
+          "group": "money",
+          "label": {
+            "en": "VAT on sales and purchases",
+            "km": "អាករលើតម្លៃបន្ថែមលើការលក់ និងការទិញ"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "bank-rec",
+          "coreCode": "PKG_21",
+          "group": "money",
+          "label": {
+            "en": "Bank reconciliation",
+            "km": "ការផ្ទៀងផ្ទាត់ប្រតិបត្តិការធនាគារ"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "reports",
+          "coreCode": "PKG_22",
+          "group": "money",
+          "label": {
+            "en": "Financial reports",
+            "km": "របាយការណ៍ហិរញ្ញវត្ថុ"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "import",
+          "coreCode": "PKG_25",
+          "group": "included",
+          "label": {
+            "en": "Excel import with validation",
+            "km": "មុខងារនាំចូលទិន្នន័យ"
+          },
+          "included": true,
+          "highlight": false
+        },
+        {
+          "id": "caminv",
+          "coreCode": "PKG_32",
+          "group": "included",
+          "label": {
+            "en": "Cambodia E-Invoicing (CamInv)",
+            "km": "ប្រព័ន្ធវិក្កយបត្រអេឡិចត្រូនិកកម្ពុជា (CamInv)"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "inventory-standard",
+          "coreCode": "PKG_26",
+          "group": "stock",
+          "label": {
+            "en": "Standard inventory management",
+            "km": "ការគ្រប់គ្រងសន្និធិស្តង់ដារ"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "price-setting",
+          "coreCode": "PKG_27",
+          "group": "stock",
+          "label": {
+            "en": "Price setting",
+            "km": "ការកំណត់តម្លៃ"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "multi-location",
+          "coreCode": "PKG_28",
+          "group": "scale",
+          "label": {
+            "en": "Multiple locations",
+            "km": "ទីតាំងច្រើន"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "fixed-assets",
+          "coreCode": "PKG_29",
+          "group": "scale",
+          "label": {
+            "en": "Fixed asset management",
+            "km": "ការគ្រប់គ្រងទ្រព្យសកម្មថេរ"
+          },
+          "included": true,
+          "highlight": false
+        },
+        {
+          "id": "inventory-advanced",
+          "coreCode": "PKG_30",
+          "group": "stock",
+          "label": {
+            "en": "Advanced inventory management",
+            "km": "ការគ្រប់គ្រងសន្និធិកម្រិតខ្ពស់"
+          },
+          "included": true,
+          "highlight": true
+        },
+        {
+          "id": "authorisation",
+          "coreCode": "PKG_31",
+          "group": "scale",
+          "label": {
+            "en": "Control and authorisation",
+            "km": "ការគ្រប់គ្រង និងការអនុញ្ញាត"
+          },
+          "included": true,
+          "highlight": true
+        }
+      ]
+    }
+  ],
+  "addOns": [
+    {
+      "id": "extra-user",
+      "coreCode": "PKG_23",
+      "label": {
+        "en": "Additional user",
+        "km": "អ្នកប្រើប្រាស់បន្ថែម"
+      },
+      "monthlyPrice": 7,
+      "perUser": true
+    },
+    {
+      "id": "inventory-standard",
+      "coreCode": "PKG_26",
+      "label": {
+        "en": "Standard inventory management",
+        "km": "ការគ្រប់គ្រងសន្និធិស្តង់ដារ"
+      },
+      "monthlyPrice": 6,
+      "perUser": false
+    },
+    {
+      "id": "price-setting",
+      "coreCode": "PKG_27",
+      "label": {
+        "en": "Price setting",
+        "km": "ការកំណត់តម្លៃ"
+      },
+      "monthlyPrice": 6,
+      "perUser": false
+    },
+    {
+      "id": "multi-location",
+      "coreCode": "PKG_28",
+      "label": {
+        "en": "Multiple locations",
+        "km": "ទីតាំងច្រើន"
+      },
+      "monthlyPrice": 6,
+      "perUser": false
+    },
+    {
+      "id": "fixed-assets",
+      "coreCode": "PKG_29",
+      "label": {
+        "en": "Fixed asset management",
+        "km": "ការគ្រប់គ្រងទ្រព្យសកម្មថេរ"
+      },
+      "monthlyPrice": 6,
+      "perUser": false
+    },
+    {
+      "id": "inventory-advanced",
+      "coreCode": "PKG_30",
+      "label": {
+        "en": "Advanced inventory management",
+        "km": "ការគ្រប់គ្រងសន្និធិកម្រិតខ្ពស់"
+      },
+      "monthlyPrice": 10,
+      "perUser": false
+    },
+    {
+      "id": "authorisation",
+      "coreCode": "PKG_31",
+      "label": {
+        "en": "Control and authorisation",
+        "km": "ការគ្រប់គ្រង និងការអនុញ្ញាត"
+      },
+      "monthlyPrice": 6,
+      "perUser": false
+    }
+  ]
+}

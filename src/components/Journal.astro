@@ -1,0 +1,30 @@
+---
+interface Props { j: any }
+const { j } = Astro.props;
+---
+<div class="journal">
+  <div class="j-head">
+    <span class="j-ref fig">{j.ref}</span><span class="j-meta">{j.meta}</span>
+  </div>
+  <div class="j-body">
+    <p class="j-cap">{j.beforeCaption}</p>
+    {j.before.map((b: any) => (
+      <div class="j-row"><span class="acct">{b.label}</span>
+        <span class="dr fig">{b.amount}</span><span class="cr" /></div>
+    ))}
+    <p class="j-cap">{j.caption} — Vithean posts</p>
+    <div class="j-cols"><span>Account</span><span>Debit</span><span>Credit</span></div>
+    {j.lines.map((l: any) => (
+      <div class={`j-row${l.dr ? '' : ' credit'}`}>
+        <span class="acct"><span class="no fig">{l.no}</span>{l.acct}</span>
+        <span class="dr fig">{l.dr}</span><span class="cr fig">{l.cr}</span></div>
+    ))}
+    <div class="j-total"><span>Balanced</span>
+      <span class="fig">{j.total.dr}</span><span class="fig">{j.total.cr}</span></div>
+  </div>
+  <div class="j-foot">
+    {j.chips.map((c: any) => (
+      <span class={`chip${c.kind === 'ok' ? ' chip-ok' : c.kind === 'caminv' ? ' chip-caminv' : ''}`}>{c.text}</span>
+    ))}
+  </div>
+</div>

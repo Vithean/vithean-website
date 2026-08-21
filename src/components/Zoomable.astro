@@ -1,0 +1,108 @@
+---
+/**
+ * Wraps a diagram or a data card so it can be opened full-screen.
+ *
+ * The diagrams are detailed and get small on a phone. Rather than shrink the
+ * content or force a horizontal scroll inside the page, tapping opens it in a
+ * dialog where it can be panned.
+ *
+ * The enlarged copy is cloned at open time and its ids are rewritten first —
+ * several diagrams define <marker> ids, and a plain clone would make every
+ * arrow-head reference resolve to whichever copy came first in the document.
+ * Cloning rather than moving also means nothing has to be put back on close.
+ *
+ * A native <dialog> supplies focus trapping, Escape-to-close and an inert
+ * background, none of which is worth reimplementing.
+ */
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+<div class="zoomable">
+  <div class="zoom-body"><slot /></div>
+  <button class="zoom-open" type="button" aria-label={t('a11y.enlarge')}>
+    <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false">
+      <path d="M15 3h6v6M21 3l-7 7M9 21H3v-6M3 21l7-7" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>{t('a11y.enlarge')}</span>
+  </button>
+  <dialog class="figdlg" aria-label={t('a11y.enlarge')}>
+    <button class="figdlg-x" type="button" aria-label={t('a11y.close')}>&times;</button>
+    <div class="figdlg-in"></div>
+  </dialog>
+</div>
+
+<style>
+  .zoomable{position:relative}
+  .zoom-open{position:absolute; right:.55rem; bottom:.55rem; z-index:1;
+    display:inline-flex; align-items:center; gap:.35rem; padding:.3rem .6rem;
+    border:1px solid var(--line-strong); border-radius:var(--r-pill);
+    background:var(--surface); color:var(--ink-muted);
+    font-size:.78rem; font-weight:600; cursor:zoom-in; box-shadow:var(--shadow-card)}
+  .zoom-open:hover{border-color:var(--plum-600); color:var(--plum-600)}
+  .zoom-open:focus-visible{outline:2px solid var(--plum-600); outline-offset:2px}
+  /* The whole figure is clickable, but only the chip is a focus stop. */
+  .zoom-body{cursor:zoom-in}
+</style>
+
+<style is:global>
+  /* Global, not scoped: the enlarged copy is cloned into the dialog at runtime,
+     and a scoped selector would not match content this component did not render
+     itself. */
+  .figdlg{width:min(100vw - 1.5rem, 1400px); max-width:none; max-height:calc(100dvh - 1.5rem);
+    border:0; border-radius:var(--r-md); padding:0; background:var(--surface);
+    color:var(--ink); overflow:hidden}
+  .figdlg::backdrop{background:rgb(29 26 34/.72)}
+  .figdlg-in{overflow:auto; max-height:calc(100dvh - 1.5rem); padding:1.1rem}
+  /* Give each kind of content a floor wide enough to read, then let the
+     container scroll. */
+  .figdlg-in .figure-box{border:0; box-shadow:none; padding:0; overflow:visible}
+  .figdlg-in svg.figure{width:100%; min-width:780px; height:auto; display:block}
+  .figdlg-in svg.flow{width:100%; min-width:660px; height:auto; display:block}
+  .figdlg-in .journal{box-shadow:none; min-width:min(680px, 100%); font-size:1rem}
+  .figdlg-x{position:absolute; top:.45rem; right:.5rem; z-index:2; width:40px; height:40px;
+    border:1px solid var(--line-strong); border-radius:var(--r-pill);
+    background:var(--surface); color:var(--ink-strong); font-size:1.5rem; line-height:1;
+    cursor:pointer}
+  .figdlg-x:hover{border-color:var(--plum-600); color:var(--plum-600)}
+  .figdlg-x:focus-visible{outline:2px solid var(--plum-600); outline-offset:2px}
+</style>
+
+<script>
+  /* One handler for every zoomable on the page. Runs once: the selector is
+     re-queried here rather than per-component instance. */
+  document.querySelectorAll<HTMLElement>('.zoomable').forEach((wrap, index) => {
+    const body = wrap.querySelector<HTMLElement>('.zoom-body');
+    const dlg = wrap.querySelector<HTMLDialogElement>('.figdlg');
+    const slot = dlg?.querySelector<HTMLElement>('.figdlg-in');
+    if (!body || !dlg || !slot) return;
+
+    const open = () => {
+      const copy = body.firstElementChild?.cloneNode(true) as HTMLElement | undefined;
+      if (!copy) return;
+      /* Rewrite ids so the clone's <marker> and aria-labelledby references point
+         at its own nodes, not at the original still on the page. */
+      const suffix = `z${index}`;
+      copy.querySelectorAll<HTMLElement>('[id]').forEach((el) => {
+        el.id = `${el.id}-${suffix}`;
+      });
+      copy.innerHTML = copy.innerHTML
+        .replace(/url\(#([^)]+)\)/g, `url(#$1-${suffix})`)
+        .replace(/(aria-labelledby=")([^"]+)(")/g,
+          (_m, a, ids, c) => a + ids.trim().split(/\s+/).map((x: string) => `${x}-${suffix}`).join(' ') + c);
+      slot.replaceChildren(copy);
+      dlg.showModal();
+      slot.scrollLeft = 0;
+    };
+
+    body.addEventListener('click', open);
+    wrap.querySelector('.zoom-open')?.addEventListener('click', open);
+    dlg.querySelector('.figdlg-x')?.addEventListener('click', () => dlg.close());
+    /* A click on the dialog element itself landed on the backdrop — its content
+       sits in children. */
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+    /* The clone is disposable, so nothing needs restoring; just release it. */
+    dlg.addEventListener('close', () => slot.replaceChildren());
+  });
+</script>

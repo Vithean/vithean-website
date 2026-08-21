@@ -1,0 +1,192 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import Journal from '@/components/Journal.astro';
+import PlanCard from '@/components/PlanCard.astro';
+import CamInvFlow from '@/components/CamInvFlow.astro';
+import Zoomable from '@/components/Zoomable.astro';
+import company from '@/data/company.json';
+import {getLangFromUrl, useTranslations, path, pick, signupUrl, type Lang } from '@/i18n/utils';
+import { copy, c } from '@/i18n/copy';
+
+export async function getStaticPaths() {
+  // `undefined` renders the route with no locale segment — English at the root.
+  return [{ params: { lang: undefined } }, { params: { lang: 'km' } }];
+}
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const plans = (await getCollection('plans')).sort((a, b) => a.data.order - b.data.order);
+const reviews = await getCollection('testimonials');
+
+/** The hero journal. Figures tie: 3,600 + 360 = 3,960, debits = credits. */
+const heroJournal = {
+  ref: 'INV-2026-0412',
+  meta: 'Riverside Grocery Co., Ltd. · 14 Aug 2026',
+  beforeCaption: 'You issue the invoice',
+  before: [
+    { label: 'Jasmine rice · 120 sacks', amount: '3,600.00' },
+    { label: 'VAT 10%', amount: '360.00' },
+  ],
+  caption: 'A sale is approved',
+  lines: [
+    { no: '1200', acct: 'Accounts receivable', dr: '3,960.00', cr: '' },
+    { no: '4100', acct: 'Sales revenue', dr: '', cr: '3,600.00' },
+    { no: '2310', acct: 'VAT output', dr: '', cr: '360.00' },
+  ],
+  total: { dr: '3,960.00', cr: '3,960.00' },
+  chips: [
+    { kind: 'ok', text: '✓ Posted to the ledger' },
+    { kind: 'caminv', text: '✓ CamInv accepted · 14:22' },
+  ],
+};
+
+const problems = copy.problems;
+
+const steps = copy.steps;
+const ho = copy.home.handover;
+
+const provenanceHtml = pick(company.provenance, lang)
+  .replace('POSCAR Digital Co., Ltd.', '<strong>POSCAR Digital Co., Ltd.</strong>');
+---
+<Base home title={c(copy.meta.homeTitle, lang)} route=""
+      description={c(copy.meta.homeDesc, lang)}>
+  <section class="hero"><div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">{c(copy.home.eyebrow, lang)}</p>
+      <h1>{c(copy.home.h1a, lang)}<em>{c(copy.home.h1em, lang)}</em>{c(copy.home.h1b, lang)}</h1>
+      <p class="hero-sub">{c(copy.home.sub, lang)}</p>
+      <div class="hero-cta">
+        <a class="btn btn-fill btn-lg" href={signupUrl({ lang })}>{t('cta.trial')}</a>
+        <a class="btn btn-line btn-lg" href={path(lang, 'pricing/')}>{t('cta.plansPricing')}</a>
+      </div>
+      <p class="provenance" set:html={provenanceHtml} />
+    </div>
+    <Zoomable><Journal j={heroJournal} /></Zoomable>
+  </div></section>
+
+  <section class="band band-brass"><div class="wrap caminv">
+    <div>
+      <p class="eyebrow">{c(copy.home.caminvEyebrow, lang)}</p>
+      <h2 class="band-h">{c(copy.home.caminvH2, lang)}</h2>
+      <p class="band-p">{c(copy.home.caminvP, lang)}</p>
+      <p class="band-p" style="margin-top:1rem">
+        <strong style="color:var(--brass)">{c(copy.home.caminvIncluded, lang)}</strong></p>
+      <div class="hero-cta">
+        <a class="btn btn-line" href={path(lang, 'product/e-invoicing/')}>{c(copy.home.caminvCta, lang)}</a>
+      </div>
+    </div>
+    <div><Zoomable><CamInvFlow /></Zoomable></div>
+  </div></section>
+
+  <section class="band"><div class="wrap">
+    <p class="eyebrow">{c(copy.home.problemsEyebrow, lang)}</p>
+    <h2 class="band-h">{c(copy.home.problemsH2, lang)}</h2>
+    <p class="band-p">{c(copy.home.problemsP, lang)}</p>
+    <div class="probs">
+      {problems.map((p) => (
+        <a class="prob" href={path(lang, `product/${p.to}/`)}>
+          <q>{c(p.q, lang)}</q><span class="fix">{c(p.fix, lang)}</span>
+        </a>
+      ))}
+    </div>
+    <div class="converge">{c(copy.home.converge, lang)}</div>
+  </div></section>
+
+  <section class="band band-tint"><div class="wrap impl">
+    <div>
+      <p class="eyebrow">{c(copy.home.implEyebrow, lang)}</p>
+      <h2 class="band-h">{c(copy.home.implH2, lang)}</h2>
+      <p class="band-p">{c(copy.home.implP, lang)}</p>
+      <p class="band-p" style="margin-top:1rem">
+        <strong style="color:var(--ink-strong)">{c(copy.home.implNotLabel, lang)}</strong> {c(copy.home.implNot, lang)}</p>
+      <div class="handover">
+        <div class="ho-panel ho-us">
+          <p class="ho-who">{c(ho.weSetUp, lang)}</p>
+          <ul class="ho-list">
+            {ho.weItems.map((i) => <li>{c(i, lang)}</li>)}
+          </ul>
+        </div>
+        <p class="ho-seam">{c(ho.seam, lang)}</p>
+        <div class="ho-panel ho-you">
+          <p class="ho-who">{c(ho.youRunIt, lang)}</p>
+          <ul class="ho-list ho-plain">
+            {ho.youItems.map((i) => <li>{c(i, lang)}</li>)}
+          </ul>
+        </div>
+        <p class="ho-note">{c(ho.note, lang)}</p>
+      </div>
+    </div>
+    <ol class="steps">
+      {steps.map((s) => <li><b>{c(s.h, lang)}</b><span>{c(s.p, lang)}</span></li>)}
+    </ol>
+  </div></section>
+
+  <section class="band"><div class="wrap">
+    <p class="eyebrow">{c(copy.home.reviewsEyebrow, lang)}</p>
+    <h2 class="band-h">{c(copy.home.reviewsH2, lang)}</h2>
+    <div class="reviews">
+      {reviews.map((r) => (
+        <figure class="review">
+          <blockquote>{pick(r.data.quote, lang)}</blockquote>
+          <footer>
+            <img class="av" src={`/assets/people/${r.data.photo.split('/').pop()}`}
+                 alt={r.data.name} width="132" height="132" loading="lazy" />
+            <div class="who">
+              <b>{r.data.name}</b>
+              <span>{r.data.role}{r.data.company ? ` · ${r.data.company}` : ''}</span>
+            </div>
+          </footer>
+        </figure>
+      ))}
+    </div>
+  </div></section>
+
+  <section class="band band-tint"><div class="wrap">
+    <p class="eyebrow">{c(copy.home.plansEyebrow, lang)}</p>
+    <h2 class="band-h" style="max-width:26ch">{c(copy.home.plansH2, lang)}</h2>
+    <div class="plans">{plans.map((p) => <PlanCard plan={p.data} lang={lang} />)}</div>
+    <div class="hero-cta">
+      <a class="btn btn-line" href={path(lang, 'pricing/')}>{t('cta.comparePlans')}</a>
+    </div>
+  </div></section>
+
+  <section class="band"><div class="wrap"><div class="close">
+    <div>
+      <h2>{c(copy.home.closeH2, lang)}</h2>
+      <p>{c(copy.home.closeP, lang)}</p>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-fill btn-lg" href={signupUrl({ lang })}>{t('cta.trial')}</a>
+      <a class="btn btn-line btn-lg" href={path(lang, 'company/#contact')}>{c(copy.home.closeTalk, lang)}</a>
+    </div>
+  </div></div></section>
+</Base>
+
+<style>
+  /* Fills the space the text column leaves beside the five steps, and says the
+     one thing the copy claims but does not show: where our work stops. */
+  /* Says the one thing the copy claims but does not show: where our work
+     stops. Built from markup, not a drawing, so it reflows on a phone —
+     it used to be an SVG that had to be hidden below 900px to stay legible. */
+  .handover{margin-top:var(--s4)}
+  .ho-panel{border-radius:var(--r-md); padding:1.1rem 1.15rem}
+  .ho-us{background:var(--plum-50); border:1.5px solid var(--plum-600)}
+  .ho-you{background:var(--surface); border:1.5px solid var(--line-strong)}
+  .ho-who{font-size:.78rem; font-weight:700; letter-spacing:.11em; text-transform:uppercase;
+    color:var(--plum-600); margin-bottom:.7rem}
+  .ho-you .ho-who{color:var(--ink-muted)}
+  .ho-list{list-style:none; margin:0; padding:0; display:grid; gap:.5rem .9rem;
+    grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr))}
+  .ho-list li{display:flex; align-items:flex-start; gap:.55rem;
+    font-size:.98rem; color:var(--ink-strong)}
+  .ho-list li::before{content:"✓"; color:var(--plum-600); font-weight:700; line-height:1.35}
+  .ho-plain li::before{content:"○"; color:var(--ink-muted); font-weight:400}
+  /* The seam is the handover point: our work above it, yours below. */
+  .ho-seam{position:relative; margin:.2rem 0 .2rem 1.15rem; padding:.7rem 0 .7rem 1.5rem;
+    font-size:.92rem; font-weight:600; color:var(--plum-700)}
+  .ho-seam::before{content:""; position:absolute; left:0; top:0; bottom:0;
+    border-left:2px dashed var(--plum-600)}
+  .ho-note{margin-top:.9rem; font-size:.9rem; color:var(--ink-muted)}
+  .review .av{width:52px; height:52px; border-radius:var(--r-pill); object-fit:cover;
+    flex-shrink:0; border:2px solid var(--plum-100)}
+</style>

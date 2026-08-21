@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "1.0.0",
+  "publishedAt": "2026-08-17T00:52:29+07:00",
+  "publishedBy": "tools/pricing/build_public_data.py",
+  "source": "https://api.vithean.com/api/pricing/packages",
+  "note": "Generated from the core pricing API. An empty array means no campaign is running — the site renders its no-promotion state. Khmer here is the core's own `description`; if a campaign is authored in English only, both languages will read English until the core is given a Khmer description.",
+  "promotions": []
+}

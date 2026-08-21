@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import { useTranslations, pick, signupUrl, path, type Lang } from '@/i18n/utils';
+
+interface Props {
+  plan: any;
+  lang: Lang;
+  /** Show every feature rather than the highlights — the pricing page. */
+  full?: boolean;
+  /** Offer "Buy now" beside the trial. vithean.com does this on pricing only. */
+  showBuy?: boolean;
+}
+const { plan, lang, full = false, showBuy = false } = Astro.props;
+const t = useTranslations(lang);
+const feats = full ? plan.features : plan.features.filter((f: any) => f.highlight);
+const money = (n: number) => '$' + (Number.isInteger(n) ? n : n.toFixed(2));
+
+/**
+ * Carry the running promotion into the signup link, the way plans.php does.
+ * The code comes from promotions.json, matched on the promotion the generator
+ * recorded against this plan's price. No promotion running means no parameter.
+ */
+const promo = plan.price.appliedPromotionId
+  ? (await getCollection('promotions')).find((p) => p.data.id === plan.price.appliedPromotionId)
+  : undefined;
+const promoCode = promo?.data.code;
+
+const buy = { packageId: plan.packageId, lang, promoCode };
+---
+<div class={`plan${plan.recommended ? ' plan-best' : ''}`}>
+  {plan.recommended && <span class="plan-badge">{t('price.mostChosen')}</span>}
+  <h3>{pick(plan.name, lang)}</h3>
+  <p class="who">{pick(plan.tagline, lang)}</p>
+  <p class="amt">
+    <span class="from">{t('price.from')}</span>
+    <b class="fig">{money(plan.price.monthlyBase)}</b>
+    <span>{t('price.month')}</span>
+  </p>
+  <p class="seats fig">{plan.limits.users} {t('price.users')}</p>
+  <ul>
+    {feats.map((f: any) => (
+      <li class={f.included ? (f.id === 'caminv' ? 'brass' : 'on') : ''}>{pick(f.label, lang)}</li>
+    ))}
+  </ul>
+  <div class="plan-cta">
+    {/* The trial leads: it is the lower-commitment action, and the recommended
+        plan is already marked by its badge, border and lift. */}
+    <a class={`btn ${showBuy || plan.recommended ? 'btn-fill' : 'btn-line'}`}
+       href={signupUrl(buy)}>{t('cta.trial')}</a>
+    {showBuy && (
+      <a class="btn btn-line" href={signupUrl({ ...buy, buyNow: true })}>{t('cta.buy')}</a>
+    )}
+    <a class="btn btn-ghost" href={path(lang, 'company/#contact')}>{t('cta.sales')}</a>
+  </div>
+</div>

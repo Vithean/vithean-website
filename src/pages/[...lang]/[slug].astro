@@ -1,0 +1,45 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import { getLangFromUrl , fmtDate} from '@/i18n/utils';
+
+/**
+ * Legal pages keep the URIs the old site published — /term-condition/ and
+ * /privacy-policy/ — and the text is carried over unchanged in both languages.
+ */
+export async function getStaticPaths() {
+  const legal = await getCollection('legal');
+  return legal.map((p) => {
+    const [lang, slug] = p.id.split('/');
+    return { params: { lang: lang === 'en' ? undefined : lang, slug }, props: { entry: p } };
+  });
+}
+const lang = getLangFromUrl(Astro.url);
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const slug = entry.id.split('/')[1];
+
+const description = slug === 'privacy-policy'
+  ? 'How Vithean and POSCAR Digital Co., Ltd. collect, use and protect your data. Each customer company holds its data in its own database.'
+  : 'Terms and conditions for the Vithean accounting and ERP system, operated by POSCAR Digital Co., Ltd. in Phnom Penh, Cambodia.';
+---
+<Base title={entry.data.title} route={`${slug}/`} description={description}>
+  <section class="band"><div class="wrap" style="max-width:760px">
+    <h1 class="band-h" style="max-width:none" lang={entry.data.lang}>{entry.data.title}</h1>
+    <p style="margin-top:var(--s2);color:var(--ink-muted)">
+      {fmtDate(entry.data.updated, lang)}
+    </p>
+    <div class="prose" lang={entry.data.lang}><Content /></div>
+  </div></section>
+</Base>
+
+<style is:global>
+  .prose{margin-top:var(--s4); font-size:1.05rem}
+  .prose > * + *{margin-top:1.1rem}
+  .prose h2{font-size:1.5rem; margin-top:2.2rem}
+  .prose h3{font-size:1.2rem; margin-top:1.8rem}
+  .prose ul,.prose ol{padding-left:1.4rem; display:grid; gap:.5rem}
+  .prose a{color:var(--plum-600); font-weight:600}
+  .prose img{border-radius:var(--r-md); border:1px solid var(--line)}
+  .prose strong{color:var(--ink-strong)}
+</style>

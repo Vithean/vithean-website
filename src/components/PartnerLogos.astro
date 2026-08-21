@@ -1,0 +1,130 @@
+---
+/**
+ * Partner logos.
+ *
+ * The name sits under every tile, always. A tooltip alone is unreachable on a
+ * phone and unreachable from the keyboard, so it carries the relationship
+ * — what the organisation is to Vithean — rather than the name.
+ *
+ * `logo: null` in partners.json means the artwork has not been obtained yet.
+ * That renders a wordmark tile instead of a broken image, so the section is
+ * publishable before a single file has been downloaded, and each logo can drop
+ * in on its own.
+ */
+import partners from '@/data/partners.json';
+import { pick, type Lang } from '@/i18n/utils';
+import { copy, c } from '@/i18n/copy';
+
+interface Props { lang: Lang; kinds?: string[] }
+const { lang, kinds = ['partner', 'integration', 'community'] } = Astro.props;
+
+/**
+ * Grouped by kind, in this order. The heading is the point: a platform Vithean
+ * connects to is not a partner that signed something, and a page that shows
+ * both in one undifferentiated row implies the stronger of the two.
+ */
+const ORDER = ['partner', 'integration', 'community'] as const;
+const groups = ORDER
+  .filter((k) => kinds.includes(k))
+  .map((kind) => ({
+    kind,
+    label: c(copy.company.partnerGroups[kind], lang),
+    items: partners.partners
+      .filter((p) => p.display && p.kind === kind)
+      .sort((a, b) => a.order - b.order),
+  }))
+  .filter((g) => g.items.length);
+
+/**
+ * Wordmark text for a partner with no artwork yet. An organisation that
+ * already has an acronym should show it — "Institute of Finance and
+ * Accounting (IFA)" is IFA, not IO.
+ */
+const STOP = new Set(['of', 'and', 'the', 'for', 'in', 'on', 'a']);
+const initials = (en: string) => {
+  const acronym = en.match(/\(([A-Za-z]{2,7})\)/);
+  if (acronym) return acronym[1];                    // keep its own casing: CamInv
+  const words = en.replace(/[^A-Za-z\s]/g, ' ').trim().split(/\s+/)
+    .filter((w) => !STOP.has(w.toLowerCase()));
+  if (!words.length) return '?';
+  if (/^[A-Z]{2,7}$/.test(words[0])) return words[0]; // GIZ ICONE → GIZ, ACAR Forum → ACAR
+  return words.slice(0, 2).map((w) => w[0].toUpperCase()).join('');
+};
+---
+{groups.map((g) => (
+  <section class="pgroup">
+    <h3 class="glabel">
+      {g.label}
+      {g.kind === 'integration' && (
+        <span class="gnote">{c(copy.company.integrationNote, lang)}</span>
+      )}
+    </h3>
+    <ul class="partners">
+      {g.items.map((p) => {
+    const name = pick(p.name, lang);
+    const role = pick(p.role, lang);
+    const Tag = p.url ? 'a' : 'div';
+    return (
+      <li>
+        <Tag class="partner" title={role}
+             href={p.url ?? undefined}
+             target={p.url ? '_blank' : undefined}
+             rel={p.url ? 'noopener' : undefined}>
+          <span class="mark">
+            {p.logo
+              ? /* No width/height attributes: a guessed aspect ratio letterboxes the
+                     real logo inside a wrong-shaped box. .mark reserves 56px of height,
+                     so nothing shifts vertically while the file loads. */
+                <img src={p.logo} alt={name} loading="lazy" />
+              : <span class="wordmark" data-len={initials(p.name.en).length > 3 ? 'long' : 'short'}
+                      aria-hidden="true">{initials(p.name.en)}</span>}
+          </span>
+          <span class="pname">{name}</span>
+          <span class="prole">{role}</span>
+        </Tag>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+))}
+
+<style>
+  .pgroup + .pgroup{margin-top:var(--s4)}
+  .glabel{display:flex; align-items:baseline; flex-wrap:wrap; gap:.2rem .8rem;
+    font-size:.78rem; font-weight:700; letter-spacing:.11em; text-transform:uppercase;
+    color:var(--plum-600); margin-bottom:1rem}
+  .gnote{font-size:.8rem; font-weight:400; letter-spacing:0; text-transform:none;
+    color:var(--ink-muted)}
+
+  /* Flex, not grid: a group with one entry must not stretch that entry across
+     the whole row. Tiles keep the same size whether a group holds one or six. */
+  .partners{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:var(--s3)}
+  .partners li{flex:1 1 200px; max-width:280px; display:flex}
+  .partner{display:flex; flex-direction:column; align-items:center; text-align:center;
+    gap:.55rem; padding:1.35rem 1rem 1.15rem; width:100%; text-decoration:none;
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md)}
+  a.partner:hover{border-color:var(--plum-300); box-shadow:var(--shadow-card)}
+  a.partner:focus-visible{outline:2px solid var(--plum-600); outline-offset:2px}
+
+  /* width:100% gives max-width something definite to resolve against — without
+     it the flex item sizes from its own content and the logo renders half-size. */
+  .mark{display:flex; align-items:center; justify-content:center; height:56px; width:100%}
+  .mark img{height:56px; width:auto; max-width:100%; object-fit:contain}
+  /* Stands in for artwork that has not been obtained yet. */
+  .wordmark{display:flex; align-items:center; justify-content:center;
+    width:56px; height:56px; border-radius:var(--r-pill);
+    background:var(--plum-50); color:var(--plum-600);
+    font-size:1.15rem; font-weight:700; letter-spacing:.02em}
+  /* An acronym like CamInv or ACAR has to fit the same circle as FA. */
+  .wordmark[data-len="long"]{font-size:.82rem; letter-spacing:0}
+
+  .pname{font-size:.97rem; font-weight:600; color:var(--ink-strong); line-height:1.35}
+  .prole{font-size:.84rem; color:var(--ink-muted); line-height:1.45; text-wrap:balance}
+
+  @media (max-width:520px){
+    .partners{gap:var(--s2)}
+    .partners li{flex-basis:140px}
+    .prole{display:none}   /* the tooltip and the title attribute still carry it */
+  }
+</style>
