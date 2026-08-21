@@ -1,10 +1,10 @@
 ---
-title: "Numbers that come out of the work."
-nav: "Accounting"
-eyebrow: "Accounting"
+title: "Do the work. The accounting handles itself."
+nav: "Sales"
+eyebrow: "Sales"
 order: 1
 description: "Approve a document in Vithean and the balanced journal is already written. Double-entry accounting, period closing and audit trail, built for Cambodia."
-lead: "You are not entering accounting twice. Approve the document you were going to approve anyway, and the journal is already written — balanced, dated, and attributed."
+lead: "Never enter data twice. Just approve the invoices and bills you're already reviewing — the journal entries are automatically logged, balanced, dated, and attributed."
 featureIds: ["vat", "reports"]
 visual: journal
 posts: {"caption": "A sale is approved", "ref": "INV-2026-0412", "meta": "Riverside Grocery Co., Ltd. · 14 Aug 2026", "before": [{"label": "Jasmine rice · 120 sacks", "amount": "3,600.00"}, {"label": "VAT 10%", "amount": "360.00"}], "beforeCaption": "You issue the invoice", "lines": [{"no": "1200", "acct": "Accounts receivable", "dr": "3,960.00", "cr": ""}, {"no": "4100", "acct": "Sales revenue", "dr": "", "cr": "3,600.00"}, {"no": "2310", "acct": "VAT output", "dr": "", "cr": "360.00"}], "total": {"dr": "3,960.00", "cr": "3,960.00"}, "chips": [{"kind": "ok", "text": "✓ Posted to the ledger"}, {"kind": "caminv", "text": "✓ CamInv accepted · 14:22"}]}

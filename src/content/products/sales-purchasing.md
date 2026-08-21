@@ -1,10 +1,10 @@
 ---
-title: "Quote to cash. Receipt to bill."
+title: "From quote to cash. From purchase to bill."
 nav: "Sales & purchasing"
-eyebrow: "Sales and purchasing"
+eyebrow: "Purchase and Payable"
 order: 3
 description: "Quote to cash, goods receipt to bill. Vithean moves each document through your business and your books at once — nothing is re-keyed."
-lead: "The same document moves through the business and through the books at the same time. Nobody types it twice, and nothing is waiting in someone's inbox to be re-entered."
+lead: "Your business operations and financial books stay synced in real time. Documents flow automatically — no double entry, no manual rekeying, and zero inbox bottlenecks."
 featureIds: ["invoicing", "price-setting", "bank-rec"]
 visual: journal
 posts: {"caption": "The supplier bill lands against the receipt", "ref": "BILL-2026-0912", "meta": "Matched to GRN-2026-0188 · 14 Aug 2026", "beforeCaption": "Already received, awaiting the bill", "before": [{"label": "Goods received not invoiced", "amount": "6,000.00"}, {"label": "VAT input 10%", "amount": "600.00"}], "lines": [{"no": "2150", "acct": "Goods received not invoiced", "dr": "6,000.00", "cr": ""}, {"no": "1420", "acct": "VAT input", "dr": "600.00", "cr": ""}, {"no": "2100", "acct": "Accounts payable", "dr": "", "cr": "6,600.00"}], "total": {"dr": "6,600.00", "cr": "6,600.00"}, "chips": [{"kind": "ok", "text": "✓ Matched to the goods receipt"}, {"kind": "plain", "text": "Nothing re-keyed"}]}

@@ -1,10 +1,10 @@
 ---
-title: "Sell to the customers who require e-invoices."
+title: "Win bigger clients with fully compliant e-invoicing."
 nav: "E-invoicing"
 eyebrow: "Cambodia E-Invoicing"
 order: 6
 description: "Issue CamInv e-invoices, credit notes and debit notes from the screen that raises the invoice. Included in every Vithean plan at no extra cost."
-lead: "Bigger buyers increasingly will not accept anything else. Issue from the same screen that raises the invoice, and your customer's finance team accepts it the first time."
+lead: "Large buyers and corporate clients increasingly demand official e-invoices. Generate compliant e-invoices directly from your standard billing workflow — so your clients accept them without delay."
 featureIds: ["caminv"]
 visual: flow
 footnote: "CamInv is administered by the Ministry of Economy and Finance. Tax registration and filing are separate, and sit with the General Department of Taxation."

@@ -16,11 +16,11 @@
   },
   "story": {
     "lead": {
-      "en": "POSCAR Digital builds Vithean — with practising accountants shaping what it does",
+      "en": "Built by software engineers alongside practising accounting experts.",
       "km": "POSCAR Digital បង្កើត វិធាន — ដោយមានគណនេយ្យករជំនាញរួមរៀបចំមុខងារ"
     },
     "body": {
-      "en": "Vithean is built and supported by POSCAR Digital Co., Ltd., a Cambodian software company that also builds school, university, HR and attendance systems used across the country. Vithean is its accounting and ERP product.\n\nFii & Associates, a Cambodian accounting and audit firm, is Vithean’s accounting practice partner: its practitioners co-build the functional design. That is why the ledger behaves the way an accountant expects, and why the workflow matches how Cambodian businesses actually operate — the people who audit and keep books for a living decided what the system has to do.\n\nWe are not a foreign product with a local reseller, and we are not a bookkeeping service that also writes software. We build and support the system, we implement it with you, and the books stay yours.",
+      "en": "POSCAR Digital Co., Ltd. is a trusted Cambodian software provider powering school, university, HR, and attendance management systems nationwide. Vithean is POSCAR's flagship accounting and ERP platform, co-developed with FII & Associates.\n\nPartnering with leading Cambodian accounting and auditing firm FII & Associates, experienced practitioners help shape every workflow. That is why our general ledger behaves exactly as accountants expect and mirrors how local businesses actually operate.\n\nWe are not a foreign product relying on local resellers, nor an agency tinkering with software. We build, support, and implement the system directly alongside your team — ensuring complete data ownership and expert local support.",
       "km": "វិធាន ត្រូវបានបង្កើត និងគាំទ្រដោយក្រុមហ៊ុន POSCAR Digital Co., Ltd. ដែលជាក្រុមហ៊ុនកម្មវិធីកម្ពុជា ហើយក៏បង្កើតប្រព័ន្ធគ្រប់គ្រងសាលារៀន សាកលវិទ្យាល័យ ធនធានមនុស្ស និងវត្តមាន ដែលប្រើប្រាស់នៅទូទាំងប្រទេស។ វិធាន ជាផលិតផលគណនេយ្យ និង ERP របស់ខ្លួន។\n\nក្រុមហ៊ុន Fii & Associates ដែលជាក្រុមហ៊ុនគណនេយ្យ និងសវនកម្មកម្ពុជា គឺជាដៃគូវិជ្ជាជីវៈគណនេយ្យរបស់ វិធាន៖ អ្នកជំនាញរបស់ខ្លួនរួមរៀបចំមុខងាររបស់ប្រព័ន្ធ។ នេះជាមូលហេតុដែលបញ្ជីគណនេយ្យដំណើរការតាមអ្វីដែលគណនេយ្យករគិត ហើយលំហូរការងារត្រូវនឹងរបៀបដែលអាជីវកម្មកម្ពុជាដំណើរការពិតប្រាកដ — ដោយសារអ្នកដែលធ្វើសវនកម្ម និងកាន់បញ្ជីគណនេយ្យជាអាជីព ជាអ្នកកំណត់ថាប្រព័ន្ធត្រូវធ្វើអ្វីខ្លះ។\n\nយើងមិនមែនជាផលិតផលបរទេសដែលមានអ្នកលក់បន្តក្នុងស្រុកទេ ហើយក៏មិនមែនជាសេវាកម្មកាន់បញ្ជីដែលសរសេរកម្មវិធីផងដែរ។ យើងបង្កើត និងគាំទ្រប្រព័ន្ធ យើងដំឡើងវាជាមួយលោកអ្នក ហើយបញ្ជីគណនេយ្យនៅតែជារបស់លោកអ្នក។"
     }
   },
@@ -226,7 +226,7 @@
     "logoSource": "Downloaded from https://poscardigital.com/images/brand/01-Poscar.png on 2026-08-17.",
     "note": "The maker of Vithean, not a partner. Vithean is one of POSCAR Digital's product brands; POSCAR is the contracting party on the CamInv integration, the Canadia Bank partnership and the IFA memorandum.",
     "line": {
-      "en": "Vithean is a product of POSCAR Digital Co., Ltd.",
+      "en": "Vithean is a product co-developed by POSCAR Digital Co., Ltd. and FII & Associates.",
       "km": "វិធាន ជាផលិតផលរបស់ក្រុមហ៊ុន POSCAR Digital Co., Ltd."
     }
   }

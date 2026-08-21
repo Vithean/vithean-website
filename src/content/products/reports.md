@@ -1,10 +1,10 @@
 ---
-title: "See which product, branch and customer makes money."
+title: "Know exactly which products, branches, and customers drive your profit."
 nav: "Reports"
 eyebrow: "Reports"
 order: 4
 description: "See margin by product, branch, customer and job. Vithean's reports come out of the ledger, not a workbook rebuilt every month."
-lead: "Not one number for the whole business. The same figures broken down the way you actually run it — by item, by location, by customer, by job — with a comparison period beside them."
+lead: "Stop relying on a single top-line number. View your data the way you actually run your business — broken down by item, location, customer, or job, complete with period-over-period comparisons."
 featureIds: ["reports"]
 visual: report
 report: {"caption": "Margin by product", "ref": "Gross margin · July 2026", "meta": "Angkor Fresh Trading Co., Ltd.", "cols": ["Product", "Revenue", "Cost of sales", "Margin", "%"], "rows": [["Jasmine rice 25 kg", "43,200.00", "28,080.00", "15,120.00", "35.0%"], ["Cooking oil 5 L", "18,600.00", "14,880.00", "3,720.00", "20.0%"], ["Sugar 50 kg", "9,400.00", "8,178.00", "1,222.00", "13.0%"]], "total": ["Total", "71,200.00", "51,138.00", "20,062.00", "28.2%"], "note": "Sugar moves the most volume and earns the least. That is the sentence a report is for."}

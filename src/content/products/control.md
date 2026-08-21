@@ -4,7 +4,7 @@ nav: "Control & access"
 eyebrow: "Control and access"
 order: 5
 description: "Roles, approval workflow and a field-level audit trail. Delegate the work in Vithean without handing over the keys to the business."
-lead: "The reason an owner cannot delegate is rarely trust. It is that the system offers no middle ground between doing it yourself and giving somebody everything."
+lead: "Delegating is hard when software forces an all-or-nothing choice. Give your team the access they need to do their jobs — without exposing sensitive financial data or key operational controls."
 featureIds: ["authorisation"]
 visual: trail
 trail: {"caption": "One document, fully attributed", "ref": "INV-2026-0412", "meta": "Riverside Grocery Co., Ltd. · $3,960.00", "steps": [{"state": "DRAFT", "who": "Chan Dara · Sales", "when": "14 Aug 08:41", "note": "Created from the price list"}, {"state": "EDITED", "who": "Chan Dara · Sales", "when": "14 Aug 09:12", "note": "Unit price 30.00 → 28.50", "flag": true}, {"state": "PENDING", "who": "Chan Dara · Sales", "when": "14 Aug 09:14", "note": "Sent for approval — over discount limit"}, {"state": "APPROVED", "who": "Sok Sreymom · Finance Manager", "when": "14 Aug 11:02", "note": "Approved at 28.50"}, {"state": "POSTED", "who": "System", "when": "14 Aug 11:02", "note": "Balanced journal written · CamInv accepted 14:22"}]}

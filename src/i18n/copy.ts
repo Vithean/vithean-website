@@ -137,8 +137,13 @@ export const copy = {
   ],
 
   pricing: {
+    // TODO(review-2026-08-19): Khmer pending a Khmer-native writer. English is
+    // from the HSD review; the Khmer below is the previous wording, kept so the
+    // /km route never renders an empty heading.
+    h1: t('Scale your business with zero hidden fees.',
+      'គ្រប់គម្រោងចេញវិក្កយបត្រអេឡិចត្រូនិកស្របតាមបទប្បញ្ញត្តិ'),
     lead: t(
-      'Cambodia E-Invoicing is included from the entry tier up, at no extra cost. What changes between plans is how much of the business the system covers.',
+      'Official Cambodia E-Invoicing is included across all tiers at no extra cost. Higher plans simply unlock broader operational coverage and control.',
       'វិក្កយបត្រអេឡិចត្រូនិកកម្ពុជា រួមបញ្ចូលចាប់ពីគម្រោងដំបូងឡើងទៅ ដោយមិនគិតថ្លៃបន្ថែម។ អ្វីដែលខុសគ្នារវាងគម្រោង គឺទំហំអាជីវកម្មដែលប្រព័ន្ធគ្របដណ្តប់។'),
     priceline: t(
       'These are starting prices, per company, per month. What you pay depends on how many people use it, which modules you need, and how much help you want setting it up.',
@@ -204,7 +209,8 @@ export const copy = {
 
   support: {
     h1: t('Ask us. Someone here answers.', 'សួរយើង — មានបុគ្គលិកឆ្លើយតប'),
-    lead: t('Support is in Khmer and English, {hours}. For how to do a specific thing in the system, the documentation is faster than we are.',
+    // TODO(review-2026-08-19): Khmer pending.
+    lead: t('Support is available in Khmer and English, {hours}. For step-by-step feature guides and quick tutorials, check our online help — documentation is available 24/7.',
       'សេវាជំនួយមានជាភាសាខ្មែរ និងអង់គ្លេស {hours}។ សម្រាប់របៀបធ្វើកិច្ចការជាក់លាក់ក្នុងប្រព័ន្ធ ឯកសារណែនាំលឿនជាងយើង។'),
     visitH: t('Visit us', 'អញ្ជើញមកលេងយើង'),
     visitP: t('3E:Fii Building, 6th–7th floor, Chroy Changvar, Phnom Penh. We are a real office and you are welcome in it.',
