@@ -24,9 +24,9 @@ const t = (en: string, km: string): T => ({ en, km });
 export const copy = {
   home: {
     eyebrow: t('Cambodian business system of record', 'ប្រព័ន្ធកត់ត្រាអាជីវកម្មកម្ពុជា'),
-    h1a: t('Grow the business without ', 'ពង្រីកអាជីវកម្មរបស់អ្នក ដោយមិន'),
+    h1a: t('Grow your business without ', 'ពង្រីកអាជីវកម្មរបស់អ្នក ដោយមិន'),
     h1em: t('losing control', 'បាត់បង់ការគ្រប់គ្រង'),
-    h1b: t(' of it.', ''),
+    h1b: t('', ''),
     sub: t(
       'Accounting, inventory, sales, purchasing and banking on one system — in Khmer and English.',
       'គណនេយ្យ សន្និធិ ការលក់ ការទិញ និងធនាគារ ក្នុងប្រព័ន្ធតែមួយ — ជាភាសាខ្មែរ និងអង់គ្លេស'),
