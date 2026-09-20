@@ -46,7 +46,7 @@ const organisation = {
   image: ogImage,
   email: company.contact.email,
   telephone: company.contact.phonePrimary.replace(/\s/g, '-'),
-  foundingDate: String(company.foundedYear),
+  foundingDate: company.launchDate,
   address: {
     '@type': 'PostalAddress',
     streetAddress: '3E:Fii Building, 6th Floor, Street Vimean Ahha, Kien Klaing Village',

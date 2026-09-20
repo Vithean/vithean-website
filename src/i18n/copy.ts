@@ -228,6 +228,12 @@ export const copy = {
   },
 
   company: {
+    /* Stated as a fact with a date, next to the story. A launch date is one
+       of the first things a buyer checks to decide whether a vendor is
+       established, and it was nowhere on the site. */
+    launched: t(
+      'Vithean was officially launched on 1 September 2022 — the founding date of Vithean, Online Business and Accounting System.',
+      'វិធាន ត្រូវបានដាក់ឱ្យប្រើប្រាស់ជាផ្លូវការនៅថ្ងៃទី១ ខែកញ្ញា ឆ្នាំ២០២២ ដែលជាកាលបរិច្ឆេទបង្កើត វិធាន ប្រព័ន្ធគ្រប់គ្រងអាជីវកម្ម និងគណនេយ្យតាមអនឡាញ។'),
     mvv: [
       t('Mission', 'បេសកកម្ម'),
       t('Vision', 'ចក្ខុវិស័យ'),

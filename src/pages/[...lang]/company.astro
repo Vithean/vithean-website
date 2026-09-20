@@ -63,6 +63,7 @@ const mvv = [
           <p>{para}</p>
         </div>
       ))}
+      <p class="launched"><time datetime={company.launchDate}>{c(copy.company.launched, lang)}</time></p>
     </div>
   </div></section>
 
@@ -136,6 +137,11 @@ const mvv = [
 </Base>
 
 <style>
+  /* Set apart from the story paragraphs: it is a fact with a date, not
+     another paragraph of prose. */
+  .launched{margin-top:var(--s3); padding-top:var(--s3);
+    border-top:1px solid var(--line-strong); font-size:.97rem; color:var(--ink-muted)}
+
   /* The maker, stated once and plainly. Vithean is a POSCAR Digital product;
      everyone else on this page is a partner, which is a different thing. */
   .maker{display:inline-flex; align-items:center; gap:.8rem; margin:0 0 1.1rem;

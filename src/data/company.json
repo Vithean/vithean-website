@@ -5,6 +5,8 @@
   "legalName": "POSCAR Digital Co., Ltd.",
   "brand": "Vithean",
   "foundedYear": 2020,
+  "launchDate": "2022-09-01",
+  "launchNote": "Vithean went to market on 1 September 2022 and the business treats that as the product's founding date. foundedYear 2020 is when the work started, which is why the two differ; the Organization schema publishes launchDate, because the entity that schema names is the Vithean brand.",
   "partnerFirm": {
     "name": "Fii & Associates",
     "role": "Accounting practice partner — co-builds the functional design",
