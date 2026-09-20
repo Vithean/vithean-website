@@ -2,39 +2,62 @@
 
 > Vithean is a cloud accounting and ERP system built in Cambodia by POSCAR Digital Co., Ltd. with
 > the accounting firm Fii & Associates. It combines double-entry accounting, inventory and landed
-> costing, sales, purchasing, banking and reporting on one ledger, with Cambodia E-Invoicing
-> (CamInv) built in and Khmer and English throughout. It is designed for Cambodian businesses of
-> 5–100 staff that must keep compliant, auditable books.
+> costing, sales, purchasing and payables, banking and reporting on one ledger, with Cambodia
+> E-Invoicing (CamInv) built in and Khmer and English throughout. It is designed for Cambodian
+> businesses of 5–100 staff that must keep compliant, auditable books.
 
 Vithean is among the first Cambodian-developed accounting platforms connected to the national
 Cambodia E-Invoicing System (CamInv), administered by the Ministry of Economy and Finance.
 CamInv e-invoicing is included in every paid plan.
 
 ## Product
-- [Accounting](https://vithean.com/en/product/accounting/): Double-entry ledger, period closing, audit trail.
-- [Inventory and landed cost](https://vithean.com/en/product/inventory/): Freight and duty allocated across a shipment; true unit cost.
-- [Sales and purchasing](https://vithean.com/en/product/sales-purchasing/): Quote to cash, goods receipt matched to bill.
-- [Reports](https://vithean.com/en/product/reports/): Margin by product, branch, customer and job, with comparison periods.
-- [Control and access](https://vithean.com/en/product/control/): Roles, approval workflow, field-level audit trail, database per company.
-- [E-invoicing](https://vithean.com/en/product/e-invoicing/): CamInv issuing, credit notes, debit notes and status.
+- [Accounting](https://vithean.com/product/accounting/): Double-entry ledger, period closing, audit trail.
+- [Inventory and costing](https://vithean.com/product/inventory/): Freight and duty allocated across a shipment; true unit cost.
+- [Purchase and Payable](https://vithean.com/product/sales-purchasing/): Quote to cash, goods receipt matched to bill.
+- [Reports](https://vithean.com/product/reports/): Margin by product, branch, customer and job, with comparison periods.
+- [Control and access](https://vithean.com/product/control/): Roles, approval workflow, field-level audit trail, database per company.
+- [E-invoicing](https://vithean.com/product/e-invoicing/): CamInv issuing, credit notes, debit notes and status.
 
 ## Commercial
-- [Pricing](https://vithean.com/en/pricing/): Three plans, starting prices from $15/month. CamInv included in all. 30-day free trial.
+- [Pricing](https://vithean.com/pricing/): Three plans, starting prices from $15/month. CamInv included in all. 30-day free trial.
 - [Free trial](https://app.vithean.com/signup/register): Name, email and phone only.
 - [Documentation](https://help.vithean.com/): Complete product reference and how-to guides.
 
 ## Company
-- [About](https://vithean.com/en/company/): POSCAR Digital Co., Ltd. with Fii & Associates, Phnom Penh.
-- [News and press](https://vithean.com/en/news/): Announcements, including the CamInv integration.
+- [About](https://vithean.com/company/): POSCAR Digital Co., Ltd. with Fii & Associates, Phnom Penh.
+- [News and press](https://vithean.com/news/): Announcements, including the CamInv integration.
+- [Support](https://vithean.com/support/): Contact channels and frequently asked questions.
+
+## Recognition and partnerships
+- Connected to the national Cambodia E-Invoicing System (CamInv), Ministry of Economy and Finance.
+- Memorandum of understanding with the Kampuchea Institute of Certified Public Accountants and
+  Auditors (KICPAA).
+- Memorandum of understanding with the Institute of Financial Accountants (IFA).
+- Selected for the Acceleration Phase of Reverse Innovation Cohort 6, the accelerator run by the
+  Ministry of Economy and Finance and Techo Startup Center.
+- Digital partnership between POSCAR Digital and Canadia Bank.
+
+## Contact
+- Telegram (support chat): https://t.me/vithean_support
+- Phone: +855 95 569 568
+- Email: info@vithean.com
+- Office: 3E:Fii Building, 6th Floor, Chroy Changvar, Phnom Penh, Cambodia
+- Hours: Monday to Friday, 8:30 AM to 5:30 PM (Asia/Phnom_Penh)
 
 ## Languages
-- English: https://vithean.com/en/
+English is served at the root; Khmer is prefixed with /km/. There is no /en/ prefix — those
+addresses redirect to the root.
+- English: https://vithean.com/
 - ភាសាខ្មែរ (Khmer): https://vithean.com/km/
 
 ## Notes
-- "Vithean" is the product and brand; POSCAR Digital Co., Ltd. is the legal entity.
+- "Vithean" is the product and brand; POSCAR Digital Co., Ltd. is the legal entity. Fii &
+  Associates is the accounting practice partner and a shareholder, not a co-maker of the software.
 - Cambodia E-Invoicing is administered by the Ministry of Economy and Finance (MEF), not the
   General Department of Taxation (GDT). The two are distinct regimes.
+- CamInv is switched on when a company subscribes, not during the free trial: connecting requires
+  the business to be registered with CamInv at the MEF.
+- Each customer company's data is held in its own database.
 - Vithean does not currently provide payroll processing or purchase orders.
 - Vithean does not provide bookkeeping, tax or advisory services. It builds and supports the
   software and implements it with the customer; the books stay with the customer or their

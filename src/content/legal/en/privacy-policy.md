@@ -1,7 +1,7 @@
 ---
 title: "Privacy Policy"
 lang: en
-updated: 2026-08-16
+updated: 2026-09-20
 ---
 
 # Privacy Policy
@@ -54,7 +54,17 @@ Please be informed that whenever you use our Service, if there is an error in th
 
 Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device’s internal memory.
 
-This Service does not use these “cookies” explicitly. However, the App may use third party code and libraries that use “cookies” to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Service.
+We use cookies for two purposes.
+
+**To sign you in and keep you signed in.** When you sign in, we set a cookie on the vithean.com domain so that you stay signed in, and so that the different parts of the Service recognise you as you move between them. These cookies are necessary. Without them we cannot keep you signed in and the Service will not work.
+
+**To understand how the website is used.** Our public website uses Google Analytics, which sets cookies to count visits and to show us which pages are read and which links are followed. This tells us how the website is performing. It does not tell us who you are, and we do not use it to identify you.
+
+The Apps and the Service may also use third party code and libraries that set their own cookies to provide and improve their services.
+
+You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you refuse cookies you can still read this website, but you will not be able to sign in to the Service.
+
+Separately, this website remembers your display preference — such as light or dark appearance — in your own browser. That is not a cookie: it stays on your device and is never sent to us.
 
 #### Data Ownership
 

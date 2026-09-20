@@ -6,6 +6,12 @@ order: 5
 description: "Roles, approval workflow and a field-level audit trail. Delegate the work in Vithean without handing over the keys to the business."
 lead: "Delegating is hard when software forces an all-or-nothing choice. Give your team the access they need to do their jobs — without exposing sensitive financial data or key operational controls."
 featureIds: ["authorisation"]
+included:
+  lead: "Included in Advanced plan:"
+  items:
+    - "User controls & authorizations"
+    - "Custom approval workflows"
+    - "Complete audit trails"
 visual: trail
 trail: {"caption": "One document, fully attributed", "ref": "INV-2026-0412", "meta": "Riverside Grocery Co., Ltd. · $3,960.00", "steps": [{"state": "DRAFT", "who": "Chan Dara · Sales", "when": "14 Aug 08:41", "note": "Created from the price list"}, {"state": "EDITED", "who": "Chan Dara · Sales", "when": "14 Aug 09:12", "note": "Unit price 30.00 → 28.50", "flag": true}, {"state": "PENDING", "who": "Chan Dara · Sales", "when": "14 Aug 09:14", "note": "Sent for approval — over discount limit"}, {"state": "APPROVED", "who": "Sok Sreymom · Finance Manager", "when": "14 Aug 11:02", "note": "Approved at 28.50"}, {"state": "POSTED", "who": "System", "when": "14 Aug 11:02", "note": "Balanced journal written · CamInv accepted 14:22"}]}
 points:
@@ -20,6 +26,12 @@ points:
 km:
   title: "ជួលមនុស្សបានដោយមិនប្រគល់សោអាជីវកម្ម"
   nav: "ការគ្រប់គ្រង និងសិទ្ធិ"
+  included:
+    lead: "មានក្នុងគម្រោង Advanced៖"
+    items:
+      - "ការគ្រប់គ្រងអ្នកប្រើ និងសិទ្ធិ"
+      - "លំហូរការអនុម័តតាមតម្រូវការ"
+      - "កំណត់ហេតុតាមដានពេញលេញ"
   eyebrow: "ការគ្រប់គ្រង និងសិទ្ធិចូលប្រើ"
   description: "តួនាទី លំហូរអនុម័ត និងដានសវនកម្មរហូតដល់កម្រិតវាល។ ប្រគល់ការងារនៅក្នុង វិធាន ដោយមិនប្រគល់សោអាជីវកម្មរបស់អ្នក។"
   lead: "មូលហេតុដែលម្ចាស់អាជីវកម្មមិនអាចប្រគល់ការងារ កម្រជាបញ្ហាទំនុកចិត្តណាស់។ វាគឺដោយសារប្រព័ន្ធគ្មានផ្លូវកណ្ដាល រវាងធ្វើដោយខ្លួនឯង និងប្រគល់ឲ្យគេទាំងអស់។"

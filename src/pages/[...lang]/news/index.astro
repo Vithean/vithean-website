@@ -33,10 +33,13 @@ const labels = {
 ---
 <Base title={c(copy.meta.newsTitle, lang)} route="news/"
       description={c(copy.meta.newsDesc, lang)}>
-  <section class="band"><div class="wrap">
+  <section class="band band-head"><div class="wrap">
     <p class="eyebrow">{t('nav.news')}</p>
     <h1 class="band-h">{c(copy.news.h1, lang)}</h1>
     <p class="band-p">{c(copy.news.lead, lang)}</p>
+  </div></section>
+
+  <section class="band" style="padding-top:var(--s5)"><div class="wrap">
     <NewsFilter client:load articles={articles} labels={labels} />
   </div></section>
 </Base>

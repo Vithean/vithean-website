@@ -1,0 +1,63 @@
+---
+import { getCollection } from 'astro:content';
+
+/**
+ * /en/* → /*
+ *
+ * The old WordPress site served English under /en/; this one serves it at the
+ * root. Every English address therefore has to keep working with the prefix,
+ * or a bookmark, an old link or a typed habit lands on a 404.
+ *
+ * Derived from the collections rather than listed by hand. The legacy
+ * WordPress slugs stay in astro.config.mjs because they map to names this site
+ * no longer uses (/en/about-us/ → /company/); everything here is a route that
+ * still exists, so enumerating it keeps a new page from being forgotten.
+ *
+ * The emitted page matches what Astro's own `redirects` produce: meta refresh,
+ * noindex, and a canonical at the target so search engines pass the signal on.
+ * GitHub Pages cannot issue a real 301 — see the note in astro.config.mjs.
+ */
+export async function getStaticPaths() {
+  const [products, news, legal] = await Promise.all([
+    getCollection('products'),
+    getCollection('news'),
+    getCollection('legal'),
+  ]);
+
+  const routes = [
+    '',
+    'pricing/',
+    'company/',
+    'support/',
+    'news/',
+    ...products.map((p) => `product/${p.id}/`),
+    ...news.map((n) => `news/${n.id}/`),
+    ...legal
+      .filter((p) => p.id.startsWith('en/'))
+      .map((p) => `${p.id.split('/')[1]}/`),
+  ];
+
+  return routes.map((route) => ({
+    // An empty rest parameter renders /en/ itself.
+    params: { path: route ? route.replace(/\/$/, '') : undefined },
+    props: { to: `/${route}` },
+  }));
+}
+
+const { to } = Astro.props;
+const canonical = new URL(to, Astro.site ?? 'https://vithean.com').href;
+const from = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Redirecting to: {to}</title>
+  <meta http-equiv="refresh" content={`0;url=${to}`} />
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href={canonical} />
+</head>
+<body>
+  <a href={to}>Redirecting from <code>{from}</code> to <code>{to}</code></a>
+</body>
+</html>

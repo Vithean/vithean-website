@@ -20,11 +20,18 @@ export const ui: Record<Lang, Dict> = {
     'nav.support': 'Support',
     'nav.docs': 'Docs',
     'cta.trial': 'Start free trial',
+    /* Header only. Sends people to compare plans first rather than into
+       signup on a preselected tier — see A6 in the 19 Aug review. */
+    'cta.trialNav': 'Free Trial',
     'cta.login': 'Log in',
     'cta.buy': 'Buy now',
     'cta.sales': 'Talk to sales',
     'cta.comparePlans': 'Compare everything →',
     'cta.plansPricing': 'See plans and pricing →',
+    'theme.label': 'Theme',
+    'theme.system': 'System',
+    'theme.light': 'Light',
+    'theme.dark': 'Dark',
     'foot.product': 'Product',
     'foot.platform': 'Platform',
     'foot.company': 'Company',
@@ -78,11 +85,16 @@ export const ui: Record<Lang, Dict> = {
     'nav.support': 'ជំនួយ',
     'nav.docs': 'ឯកសារ',
     'cta.trial': 'សាកល្បងឥតគិតថ្លៃ',
+    'cta.trialNav': 'សាកល្បងឥតគិតថ្លៃ',
     'cta.login': 'ចូល',
     'cta.buy': 'ទិញឥឡូវនេះ',
     'cta.sales': 'ពិភាក្សាជាមួយផ្នែកលក់',   // G ការលក់
     'cta.comparePlans': 'ប្រៀបធៀបទាំងអស់ →',   // G គម្រោង
     'cta.plansPricing': 'មើលគម្រោង និងតម្លៃ →',   // G គម្រោង, តម្លៃ
+    'theme.label': 'ទម្រង់ពណ៌',
+    'theme.system': 'តាមម៉ាស៊ីន',
+    'theme.light': 'ភ្លឺ',
+    'theme.dark': 'ងងឹត',
     'foot.product': 'ផលិតផល',
     'foot.platform': 'ប្រព័ន្ធ',
     'foot.company': 'ក្រុមហ៊ុន',

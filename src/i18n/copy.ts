@@ -28,9 +28,19 @@ export const copy = {
     h1em: t('losing control', 'បាត់បង់ការគ្រប់គ្រង'),
     h1b: t('', ''),
     sub: t(
-      'Accounting, inventory, sales, purchasing and banking on one system — in Khmer and English.',
+      'Accounting, inventory, sales, purchasing and banking on one platform — in Khmer and English.',
       'គណនេយ្យ សន្និធិ ការលក់ ការទិញ និងធនាគារ ក្នុងប្រព័ន្ធតែមួយ — ជាភាសាខ្មែរ និងអង់គ្លេស'),
 
+    /* Describes the panels on the shot, not figures: the screenshot is
+       replaced from time to time and numbers in alt text go stale silently. */
+    shotAlt: t(
+      'The Vithean dashboard: bank and cash balances, invoices owed to you, what you owe, collections and total sales on one screen.',
+      'ផ្ទាំងគ្រប់គ្រងរបស់ វិធាន៖ សមតុល្យធនាគារ និងសាច់ប្រាក់ វិក្កយបត្រដែលគេជំពាក់លោកអ្នក អ្វីដែលលោកអ្នកជំពាក់ ការប្រមូលប្រាក់ និងការលក់សរុប នៅលើអេក្រង់តែមួយ។'),
+
+    /* Above-the-fold provenance. Deliberately not "Trusted by" — these are
+       institutions Vithean works with, not customers, and the stronger claim
+       would be the wrong one. */
+    trustEyebrow: t('Working with', 'ធ្វើការជាមួយ'),
     caminvEyebrow: t('Cambodia E-Invoicing', 'វិក្កយបត្រអេឡិចត្រូនិកកម្ពុជា'),
     caminvH2: t('Sell to the customers who require e-invoices.',
       'លក់ទៅកាន់អតិថិជនដែលទាមទារវិក្កយបត្រអេឡិចត្រូនិក'),
@@ -148,6 +158,49 @@ export const copy = {
     priceline: t(
       'These are starting prices, per company, per month. What you pay depends on how many people use it, which modules you need, and how much help you want setting it up.',
       'ទាំងនេះជាតម្លៃចាប់ផ្តើម ក្នុងមួយក្រុមហ៊ុន ក្នុងមួយខែ។ អ្វីដែលលោកអ្នកបង់ អាស្រ័យលើចំនួនអ្នកប្រើប្រាស់ ម៉ូឌុលដែលត្រូវការ និងកម្រិតជំនួយក្នុងការដំឡើង។'),
+
+    /**
+     * The plan cards. Two blocks on this page were saying the same thing: the
+     * cards listed all fifteen features and the matrix below listed them again.
+     * The cards now carry a one-line "who it is for" and a short inclusion
+     * summary, and the matrix stays the place to compare line by line.
+     *
+     * `{users}` is substituted from plans.json at render, so the seat count
+     * stays whatever the pricing API says rather than being typed here twice.
+     * Keyed by plan slug.
+     */
+    cards: {
+      basic: {
+        who: t('Sole proprietorships, startups, and businesses with straightforward transaction needs.',
+          'អាជីវកម្មម្ចាស់តែម្នាក់ អាជីវកម្មទើបចាប់ផ្តើម និងអាជីវកម្មដែលមានប្រតិបត្តិការមិនស្មុគស្មាញ'),
+        items: [
+          t('Core accounting', 'គណនេយ្យមូលដ្ឋាន'),
+          t('{users} users', 'អ្នកប្រើ {users} នាក់'),
+          t('Single location', 'ទីតាំងតែមួយ'),
+        ],
+      },
+      standard: {
+        who: t('Growing businesses managing inventory, stock, and tiered pricing.',
+          'អាជីវកម្មកំពុងរីកចម្រើន ដែលគ្រប់គ្រងសន្និធិ ស្តុក និងតម្លៃតាមកម្រិត'),
+        items: [
+          t('Everything in Basic', 'គ្រប់យ៉ាងក្នុង Basic'),
+          t('Inventory tracking', 'ការតាមដានសន្និធិ'),
+          t('Custom price lists', 'តារាងតម្លៃតាមតម្រូវការ'),
+          t('{users} users', 'អ្នកប្រើ {users} នាក់'),
+        ],
+      },
+      advance: {
+        who: t('Multi-location businesses requiring advanced permissions and approval workflows.',
+          'អាជីវកម្មដែលមានទីតាំងច្រើន និងត្រូវការសិទ្ធិលម្អិត និងលំហូរការអនុម័ត'),
+        items: [
+          t('Everything in Standard', 'គ្រប់យ៉ាងក្នុង Standard'),
+          t('Multi-location', 'ទីតាំងច្រើន'),
+          t('Approval workflows & audit trails', 'លំហូរការអនុម័ត និងកំណត់ហេតុតាមដាន'),
+          t('Fine-grained role permissions', 'សិទ្ធិតួនាទីលម្អិត'),
+          t('{users} users', 'អ្នកប្រើ {users} នាក់'),
+        ],
+      },
+    },
     addonsH: t('Add-ons', 'កម្មវិធីបន្ថែម'),
     addonsP: t('Anything beyond your plan, at a price you can see before you ask.',
       'អ្វីៗលើសពីគម្រោងរបស់លោកអ្នក ជាមួយតម្លៃដែលមើលឃើញមុននឹងសួរ'),

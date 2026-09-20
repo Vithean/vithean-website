@@ -50,6 +50,35 @@ const Vithean = definePreset(Aura, {
           950: '#120F17',
         },
       },
+      /**
+       * Aura's dark scheme reads backgrounds from the HIGH end of the surface
+       * ramp and text from the LOW end (0 is lightest, 950 darkest, same as
+       * light). So this is the site's dark palette laid on that ramp, not an
+       * inverted copy of the light block — get the direction wrong and the
+       * accordion renders its text in the background colour.
+       */
+      dark: {
+        primary: {
+          color: '{primary.300}',
+          contrastColor: '{surface.900}',
+          hoverColor: '{primary.200}',
+          activeColor: '{primary.100}',
+        },
+        surface: {
+          0:   '#FFFFFF',
+          50:  '#F6F3F9',
+          100: '#E8E4EE',
+          200: '#D9D4E1',
+          300: '#C4BDD0',
+          400: '#ABA4B8',
+          500: '#8C8499',
+          600: '#5C5468',
+          700: '#3C3547',
+          800: '#2C2536',
+          900: '#241E2D',
+          950: '#141119',
+        },
+      },
     },
   },
   components: {
@@ -63,7 +92,10 @@ export default (app: App) => {
     theme: {
       preset: Vithean,
       options: {
-        darkModeSelector: false,  // the site is committed light
+        /* The site sets data-theme on <html> to a resolved 'light' or 'dark'
+           — never left unset — so this one selector covers both the OS
+           preference and an explicit choice from the footer. */
+        darkModeSelector: '[data-theme="dark"]',
         // Tailwind 4 layer order — utilities must be able to override PrimeVue.
         cssLayer: { name: 'primevue', order: 'theme, base, primevue, components, utilities' },
       },

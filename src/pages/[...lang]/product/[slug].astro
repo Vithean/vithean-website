@@ -6,7 +6,7 @@ import ReportCard from '@/components/ReportCard.astro';
 import TrailCard from '@/components/TrailCard.astro';
 import CamInvFlow from '@/components/CamInvFlow.astro';
 import Zoomable from '@/components/Zoomable.astro';
-import { getLangFromUrl, useTranslations, path, DOCS_URL, pick } from '@/i18n/utils';
+import { getLangFromUrl, useTranslations, path, DOCS_URL, pick, planName } from '@/i18n/utils';
 import { breadcrumbSchema } from '@/lib/seo';
 import { copy, c } from '@/i18n/copy';
 import caminvFlowEn from '@/assets/diagrams/caminv-flow.svg?raw';
@@ -32,13 +32,16 @@ const site = Astro.site ?? new URL('https://vithean.com');
 const all = (await getCollection('products')).sort((a, b) => a.data.order - b.data.order);
 const plans = (await getCollection('plans')).sort((a, b) => a.data.order - b.data.order);
 
-/** Tier availability is generated from plans.json — never hand-typed. */
+/**
+ * Tier availability, generated from plans.json — never hand-typed.
+ * Skipped when the page authors its own `included` block.
+ */
 const availability = d.featureIds.map((fid) => {
   const label = pick(plans[0]?.data.features.find((f) => f.id === fid)?.label, lang);
   const inc = plans.filter((p) => p.data.features.find((f) => f.id === fid)?.included);
   const where = inc.length === plans.length
     ? c(copy.product.everyPlan, lang)
-    : inc.map((p) => pick(p.data.name, lang)).join(', ');
+    : inc.map((p) => planName(p.data, lang)).join(', ');
   return { label, where };
 });
 /* Two files rather than a string swap: the labels sit at fixed x/y inside
@@ -60,21 +63,25 @@ const others = all.filter((p) => p.id !== entry.id).slice(0, 3);
     ))}
   </div></div>
 
-  <section class="band" style="padding-top:var(--s5)"><div class="wrap">
+  {/* The masthead carries the field so the journal card sits on it as a
+      white panel rather than disappearing into a white page. */}
+  <section class="band band-head" style="padding-top:var(--s5)"><div class="wrap">
     <div class="prod-head">
       <div>
         <p class="eyebrow">{L.eyebrow}</p>
         <h1 class="band-h">{L.title}</h1>
         <p class="band-p" style="font-size:1.1rem">{L.lead}</p>
         <div class="tiers">
-          <p class="tiers-lead">{c(copy.product.includedIn, lang)}</p>
+          <p class="tiers-lead">{L.included ? L.included.lead : c(copy.product.includedIn, lang)}</p>
           <ul class="tier-list">
-            {availability.map((a) => (
-              <li class="tier">
-                <span class="tier-feat">{a.label}</span>
-                <b class="tier-plans">{a.where}</b>
-              </li>
-            ))}
+            {L.included
+              ? L.included.items.map((item: string) => <li class="tier"><span class="tier-feat">{item}</span></li>)
+              : availability.map((a) => (
+                  <li class="tier">
+                    <span class="tier-feat">{a.label}</span>
+                    <b class="tier-plans">{a.where}</b>
+                  </li>
+                ))}
           </ul>
         </div>
       </div>
@@ -89,7 +96,12 @@ const others = all.filter((p) => p.id !== entry.id).slice(0, 3);
         </Zoomable>
       </div>
     </div>
+  </div></section>
 
+  {/* Three bands, not one. A single section left every product page a solid
+      1087px of white — the surface system existed but these pages never opted
+      into it. */}
+  <section class="band band-tint"><div class="wrap">
     <div class="points">
       {L.points.map((pt) => (
         <div class="point"><h2>{pt.h}</h2><p>{pt.p}</p></div>
@@ -114,7 +126,11 @@ const others = all.filter((p) => p.id !== entry.id).slice(0, 3);
     )}
 
     {L.footnote && <p class="footnote">{L.footnote}</p>}
+  </div></section>
 
+  {/* A row of links does not need a full band's measure top and bottom; at
+      --s6 the split cost the page more height than the tint was worth. */}
+  <section class="band" style="padding-block:var(--s5)"><div class="wrap">
     <div class="prod-next">
       {others.map((o) => (
         <a class="btn btn-line" href={path(lang, `product/${o.id}/`)}>{nav(o)} →</a>
@@ -125,10 +141,16 @@ const others = all.filter((p) => p.id !== entry.id).slice(0, 3);
 </Base>
 
 <style>
+  /* Chips on a field rather than bare text: with a surface of their own the
+     row reads as a set of controls, and the deeper bar behind them has
+     something to hold. */
   .subpill{font-size:.94rem; font-weight:600; white-space:nowrap; padding:.42rem .95rem;
-    border-radius:var(--r-pill); color:var(--ink-muted); text-decoration:none}
-  .subpill:hover{color:var(--plum-700); background:var(--surface)}
-  .subpill[aria-current]{background:var(--plum-600); color:var(--on-plum)}
+    border-radius:var(--r-pill); color:var(--ink-muted); text-decoration:none;
+    background:var(--surface); border:1px solid var(--line-strong);
+    transition:color .12s, border-color .12s}
+  .subpill:hover{color:var(--plum-700); border-color:var(--plum-600)}
+  .subpill[aria-current]{background:var(--plum-600); border-color:var(--plum-600);
+    color:var(--on-plum)}
   .point h2{font-size:1.1rem}
   .figures{margin-top:var(--s6); display:grid; gap:var(--s5)}
   /* min-width:0 or the grid item refuses to shrink below the diagram's

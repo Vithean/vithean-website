@@ -107,6 +107,35 @@ for (const f of ['plans.json', 'promotions.json', 'company.json', 'testimonials.
   }
 }
 
+/* ── 4c. the closing CTA carries its band ──────────────────────────── */
+/* Two pages end on the same .close card before the footer. It is styled to
+   dissolve into .band-close's grey field, so a .close in a plain band renders
+   as an unstyled, borderless card on white — it looks broken rather than
+   different, and only on the one page nobody re-checks. */
+{
+  const pagesDir = join(ROOT, 'src/pages');
+  const walk = async (dir) => {
+    const out = [];
+    for (const e of await readdir(dir, { withFileTypes: true })) {
+      const full = join(dir, e.name);
+      if (e.isDirectory()) out.push(...await walk(full));
+      else if (e.name.endsWith('.astro')) out.push(full);
+    }
+    return out;
+  };
+  for (const file of await walk(pagesDir)) {
+    const src = await readFile(file, 'utf8');
+    for (const m of src.matchAll(/<section class="([^"]*)"[^>]*>\s*<div class="wrap">\s*<div class="close">/g)) {
+      if (!m[1].split(/\s+/).includes('band-close')) {
+        const rel = file.slice(ROOT.length);
+        fail(`closing .close card without band-close: ${rel}
+` +
+             `        Add band-close to its <section class="band ..."> so it matches every other page.`);
+      }
+    }
+  }
+}
+
 /* ── 5. no start-tag inside an inlined SVG stylesheet ──────────────── */
 const svgDir = join(ROOT, 'src/assets/diagrams');
 for (const f of (await readdir(svgDir)).filter((x) => x.endsWith('.svg'))) {
@@ -128,4 +157,4 @@ if (errors.length) {
   console.error('');
   process.exit(1);
 }
-console.log('✓ content check passed — slugs ASCII, journals balance, reports tie, km filled, svg figures intact');
+console.log('✓ content check passed — slugs ASCII, journals balance, reports tie, km filled, closing bands paired, svg figures intact');

@@ -59,8 +59,94 @@ const LABEL: Record<string, string> = { facebook:'Facebook', linkedin:'LinkedIn'
       <span>
         <a href={path(lang, 'term-condition/')}>{t('foot.terms')}</a> ·
         <a href={path(lang, 'privacy-policy/')}>{t('foot.privacy')}</a> ·
-        {company.contact.email} · {company.contact.phonePrimary}
+        {/* Actionable, not decorative: on a phone this line is the shortest
+            path to a conversation, and plain text made it a dead end. */}
+        <a href={`mailto:${company.contact.email}`}>{company.contact.email}</a> ·
+        <a href={`tel:${company.contact.phoneTel}`}>{company.contact.phonePrimary}</a>
+      </span>
+      {/*
+          A select rather than a segmented control: this is a set-once
+          preference sitting in the legal line, not a primary action, and a
+          native picker costs one line of chrome instead of three pills.
+          Three options, not a toggle — a binary switch has no way back to
+          "follow the machine" once it has been touched.
+      */}
+      <span class="themepick">
+        <label for="vth-theme">{t('theme.label')}</label>
+        <select id="vth-theme" name="vth-theme">
+          <option value="system">{t('theme.system')}</option>
+          <option value="light">{t('theme.light')}</option>
+          <option value="dark">{t('theme.dark')}</option>
+        </select>
       </span>
     </div>
   </div>
 </footer>
+
+<script>
+  /* The control is hydrated here; Base.astro has already applied the stored
+     theme to <html> before paint. This only reflects that state into the
+     select and writes changes back.
+
+     "system" removes the attribute rather than resolving light/dark itself,
+     so the CSS media query keeps ownership and the page follows the machine
+     live — including when the OS flips while the tab is open. */
+  const KEY = 'vth-theme';
+  const root = document.documentElement;
+  const sel = document.querySelector<HTMLSelectElement>('#vth-theme');
+
+  if (sel) {
+    const read = () => {
+      try { return localStorage.getItem(KEY) || 'system'; } catch { return 'system'; }
+    };
+
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    /* 'system' is resolved here rather than left to CSS: the attribute has to
+       carry a concrete value for PrimeVue's dark selector to match. Storage
+       still holds nothing for system, so the choice itself stays "follow the
+       machine". */
+    const paint = (mode: string) => {
+      root.dataset.theme = mode === 'system' ? (mq.matches ? 'dark' : 'light') : mode;
+    };
+
+    /* The OS flipped while the tab is open. Only follow it if the visitor has
+       not picked a side. */
+    mq.addEventListener('change', () => { if (read() === 'system') paint('system'); });
+
+    sel.value = read();
+
+    sel.addEventListener('change', () => {
+      const mode = sel.value;
+      paint(mode);
+      try {
+        if (mode === 'system') localStorage.removeItem(KEY);
+        else localStorage.setItem(KEY, mode);
+      } catch { /* private mode: the choice holds for this page only */ }
+    });
+
+    /* Another tab changed it. Mirror rather than fight. */
+    window.addEventListener('storage', (e) => {
+      if (e.key !== KEY) return;
+      const m = e.newValue || 'system';
+      paint(m);
+      sel.value = m;
+    });
+  }
+</script>
+
+<style>
+  /* Sits in the legal line, so it inherits that line's scale and colour and
+     adds no new visual weight to the footer. */
+  .themepick{display:inline-flex; align-items:center; gap:.45rem}
+  .themepick label{color:var(--ink-muted)}
+  .themepick select{font:inherit; font-size:inherit; color:var(--ink-muted);
+    background:var(--surface); border:1px solid var(--line-strong);
+    border-radius:var(--r-sm); padding:.16rem 1.5rem .16rem .5rem; cursor:pointer;
+    /* Native arrow removed for one that matches the ink, drawn in the
+       background so the control keeps its native keyboard behaviour. */
+    appearance:none;
+    background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%238C8499' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:right .5rem center; background-size:.6rem}
+  .themepick select:hover{color:var(--ink-strong); border-color:var(--plum-600)}
+  .themepick select:focus-visible{outline:2px solid var(--plum-600); outline-offset:1px}
+</style>

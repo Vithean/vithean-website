@@ -15,8 +15,18 @@ import partners from '@/data/partners.json';
 import { pick, type Lang } from '@/i18n/utils';
 import { copy, c } from '@/i18n/copy';
 
-interface Props { lang: Lang; kinds?: string[] }
-const { lang, kinds = ['partner', 'integration', 'community'] } = Astro.props;
+interface Props { lang: Lang; kinds?: string[]; variant?: 'cards' | 'strip'; limit?: number }
+const { lang, kinds = ['partner', 'integration', 'community'], variant = 'cards', limit } = Astro.props;
+
+/**
+ * `strip` is the homepage's above-the-fold proof: one quiet row of marks, no
+ * group headings and no roles. Same data as the cards — a second component
+ * would mean a second list of partners to keep in step.
+ */
+const stripItems = partners.partners
+  .filter((p) => p.display && kinds.includes(p.kind) && p.logo)
+  .sort((a, b) => a.order - b.order)
+  .slice(0, limit ?? 99);
 
 /**
  * Grouped by kind, in this order. The heading is the point: a platform Vithean
@@ -51,7 +61,25 @@ const initials = (en: string) => {
   return words.slice(0, 2).map((w) => w[0].toUpperCase()).join('');
 };
 ---
-{groups.map((g) => (
+{variant === 'strip' ? (
+  <ul class="pstrip">
+    {stripItems.map((p) => {
+      const name = pick(p.name, lang);
+      const role = pick(p.role, lang);
+      const Tag = p.url ? 'a' : 'div';
+      return (
+        <li>
+          <Tag class="pstrip-item" title={`${name} — ${role}`}
+               href={p.url ?? undefined}
+               target={p.url ? '_blank' : undefined}
+               rel={p.url ? 'noopener' : undefined}>
+            <img src={p.logo} alt={name} loading="lazy" />
+          </Tag>
+        </li>
+      );
+    })}
+  </ul>
+) : groups.map((g) => (
   <section class="pgroup">
     <h3 class="glabel">
       {g.label}
@@ -90,6 +118,18 @@ const initials = (en: string) => {
 ))}
 
 <style>
+  /* Strip variant. Marks are greyed back so the row reads as provenance rather
+     than competing with the hero, and come up to full colour on hover. */
+  .pstrip{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap;
+    align-items:center; gap:var(--s3) var(--s5)}
+  .pstrip-item{display:flex; align-items:center; height:38px}
+  .pstrip-item img{height:100%; width:auto; max-width:150px; object-fit:contain;
+    background:var(--logo-plate); padding:2px 5px; border-radius:5px;
+    filter:grayscale(1); opacity:.72; transition:filter .15s, opacity .15s}
+  a.pstrip-item:hover img{filter:none; opacity:1}
+  a.pstrip-item:focus-visible{outline:2px solid var(--plum-600); outline-offset:3px}
+  @media (max-width:520px){ .pstrip{gap:var(--s3)} .pstrip-item{height:30px} }
+
   .pgroup + .pgroup{margin-top:var(--s4)}
   .glabel{display:flex; align-items:baseline; flex-wrap:wrap; gap:.2rem .8rem;
     font-size:.78rem; font-weight:700; letter-spacing:.11em; text-transform:uppercase;
@@ -110,7 +150,8 @@ const initials = (en: string) => {
   /* width:100% gives max-width something definite to resolve against — without
      it the flex item sizes from its own content and the logo renders half-size. */
   .mark{display:flex; align-items:center; justify-content:center; height:56px; width:100%}
-  .mark img{height:56px; width:auto; max-width:100%; object-fit:contain}
+  .mark img{height:56px; width:auto; max-width:100%; object-fit:contain;
+    background:var(--logo-plate); padding:3px 6px; border-radius:6px}
   /* Stands in for artwork that has not been obtained yet. */
   .wordmark{display:flex; align-items:center; justify-content:center;
     width:56px; height:56px; border-radius:var(--r-pill);

@@ -55,6 +55,17 @@ const products = defineCollection({
     lead: z.string(),
     /** Binds to plans.json — tier availability is generated, never typed. */
     featureIds: z.array(z.string()),
+    /**
+     * Overrides the generated availability block with authored wording.
+     * Use it only where marketing copy has to differ from the feature
+     * labels the core returns; everywhere else, leave it out and the
+     * block stays generated from `featureIds` so it cannot drift from
+     * what a plan actually includes.
+     */
+    included: z.object({
+      lead: z.string(),
+      items: z.array(z.string()).min(1),
+    }).optional(),
     visual: z.enum(['journal', 'report', 'trail', 'flow']),
     posts: journal.optional(),
     report: z.object({
@@ -87,6 +98,11 @@ const products = defineCollection({
       lead: z.string(),
       footnote: z.string().optional(),
       points: z.array(z.object({ h: z.string(), p: z.string() })),
+      /** Required whenever the English `included` is present. */
+      included: z.object({
+        lead: z.string(),
+        items: z.array(z.string()).min(1),
+      }).optional(),
     }),
   }),
 });

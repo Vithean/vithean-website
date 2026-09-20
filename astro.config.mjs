@@ -31,14 +31,13 @@ export default defineConfig({
    * truth either way.
    */
   redirects: {
-    '/en/': '/',
-    '/en/pricing/': '/pricing/',
+    // Legacy WordPress names only. Addresses that still exist under /en/
+    // are generated from the collections by src/pages/en/[...path].astro,
+    // so a new page cannot be left without its /en/ forward.
     '/en/about-us/': '/company/',
     '/en/news-and-press/': '/news/',
     '/en/help-and-support/': '/support/',
     '/en/contact-us/': '/company/#contact',
-    '/en/term-condition/': '/term-condition/',
-    '/en/privacy-policy/': '/privacy-policy/',
     '/km/about-us/': '/km/company/',
     '/km/news-and-press/': '/km/news/',
     '/km/help-and-support/': '/km/support/',

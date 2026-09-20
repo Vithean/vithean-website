@@ -1,13 +1,15 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
-import Journal from '@/components/Journal.astro';
 import PlanCard from '@/components/PlanCard.astro';
+import PartnerLogos from '@/components/PartnerLogos.astro';
 import CamInvFlow from '@/components/CamInvFlow.astro';
 import Zoomable from '@/components/Zoomable.astro';
 import company from '@/data/company.json';
 import {getLangFromUrl, useTranslations, path, pick, signupUrl, type Lang } from '@/i18n/utils';
 import { copy, c } from '@/i18n/copy';
+import { imageSize } from '@/lib/imageSize';
+import { planSummary } from '@/lib/planCards';
 
 export async function getStaticPaths() {
   // `undefined` renders the route with no locale segment — English at the root.
@@ -18,27 +20,10 @@ const t = useTranslations(lang);
 const plans = (await getCollection('plans')).sort((a, b) => a.data.order - b.data.order);
 const reviews = await getCollection('testimonials');
 
-/** The hero journal. Figures tie: 3,600 + 360 = 3,960, debits = credits. */
-const heroJournal = {
-  ref: 'INV-2026-0412',
-  meta: 'Riverside Grocery Co., Ltd. · 14 Aug 2026',
-  beforeCaption: 'You issue the invoice',
-  before: [
-    { label: 'Jasmine rice · 120 sacks', amount: '3,600.00' },
-    { label: 'VAT 10%', amount: '360.00' },
-  ],
-  caption: 'A sale is approved',
-  lines: [
-    { no: '1200', acct: 'Accounts receivable', dr: '3,960.00', cr: '' },
-    { no: '4100', acct: 'Sales revenue', dr: '', cr: '3,600.00' },
-    { no: '2310', acct: 'VAT output', dr: '', cr: '360.00' },
-  ],
-  total: { dr: '3,960.00', cr: '3,960.00' },
-  chips: [
-    { kind: 'ok', text: '✓ Posted to the ledger' },
-    { kind: 'caminv', text: '✓ CamInv accepted · 14:22' },
-  ],
-};
+/* Read from the file, never typed: the shot gets replaced by hand and the
+   markup used to keep claiming the previous export's dimensions. */
+const HERO_SHOT = '/assets/product/dashboard.png';
+const shot = imageSize(HERO_SHOT);
 
 const problems = copy.problems;
 
@@ -61,7 +46,23 @@ const provenanceHtml = pick(company.provenance, lang)
       </div>
       <p class="provenance" set:html={provenanceHtml} />
     </div>
-    <Zoomable><Journal j={heroJournal} /></Zoomable>
+    {/* The dashboard, not a journal entry: the first thing a visitor sees should
+        be what they get, and the posting detail is still on the product pages. */}
+    <Zoomable>
+      <img class="hero-shot" src={HERO_SHOT}
+           width={shot.w} height={shot.h}
+           style={`aspect-ratio:${shot.w}/${shot.h}`}
+           fetchpriority="high" decoding="async"
+           alt={c(copy.home.shotAlt, lang)} />
+    </Zoomable>
+  </div></section>
+
+  {/* Proof directly under the hero. CamInv, KICPAA, IFA and Canadia were all
+      sitting on the company page, where a first-time visitor never reaches
+      them — this is the strongest institutional validation Vithean has. */}
+  <section class="band trust" style="padding-block:var(--s4)"><div class="wrap">
+    <p class="eyebrow">{c(copy.home.trustEyebrow, lang)}</p>
+    <PartnerLogos lang={lang} kinds={['partner', 'integration']} variant="strip" limit={6} />
   </div></section>
 
   <section class="band band-brass"><div class="wrap caminv">
@@ -144,13 +145,20 @@ const provenanceHtml = pick(company.provenance, lang)
   <section class="band band-tint"><div class="wrap">
     <p class="eyebrow">{c(copy.home.plansEyebrow, lang)}</p>
     <h2 class="band-h" style="max-width:26ch">{c(copy.home.plansH2, lang)}</h2>
-    <div class="plans">{plans.map((p) => <PlanCard plan={p.data} lang={lang} />)}</div>
+    {/* The same short cards the pricing page opens with: who each plan is for
+        and what it includes, so the shape of the pricing is legible here
+        without reading three feature lists. Detail stays one click away. */}
+    <div class="plans">
+      {plans.map((p) => (
+        <PlanCard plan={p.data} lang={lang} summary={planSummary(p.data.slug, lang)} />
+      ))}
+    </div>
     <div class="hero-cta">
       <a class="btn btn-line" href={path(lang, 'pricing/')}>{t('cta.comparePlans')}</a>
     </div>
   </div></section>
 
-  <section class="band"><div class="wrap"><div class="close">
+  <section class="band band-close"><div class="wrap"><div class="close">
     <div>
       <h2>{c(copy.home.closeH2, lang)}</h2>
       <p>{c(copy.home.closeP, lang)}</p>

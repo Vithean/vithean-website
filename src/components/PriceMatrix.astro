@@ -13,7 +13,7 @@
  * the header to the last row, which is what gives the block a focal point.
  */
 import plansData from '@/data/plans.json';
-import { pick, useTranslations, signupUrl, type Lang } from '@/i18n/utils';
+import { pick, planName, useTranslations, signupUrl, type Lang } from '@/i18n/utils';
 
 interface Props { plans: any[]; lang: Lang }
 const { plans, lang } = Astro.props;
@@ -39,7 +39,7 @@ const uniform = (id: string) => plans.every((p) => has(p, id)) || plans.every((p
         {plans.map((p) => (
           <th scope="col" class={`mx-plan${p.recommended ? ' best' : ''}`}>
             {p.recommended && <span class="mx-cap">{t('price.mostChosen')}</span>}
-            <span class="mx-name">{pick(p.name, lang)}</span>
+            <span class="mx-name">{planName(p, lang)}</span>
             <span class="mx-price">
               <span class="mx-from">{t('price.from')}</span>
               <b class="fig">{money(p.price.monthlyBase)}</b>

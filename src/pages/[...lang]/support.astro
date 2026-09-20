@@ -38,11 +38,13 @@ const schema = {
 ---
 <Base title={c(copy.meta.supportTitle, lang)} route="support/" schemas={[schema]}
       description={c(copy.meta.supportDesc, lang)}>
-  <section class="band" style="padding-bottom:var(--s5)"><div class="wrap">
+  <section class="band band-head" style="padding-bottom:var(--s5)"><div class="wrap">
     <p class="eyebrow">Support</p>
     <h1 class="band-h">{c(copy.support.h1, lang)}</h1>
     <p class="band-p">{c(copy.support.lead, lang).replace("{hours}", hours)}</p>
+  </div></section>
 
+  <section class="band" style="padding-top:var(--s5)"><div class="wrap">
     <div class="channels">
       <a class="channel channel-primary" href={company.contact.mapUrl}
          target="_blank" rel="noopener">
@@ -71,7 +73,7 @@ const schema = {
     </div>
   </div></section>
 
-  <section class="band"><div class="wrap"><div class="close">
+  <section class="band band-close"><div class="wrap"><div class="close">
     <div>
       <h2>{c(copy.support.closeH2, lang)}</h2>
       <p>{c(copy.support.closeP, lang)}</p>

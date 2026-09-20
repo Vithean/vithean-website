@@ -7,8 +7,34 @@ import Base from '@/layouts/Base.astro';
     <h1 class="band-h">That page does not exist.</h1>
     <p class="band-p">It may have moved. Start from the homepage, or look through the product pages.</p>
     <div class="hero-cta">
-      <a class="btn btn-fill" href="/en/">Go to the homepage</a>
-      <a class="btn btn-line" href="/en/product/accounting/">See the product</a>
+      <a class="btn btn-fill" href="/">Go to the homepage</a>
+      <a class="btn btn-line" href="/product/accounting/">See the product</a>
     </div>
   </div></section>
+
+  {/*
+    Last-resort recovery, inline so it runs before the copy above is read.
+  
+    Two addresses reach here that we know the answer for: an /en/ prefix the
+    root now owns, and a directory URL without the trailing slash this site
+    requires. GitHub Pages redirects the second itself, but the dev tunnel and
+    any other static host may not, so the page repairs both rather than
+    depending on the host.
+  
+    Only ever rewrites toward a shorter-or-equal path and never loops: it stops
+    unless the candidate actually differs from where we already are.
+  */}
+  <script is:inline>
+    (function () {
+      var p = location.pathname;
+      var next = p;
+  
+      if (next === '/en' || next.indexOf('/en/') === 0) next = next.slice(3) || '/';
+      if (next.charAt(0) !== '/') next = '/' + next;
+      // A path with no extension is a page here, and pages end in a slash.
+      if (next.slice(-1) !== '/' && !/\.[a-z0-9]+$/i.test(next)) next += '/';
+  
+      if (next !== p) location.replace(next + location.search + location.hash);
+    })();
+  </script>
 </Base>

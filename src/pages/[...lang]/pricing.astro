@@ -4,8 +4,9 @@ import Base from '@/layouts/Base.astro';
 import PlanCard from '@/components/PlanCard.astro';
 import PriceMatrix from '@/components/PriceMatrix.astro';
 import plansData from '@/data/plans.json';
-import {getLangFromUrl, useTranslations, pick, type Lang } from '@/i18n/utils';
+import {getLangFromUrl, useTranslations, pick, planName, type Lang } from '@/i18n/utils';
 import { copy, c } from '@/i18n/copy';
+import { planSummary } from '@/lib/planCards';
 
 export async function getStaticPaths() {
   // `undefined` renders the route with no locale segment — English at the root.
@@ -15,6 +16,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const plans = (await getCollection('plans')).sort((a, b) => a.data.order - b.data.order);
 const site = Astro.site ?? new URL('https://vithean.com');
+
 
 const schema = {
   '@context': 'https://schema.org',
@@ -39,7 +41,7 @@ const schema = {
     offerCount: plans.length,
     offers: plans.map((p) => ({
       '@type': 'Offer',
-      name: p.data.name.en,
+      name: planName(p.data, 'en'),
       price: p.data.price.monthlyBase.toFixed(2),
       priceCurrency: p.data.price.currency,
       availability: 'https://schema.org/InStock',
@@ -51,13 +53,19 @@ const schema = {
 ---
 <Base home title={c(copy.meta.pricingTitle, lang)} route="pricing/" schemas={[schema]}
       description={c(copy.meta.pricingDesc, lang)}>
-  <section class="band band-tint" style="padding-top:var(--s6)"><div class="wrap">
+  <section class="band band-head" style="padding-top:var(--s6)"><div class="wrap">
     <p class="eyebrow">{t('nav.pricing')}</p>
     <h1 class="band-h" style="max-width:26ch">{c(copy.pricing.h1, lang)}</h1>
     <p class="band-p">{c(copy.pricing.lead, lang)}</p>
+  </div></section>
 
+  <section class="band" style="padding-top:var(--s5)"><div class="wrap">
+    {/* Short cards here, full comparison in the matrix below — the two blocks
+        used to repeat each other feature for feature. */}
     <div class="plans">
-      {plans.map((p) => <PlanCard plan={p.data} lang={lang} full showBuy />)}
+      {plans.map((p) => (
+        <PlanCard plan={p.data} lang={lang} showBuy summary={planSummary(p.data.slug, lang)} />
+      ))}
     </div>
 
     <p class="priceline">{c(copy.pricing.priceline, lang)}</p>

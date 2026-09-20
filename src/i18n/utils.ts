@@ -24,6 +24,26 @@ export function pick(v: { en: string; km: string | null } | undefined, lang: Lan
 }
 
 /**
+ * The plan name as the site should show it.
+ *
+ * TEMPORARY. The core still returns the Enterprise tier as "Advance"; the
+ * review (B1, 19 Aug 2026) renamed it to "Advanced" and that rename already
+ * sits in vithean-public/tools/pricing/overlay.json. It cannot reach the site
+ * until someone runs build_public_data.py with the pricing API key, and the
+ * page must not call the same tier two different names in the meantime.
+ *
+ * DELETE THIS once plans.json has been regenerated — at that point the rename
+ * arrives through the generator and this shim would be a second, silent source
+ * of truth for a plan name.
+ */
+const PLAN_NAME_FIX: Record<string, string> = { Advance: 'Advanced' };
+
+export function planName(plan: { name: { en: string; km: string | null } }, lang: Lang): string {
+  const n = pick(plan.name, lang);
+  return PLAN_NAME_FIX[n] ?? n;
+}
+
+/**
  * Build a path for a locale. English has no prefix:
  *   path('en', 'pricing/') -> '/pricing/'
  *   path('km', 'pricing/') -> '/km/pricing/'

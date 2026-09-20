@@ -1,5 +1,5 @@
 ---
-import { getLangFromUrl, useTranslations, path, LOGIN_URL, signupUrl } from '@/i18n/utils';
+import { getLangFromUrl, useTranslations, path, LOGIN_URL } from '@/i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const here = Astro.url.pathname;
@@ -29,7 +29,7 @@ const isCurrent = (m?: string) => (m ? here.includes(`/${m}`) : here === path(la
         <a href={path(other, rest)}>{other === 'en' ? 'EN' : 'ខ្មែរ'}</a>
       </div>
       <a class="quiet" href={LOGIN_URL} data-login>{t('cta.login')}</a>
-      <a class="btn btn-fill" href={signupUrl({ lang })}>{t('cta.trial')}</a>
+      <a class="btn btn-fill" href={path(lang, 'pricing/')}>{t('cta.trialNav')}</a>
     </div>
 
     {/* Shown below 980px. The panel repeats the nav plus everything that gets
@@ -53,7 +53,7 @@ const isCurrent = (m?: string) => (m ? here.includes(`/${m}`) : here === path(la
           <a href={path(lang, rest)} aria-current="true">{lang === 'en' ? 'EN' : 'ខ្មែរ'}</a>
           <a href={path(other, rest)}>{other === 'en' ? 'EN' : 'ខ្មែរ'}</a>
         </div>
-        <a class="btn btn-fill" href={signupUrl({ lang })} data-cta-m>{t('cta.trial')}</a>
+        <a class="btn btn-fill" href={path(lang, 'pricing/')} data-cta-m>{t('cta.trialNav')}</a>
       </div>
     </nav>
   </div>

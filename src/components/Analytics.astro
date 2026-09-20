@@ -1,0 +1,71 @@
+---
+/**
+ * Google Analytics 4 — G-PMVT8BRVKR
+ *
+ * Inline and unbundled on purpose: gtag has to be the tag Google publishes,
+ * and Astro must not rewrite or defer it.
+ *
+ * Two deliberate departures from the snippet Google hands you:
+ *
+ * 1. It only runs on the production hostnames below. The review tunnel and
+ *    localhost serve the same built files, so without this gate every internal
+ *    review click lands in the property as a real session. On a site with no
+ *    traffic history that distortion is not recoverable — you cannot tell your
+ *    own team apart from the market afterwards. Add a hostname here to switch
+ *    a new environment on.
+ *
+ * 2. It sends conversion events for the actions that actually matter here.
+ *    Nothing on this site is a form submit, so without these the property
+ *    records pageviews and nothing else — no way to see whether the trial CTA
+ *    or the Telegram CTA is doing the work. GA4's recommended names are used
+ *    (`sign_up`, `generate_lead`) so the standard reports pick them up.
+ *
+ * Note: this sets Google's _ga cookies. The privacy policy currently states the
+ * service "does not use these cookies explicitly" — that sentence needs a look
+ * from whoever owns the legal text.
+ */
+const GA_ID = 'G-PMVT8BRVKR';
+const PROD_HOSTS = ['vithean.com', 'www.vithean.com'];
+---
+<script is:inline define:vars={{ GA_ID, PROD_HOSTS }}>
+  if (PROD_HOSTS.indexOf(location.hostname) !== -1) {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+
+    /* One delegated listener rather than per-link handlers: the CTAs are
+       rendered in half a dozen components and a listener per link would miss
+       whichever one is added next. */
+    document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest && e.target.closest('a[href]');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+
+      if (href.indexOf('app.vithean.com/signup') !== -1) {
+        gtag('event', 'sign_up', {
+          method: href.indexOf('buyNow=true') !== -1 ? 'buy_now' : 'free_trial',
+          page_path: location.pathname,
+        });
+        return;
+      }
+      if (href.indexOf('t.me/') !== -1) {
+        gtag('event', 'generate_lead', { method: 'telegram', page_path: location.pathname });
+        return;
+      }
+      if (href.indexOf('tel:') === 0) {
+        gtag('event', 'generate_lead', { method: 'phone', page_path: location.pathname });
+        return;
+      }
+      if (href.indexOf('mailto:') === 0) {
+        gtag('event', 'generate_lead', { method: 'email', page_path: location.pathname });
+      }
+    }, true);
+  }
+</script>

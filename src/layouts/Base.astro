@@ -2,6 +2,7 @@
 import '@/styles/tokens.css';
 import SiteHeader from '@/components/SiteHeader.astro';
 import SiteFooter from '@/components/SiteFooter.astro';
+import Analytics from '@/components/Analytics.astro';
 import { getLangFromUrl, useTranslations, stripLang } from '@/i18n/utils';
 import { SITE, clampDescription, pageTitle } from '@/lib/seo';
 import company from '@/data/company.json';
@@ -88,6 +89,30 @@ const website = {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  {/*
+    Applies the stored theme before the first paint. It has to be inline and
+    synchronous in <head>: deferred or bundled, the browser paints the light
+    palette first and a dark-mode visitor sees a white flash on every
+    navigation. No stored choice means no attribute, which leaves the
+    prefers-color-scheme media query in charge — "System" is the default and
+    is not written to storage.
+  */}
+  <script is:inline>
+    try {
+      var m = localStorage.getItem('vth-theme');
+      if (m !== 'dark' && m !== 'light') {
+        /* Resolve the OS preference to a concrete value rather than leaving the
+           attribute off. PrimeVue themes its dark scheme from a single CSS
+           selector and cannot read a media query, so "no attribute" would leave
+           the Vue components light on a dark page — which is how the support
+           FAQ came out unreadable. */
+        m = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark' : 'light';
+      }
+      document.documentElement.dataset.theme = m;
+    } catch (e) { /* private mode: the CSS media query still covers the page */ }
+  </script>
+
   <title>{fullTitle}</title>
   <meta name="description" content={desc} />
   <link rel="canonical" href={canonical} />
@@ -126,6 +151,7 @@ const website = {
   <script type="application/ld+json" set:html={JSON.stringify(organisation)} />
   <script type="application/ld+json" set:html={JSON.stringify(website)} />
   {schemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+  <Analytics />
 </head>
 <body>
   <a href="#main" class="skip">{t('a11y.skip')}</a>
@@ -136,7 +162,7 @@ const website = {
 </html>
 
 <style is:global>
-  .skip{position:absolute; left:-9999px; top:0; background:var(--plum-600); color:#fff;
+  .skip{position:absolute; left:-9999px; top:0; background:var(--plum-600); color:var(--on-plum);
     padding:.6rem 1rem; z-index:100; border-radius:0 0 var(--r-sm) 0}
   .skip:focus{left:0}
 </style>

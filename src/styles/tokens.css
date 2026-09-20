@@ -41,6 +41,12 @@
   --color-ink-soft:   #7E798A;
   --color-line:        #EDEBF3;
   --color-line-strong: #DEDBE7;
+  /* The structural grey. Backs the hero and the closing band, and draws the
+     rule above the footer, so those three read as one system. Darker than
+     --line-strong on purpose: that one disappears against --tint-deep.
+     Carries the same plum cast as every other neutral here — a true #CCC has
+     no hue at all and reads as placeholder grey beside them. */
+  --color-field:       #CAC7D0;
 
   /* Compliance mark — CamInv and nothing else */
   --color-brass:      #8A6420;
@@ -82,6 +88,17 @@
   --ink-strong:var(--color-ink-strong); --ink:var(--color-ink);
   --ink-muted:var(--color-ink-muted); --ink-soft:var(--color-ink-soft);
   --line:var(--color-line); --line-strong:var(--color-line-strong);
+  --field:var(--color-field);
+  /* The page-header field. Only the masthead block of a page uses it —
+     applying it to every tinted band made the whole site grey. Light
+     only: in dark the surface ladder already separates, so header bands
+     stay on the canvas. */
+  --head:var(--field);
+  /* Partner artwork is dark ink on transparency — on a dark canvas several
+     marks (KICPAA, IFA) all but disappear. Rather than invert them, which
+     wrecks brand colour, dark mode sets a light plate behind each one.
+     Transparent in light, so the marks sit straight on the page. */
+  --logo-plate:transparent;
   --brass:var(--color-brass); --brass-tint:var(--color-brass-tint);
   --brass-line:var(--color-brass-line);
   --success:var(--color-success); --success-text:var(--color-success-text);
@@ -91,6 +108,65 @@
   --s1:.5rem; --s2:1rem; --s3:1.5rem; --s4:2rem; --s5:3rem; --s6:4rem; --s7:6rem;
   --r-sm:8px; --r-md:12px; --r-pill:9999px; --wrap:1180px;
   color-scheme:light;
+}
+
+/* ── dark theme ────────────────────────────────────────────────────────
+   Overrides the alias layer, never the @theme scale: @theme is Tailwind's
+   build-time palette, and rewriting it would change utility classes too.
+   Everything downstream reads the aliases, including the inlined SVG
+   diagrams, which is why those need no dark variants of their own.
+
+   Two things are deliberately flipped rather than merely darkened:
+
+   - --plum-600 goes LIGHTER. The codebase uses it both as a fill behind
+     --on-plum text and as a text colour on the canvas. At #6F3075 the text
+     use is unreadable on a dark canvas, so the pair swaps: the accent
+     lightens and --on-plum darkens, which keeps both uses legible without
+     touching a single rule.
+   - --field goes LIGHTER than --canvas. In light mode the hero field is
+     darker than the page; the point is contrast against the page, not
+     darkness, so in dark mode it has to rise instead of fall.
+
+   Order matters: the media query comes first so an explicit
+   [data-theme="dark"] still wins on a machine set to light. */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    /* A ladder, not a pair: --surface has to sit ABOVE --tint, or a card on a
+       tinted band is the same colour as the band and only its border
+       separates it — the dark-mode twin of white-card-on-white-page. */
+    --canvas:#141119; --tint:#1B1722; --tint-deep:#201B28;
+    --head:transparent;
+    --logo-plate:#F1EDF5;
+    --surface:#241E2D; --surface-muted:#2C2536;
+    --field:#2C2634;
+    --ink-strong:#F6F3F9; --ink:#D9D4E1; --ink-muted:#ABA4B8; --ink-soft:#8C8499;
+    --line:#2B2534; --line-strong:#3C3547;
+    --plum-50:#2A1F2E; --plum-100:#332438;
+    --plum-600:#C08FC6; --plum-700:#D3ADD8; --plum-500:#B27FB9;
+    --on-plum:#1A1720;
+    --brass:#D9B36A; --brass-tint:#2A2318; --brass-line:#4C3D22;
+    --success:#4ECB95; --success-text:#8FE3BC; --error:#FF6B95;
+  }
+}
+
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  /* A ladder, not a pair: --surface has to sit ABOVE --tint, or a card on a
+     tinted band is the same colour as the band and only its border separates
+     it — the dark-mode twin of white-card-on-white-page. */
+  --canvas:#141119; --tint:#1B1722; --tint-deep:#201B28;
+  --head:transparent;
+  --logo-plate:#F1EDF5;
+  --surface:#241E2D; --surface-muted:#2C2536;
+  --field:#2C2634;
+  --ink-strong:#F6F3F9; --ink:#D9D4E1; --ink-muted:#ABA4B8; --ink-soft:#8C8499;
+  --line:#2B2534; --line-strong:#3C3547;
+  --plum-50:#2A1F2E; --plum-100:#332438;
+  --plum-600:#C08FC6; --plum-700:#D3ADD8; --plum-500:#B27FB9;
+  --on-plum:#1A1720;
+  --brass:#D9B36A; --brass-tint:#2A2318; --brass-line:#4C3D22;
+  --success:#4ECB95; --success-text:#8FE3BC; --error:#FF6B95;
 }
 
 /* ── Components. Ported from the approved prototype. ─────────────────── */
@@ -163,23 +239,65 @@ p{margin:0} a{color:inherit} img,svg{max-width:100%}
 .btn-lg{padding:.8rem 1.5rem}
 
 /* ── bands ── */
-.band{padding:var(--s7) 0}
+/* --s6 by default, --s7 only where a section is meant to land as a moment.
+   Every band at --s7 gave the whole site one flat rhythm and made the
+   homepage run to eight screens. */
+.band{padding:var(--s6) 0}
 .band-tint{background:var(--tint)}
-.band-brass{background:var(--brass-tint); border-block:1px solid var(--brass-line)}
+/* A page's masthead: eyebrow, h1 and lead on the same field the homepage
+   hero uses, so an inner page opens the way the home page does. */
+.band-head{background:var(--head)}
+.band-brass{background:var(--brass-tint); border-block:1px solid var(--brass-line); padding:var(--s7) 0}
+/* The closing call to action. Carries the hero's grey so the page opens and
+   closes on the same field instead of trailing off into white, and drops to
+   --s5 because --s7 top and bottom left it floating in empty space. The card
+   inside keeps its own near-white surface, so nothing sits on the grey. */
+.band-close{background:var(--field); padding:var(--s5) 0}
+/* On the grey field the card should read as part of it, not as a panel sitting
+   on top. Colour only: the border keeps its 1px in the box model so nothing
+   shifts, and `transparent` inherits the band rather than repeating the hex.
+   Every page that closes on a .close pairs it with .band-close — check-content
+   fails the build if one appears without the other. */
+/* padding:0 matters as much as the colour. With no surface of its own the card
+   is only a flex row, and its inset pushed the heading 64px right of the
+   margin every other section and the footer align to. The band's --s5 now
+   supplies the vertical space the card's padding used to. */
+.band-close .close{background:transparent; border-color:transparent; padding:0}
 .band-h{font-size:clamp(1.7rem,3vw,2.3rem); font-weight:800; letter-spacing:-.03em; max-width:22ch}
 .band-p{margin-top:var(--s2); color:var(--ink); max-width:58ch}
 .page{display:none} .page.on{display:block}
 
 /* ── hero ── */
+/* Flat mid-grey rather than the old lavender fade: the dashboard shot is a
+   white-backed screenshot and needs a darker field behind it to read as a
+   product rather than as part of the page. */
 .hero{padding:var(--s5) 0 var(--s6);
-  background:linear-gradient(180deg,#F2E7F4 0%,#F9F4FA 42%,var(--canvas) 100%);
-  border-bottom:1px solid var(--line)}
+  background:var(--field);
+  border-bottom:1px solid var(--line-strong)}
+/* Keeps the shared .eyebrow colour. An earlier note here claimed --ink-muted
+   failed contrast on the field; the rule is --plum-600, which reaches 5.6:1
+   on it and passes. Overriding it had only made the hero the one eyebrow on
+   the site that was not plum. */
 .hero .eyebrow{margin-bottom:.85rem}
 .hero-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.02fr); gap:var(--s6); align-items:start}
-.hero h1{font-size:clamp(2.4rem,4.6vw,3.55rem); font-weight:800; letter-spacing:-.035em}
+/* Sized to outrank .band-h (max 2.3rem), which it did not at 1.55rem — the
+   homepage headline had become the smallest h1 on the site and smaller than
+   its own section headings. Still well under the old 3.55rem that made the
+   block too tall. Root is 18px here, so this is 39–47px. */
+.hero h1{font-size:clamp(2.2rem,3.4vw,2.6rem); font-weight:800; letter-spacing:-.028em}
 .hero h1 em{font-style:normal; color:var(--plum-600)}
 .hero-sub{margin-top:var(--s3); font-size:1.2rem; color:var(--ink); max-width:34ch}
 .hero-cta{margin-top:var(--s4); display:flex; gap:.75rem; flex-wrap:wrap}
+/* The hero screenshot. The ratio is set inline from the file's real header
+   (see lib/imageSize), not hardcoded here, so replacing the image cannot
+   leave a stale placeholder shape behind. It holds the space before the
+   image decodes, so the CTAs below it do not jump. The border and radius
+   stop a white-backed shot from bleeding into a white page. */
+.hero-shot{display:block; width:100%; height:auto;
+  border:1px solid rgb(26 23 32/.14); border-radius:var(--radius-md);
+  /* Lifts the white shot off the grey field instead of letting it sit flat. */
+  box-shadow:0 1px 2px rgb(26 23 32/.08), 0 8px 24px rgb(26 23 32/.12);
+  background:var(--surface-muted)}
 .provenance{margin-top:var(--s5); padding-top:var(--s3); border-top:1px solid var(--line);
   font-size:.95rem; color:var(--ink); max-width:44ch}
 .provenance strong{color:var(--ink-strong); font-weight:600}
@@ -238,7 +356,7 @@ p{margin:0} a{color:inherit} img,svg{max-width:100%}
 .caminv .eyebrow{color:var(--brass)} .caminv .eyebrow::after{background:var(--brass-line)}
 .flow{width:100%; height:auto}
 .flow .box{fill:var(--surface); stroke:var(--line-strong)}
-.flow .box-b{fill:#FBF6EA; stroke:var(--brass-line)}
+.flow .box-b{fill:var(--brass-tint); stroke:var(--brass-line)}
 .flow .lbl{fill:var(--ink-strong); font:600 14.5px var(--sans)}
 .flow .sub{fill:var(--ink-muted); font:400 12.5px var(--sans)}
 .flow .arw{stroke:var(--plum-600); stroke-width:1.6; fill:none; marker-end:url(#ah)}
@@ -272,7 +390,8 @@ p{margin:0} a{color:inherit} img,svg{max-width:100%}
 /* ── pricing ── */
 .price-head{display:flex; justify-content:space-between; align-items:flex-end; gap:var(--s3); flex-wrap:wrap}
 .plans{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--s3); margin-top:var(--s5)}
-.plan{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md);
+.plan{background:var(--surface); border:1px solid var(--line-strong); border-radius:var(--r-md);
+  box-shadow:var(--shadow-card);
   padding:1.45rem; display:flex; flex-direction:column; box-shadow:var(--shadow-card)}
 .plan-best{border:1.5px solid var(--plum-600); position:relative; transform:translateY(-6px);
   box-shadow:0 2px 4px rgb(29 26 34/.04), 0 20px 40px -20px rgb(74 32 80/.35)}
@@ -297,7 +416,8 @@ p{margin:0} a{color:inherit} img,svg{max-width:100%}
 .plan .btn{width:100%}
 .priceline{margin-top:var(--s3); font-size:.95rem; color:var(--ink); max-width:64ch}
 .addons{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--s2); margin-top:var(--s3)}
-.addon{background:var(--surface); border:1px solid var(--line); border-radius:var(--r-sm);
+.addon{background:var(--surface); border:1px solid var(--line-strong); border-radius:var(--r-sm);
+  box-shadow:var(--shadow-card);
   padding:1rem 1.1rem; box-shadow:var(--shadow-card)}
 .addon h4{font-size:1rem; margin-bottom:.3rem}
 .addon .per{font-size:.87rem; color:var(--ink-muted)}
@@ -378,7 +498,11 @@ p{margin:0} a{color:inherit} img,svg{max-width:100%}
   padding:.62rem 1.15rem; border-bottom:1px solid var(--line-strong); position:static}
 .plan-note{margin-top:var(--s4); font-size:.95rem; color:var(--ink); display:grid; gap:.45rem; max-width:70ch}
 
-.subnav{background:var(--tint); border-bottom:1px solid var(--line-strong)}
+/* One step deeper than the header, which is also --tint: at the same value
+   the two merged into a single undifferentiated slab and the product bar
+   never read as its own control. Bordered top and bottom so it is bounded
+   against the header above and the page below. */
+.subnav{background:var(--tint-deep); border-block:1px solid var(--line-strong)}
 .subnav-in{display:flex; gap:.4rem; padding-block:.7rem; overflow-x:auto}
 .subnav button{font:inherit; font-size:.94rem; font-weight:600; white-space:nowrap;
   padding:.42rem .95rem; border-radius:var(--r-pill); border:1px solid transparent;
@@ -461,11 +585,17 @@ p{margin:0} a{color:inherit} img,svg{max-width:100%}
   border-radius:var(--r-pill); border:1px solid var(--line-strong); background:var(--surface);
   color:var(--ink-muted); cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--plum-600); border-color:var(--plum-600); color:var(--on-plum)}
-.articles{margin-top:var(--s4); border-top:3px double var(--line-strong)}
+/* Cards on the band's field rather than rows divided by hairlines. As a
+   ruled list on the tinted band each item had no surface of its own, and the
+   hover colour was the band colour, so hovering did nothing at all. */
+.articles{margin-top:var(--s4); display:grid; gap:.7rem}
 .article{display:grid; grid-template-columns:7.5rem minmax(0,1fr) auto; gap:var(--s3);
-  padding:1.3rem .3rem; border-bottom:1px solid var(--line); align-items:baseline;
-  text-decoration:none; transition:background .12s}
-.article:hover{background:var(--tint)}
+  padding:1.15rem 1.2rem; align-items:baseline; text-decoration:none;
+  background:var(--surface); border:1px solid var(--line-strong);
+  border-radius:var(--r-md); box-shadow:var(--shadow-card);
+  transition:border-color .12s, box-shadow .12s, transform .12s}
+.article:hover{border-color:var(--plum-600); box-shadow:var(--shadow-soft);
+  transform:translateY(-1px)}
 .article time{font-size:.92rem; color:var(--ink-muted); font-variant-numeric:tabular-nums}
 .article h3{font-size:1.1rem; font-weight:600}
 .article p{font-size:.95rem; color:var(--ink-muted); margin-top:.35rem}
@@ -482,7 +612,7 @@ p{margin:0} a{color:inherit} img,svg{max-width:100%}
   gap:var(--s4); flex-wrap:wrap}
 .close h2{font-size:clamp(1.5rem,2.6vw,2rem); max-width:20ch}
 .close p{margin-top:.6rem; color:var(--ink); font-size:1.03rem}
-.ftr{background:var(--tint-deep); border-top:1px solid var(--line-strong); padding:var(--s6) 0 var(--s4)}
+.ftr{background:var(--tint-deep); border-top:1px solid var(--field); padding:var(--s6) 0 var(--s4)}
 .ftr-grid{display:grid; grid-template-columns:1.5fr repeat(3,1fr); gap:var(--s4)}
 .ftr img{height:30px; width:auto}
 .ftr h4{font-size:.82rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;

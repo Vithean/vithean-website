@@ -1,18 +1,25 @@
 ---
 import { getCollection } from 'astro:content';
-import { useTranslations, pick, signupUrl, path, type Lang } from '@/i18n/utils';
+import { useTranslations, pick, planName, signupUrl, path, type Lang } from '@/i18n/utils';
 
 interface Props {
   plan: any;
   lang: Lang;
-  /** Show every feature rather than the highlights — the pricing page. */
+  /** Show every feature rather than the highlights — the homepage does not. */
   full?: boolean;
+  /**
+   * Authored summary in place of the feature list. The pricing page uses it so
+   * the cards stay scannable and the matrix below is the place to compare in
+   * detail. `{users}` in an item is filled from the plan's own seat count.
+   */
+  summary?: { who: string; items: string[] };
   /** Offer "Buy now" beside the trial. vithean.com does this on pricing only. */
   showBuy?: boolean;
 }
-const { plan, lang, full = false, showBuy = false } = Astro.props;
+const { plan, lang, full = false, showBuy = false, summary } = Astro.props;
 const t = useTranslations(lang);
 const feats = full ? plan.features : plan.features.filter((f: any) => f.highlight);
+const items = summary?.items.map((i) => i.replace('{users}', String(plan.limits.users)));
 const money = (n: number) => '$' + (Number.isInteger(n) ? n : n.toFixed(2));
 
 /**
@@ -29,18 +36,22 @@ const buy = { packageId: plan.packageId, lang, promoCode };
 ---
 <div class={`plan${plan.recommended ? ' plan-best' : ''}`}>
   {plan.recommended && <span class="plan-badge">{t('price.mostChosen')}</span>}
-  <h3>{pick(plan.name, lang)}</h3>
-  <p class="who">{pick(plan.tagline, lang)}</p>
+  <h3>{planName(plan, lang)}</h3>
+  <p class="who">{summary ? summary.who : pick(plan.tagline, lang)}</p>
   <p class="amt">
     <span class="from">{t('price.from')}</span>
     <b class="fig">{money(plan.price.monthlyBase)}</b>
     <span>{t('price.month')}</span>
   </p>
-  <p class="seats fig">{plan.limits.users} {t('price.users')}</p>
+  {/* The seat count is a summary item when one is authored, so it is not
+      also printed on its own line. */}
+  {!items && <p class="seats fig">{plan.limits.users} {t('price.users')}</p>}
   <ul>
-    {feats.map((f: any) => (
-      <li class={f.included ? (f.id === 'caminv' ? 'brass' : 'on') : ''}>{pick(f.label, lang)}</li>
-    ))}
+    {items
+      ? items.map((i: string) => <li class="on">{i}</li>)
+      : feats.map((f: any) => (
+          <li class={f.included ? (f.id === 'caminv' ? 'brass' : 'on') : ''}>{pick(f.label, lang)}</li>
+        ))}
   </ul>
   <div class="plan-cta">
     {/* The trial leads: it is the lower-commitment action, and the recommended
