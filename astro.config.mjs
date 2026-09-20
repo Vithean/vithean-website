@@ -4,6 +4,9 @@ import vue from '@astrojs/vue';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
+const PREVIEW_HOSTS = (process.env.VITHEAN_PREVIEW_HOSTS ?? '')
+  .split(',').map((h) => h.trim()).filter(Boolean);
+
 /**
  * Static build for GitHub Pages.
  *
@@ -26,8 +29,8 @@ export default defineConfig({
    * treats that as a redirect and passes signals, but it is weaker and slower
    * than a true 301.
    *
-   * To get real 301s, put a CDN or reverse proxy in front of the domain and move
-   * this map into a Bulk Redirect list. The map below stays the source of
+   * To get real 301s, put a CDN or reverse proxy in front of the domain and
+   * move this map into its redirect rules. The map below stays the source of
    * truth either way.
    */
   redirects: {
@@ -109,16 +112,19 @@ export default defineConfig({
 
   vite: {
     // Vite 403s any Host header it was not told about ("Blocked request. This
-    // host is not allowed."), so the dev tunnel hostname has to be listed on
-    // both servers or https://preview.example returns 403 while
-    // http://localhost:4331 works fine. Dev/preview only — the published static
-    // build on GitHub Pages has no server and ignores all of this.
+    // host is not allowed."), so a host used to reach the dev or preview server
+    // from outside has to be named. Set VITHEAN_PREVIEW_HOSTS (comma separated)
+    // in the environment that serves it; localhost never needs listing. Kept
+    // out of the file so an internal hostname is not published here.
+    //
+    // Dev/preview only — the published static build has no server and ignores
+    // all of this.
     preview: {
       port: 4331,
-      allowedHosts: ['preview.example'],
+      allowedHosts: PREVIEW_HOSTS,
     },
     server: {
-      allowedHosts: ['preview.example'],
+      allowedHosts: PREVIEW_HOSTS,
     },
     plugins: [tailwindcss()],
     ssr: { noExternal: ['primevue', '@primeuix/themes'] },

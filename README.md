@@ -275,7 +275,7 @@ listed in `redirects` in `astro.config.mjs`.
 > `noindex`. Google treats that as a redirect and passes signals, but it is weaker and slower than
 > a true 301.
 >
-> **To get real 301s**, put a CDN or reverse proxy in front of the domain and move the map into a Bulk
+> **To get real 301s**, put a CDN or reverse proxy in front of the domain and move the map into its
 > Redirect list. The map in `astro.config.mjs` stays the source of truth either way.
 
 ---
