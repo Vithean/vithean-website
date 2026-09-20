@@ -12,7 +12,7 @@ sourceUrl: "https://ri.tsc.gov.kh"
 
 <figure>
   <img src="/assets/news/reverse-innovation-cohort-6.jpg" width="1280" height="719"
-       alt="Reverse Innovation Cohort 6 announcement graphic listing the nine selected startups, including VitheanPoscar Digital Co., Ltd." />
+       alt="Reverse Innovation Cohort 6 announcement graphic listing the nine selected startups, including Vithean (POSCAR Digital Co., Ltd.)" />
   <figcaption>The nine startups advancing to the Acceleration Phase of Reverse Innovation Cohort 6.</figcaption>
 </figure>
 
@@ -24,7 +24,7 @@ Reverse Innovation is a **three-month accelerator** that supports startups in de
 
 It is organised by the **Ministry of Economy and Finance** and **Techo Startup Center**, and co-organised by the **Ministry of Industry, Science, Technology & Innovation** and **Khmer Enterprise**.
 
-The nine teams advancing in Cohort 6 are XOFFICE, GOLOCA, TOBSAR, AAP FARM, VitheanPoscar Digital Co., Ltd., SV.CY (Cambodia) IM-EX Co., Ltd, KAPPY, SADA Solution Co., Ltd and Dojology Media Network.
+The nine teams advancing in Cohort 6 are XOFFICE, GOLOCA, TOBSAR, AAP FARM, Vithean (POSCAR Digital Co., Ltd.), SV.CY (Cambodia) IM-EX Co., Ltd, KAPPY, SADA Solution Co., Ltd and Dojology Media Network.
 
 ## Why it matters to us
 
