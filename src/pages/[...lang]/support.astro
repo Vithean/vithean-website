@@ -16,7 +16,7 @@ const site = Astro.site ?? new URL('https://vithean.com');
 const faq = support.faq.map((f) => ({
   id: f.id, category: f.category, q: pick(f.q, lang), a: pick(f.a, lang),
 }));
-const hours = `${pick(support.officeHours.days, lang)}, ${pick(support.officeHours.hours, lang)}`;
+const hours = pick(support.officeHours.phrase, lang);
 /** Grouped rather than filtered — every answer stays in the static HTML. */
 const groups = support.faqCategories.map((c) => ({
   id: c.id,

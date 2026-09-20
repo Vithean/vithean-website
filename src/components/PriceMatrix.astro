@@ -55,7 +55,14 @@ const uniform = (id: string) => plans.every((p) => has(p, id)) || plans.every((p
     <tbody>
       {groups.map((g) => (
         <>
-          <tr class="group"><th colspan={plans.length + 1} scope="colgroup">{pick(g.label, lang)}</th></tr>
+          {/* One cell per column rather than a colspan: a band that spans the
+              whole width cuts the recommended column's rail into segments. */}
+          <tr class="group">
+            <th scope="colgroup">{pick(g.label, lang)}</th>
+            {plans.map((p) => (
+              <td class={`mx-band${p.recommended ? ' best' : ''}`} aria-hidden="true"></td>
+            ))}
+          </tr>
           {g.items.map((row: any) => (
             <tr class={uniform(row.id) ? 'same' : 'differs'}>
               <th scope="row">{pick(row.label, lang)}</th>

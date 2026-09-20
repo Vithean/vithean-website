@@ -66,9 +66,17 @@ const others = all.filter((p) => p.id !== entry.id).slice(0, 3);
         <p class="eyebrow">{L.eyebrow}</p>
         <h1 class="band-h">{L.title}</h1>
         <p class="band-p" style="font-size:1.1rem">{L.lead}</p>
-        <p class="tiers">{c(copy.product.includedIn, lang)} {availability.map((a, i) => (
-          <>{i > 0 && ' · '}{a.label}: <b>{a.where}</b></>
-        ))}</p>
+        <div class="tiers">
+          <p class="tiers-lead">{c(copy.product.includedIn, lang)}</p>
+          <ul class="tier-list">
+            {availability.map((a) => (
+              <li class="tier">
+                <span class="tier-feat">{a.label}</span>
+                <b class="tier-plans">{a.where}</b>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
       <div>
         <Zoomable>

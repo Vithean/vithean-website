@@ -13,6 +13,26 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const photoName = (p: string) => p.split('/').pop();
 const storyParas = pick(company.story.body, lang).split('\n\n');
+/* The first paragraph is about the maker, the second about the practice
+   partner, so each carries that company's mark. The third has no owner. */
+const storyMarks = [
+  { src: company.maker.logo, alt: company.maker.legalName, href: company.maker.url,
+    h: company.maker.logoHeight },
+  { src: company.partnerFirm.logo, alt: company.partnerFirm.name, href: company.partnerFirm.url,
+    h: company.partnerFirm.logoHeight },
+];
+/* The mark shown here is Vithean's; the company names inside the line link
+   out individually, so the whole line is not one big off-site link. */
+const esc = (t: string) => t.replace(/&/g, '&amp;');
+const makerHtml = [
+  [company.maker.legalName, company.maker.url],
+  [company.partnerFirm.name, company.partnerFirm.url],
+].reduce((html, [name, url]) => (
+  url && name
+    ? html.replace(esc(name), `<a href="${url}" target="_blank" rel="noopener">${esc(name)}</a>`)
+    : html
+), esc(pick(company.maker.line, lang)));
+
 const mvv = [
   { h: c(copy.company.mvv[0], lang), body: pick(company.mission, lang) },
   { h: c(copy.company.mvv[1], lang), body: pick(company.vision, lang) },
@@ -24,14 +44,25 @@ const mvv = [
   <section class="band" style="padding-bottom:var(--s5)"><div class="wrap story">
     <div>
       <p class="eyebrow">{t('nav.company')}</p>
-      <a class="maker" href={company.maker.url} target="_blank" rel="noopener">
-        <img src={company.maker.logo} alt={company.maker.legalName} height="26" loading="lazy" />
-        <span>{pick(company.maker.line, lang)}</span>
-      </a>
+      <p class="maker">
+        <img src="/assets/logo-full.png" alt="Vithean" width="440" height="129" />
+        <span set:html={makerHtml} />
+      </p>
       <h1 class="band-h">{pick(company.story.lead, lang)}</h1>
     </div>
     <div style="font-size:1.05rem">
-      {storyParas.map((p) => <p style="margin-top:1rem">{p}</p>)}
+      {storyParas.map((para, i) => (
+        <div class="story-para">
+          {storyMarks[i] && (
+            <a class="story-mark" href={storyMarks[i].href} target="_blank" rel="noopener"
+               aria-label={storyMarks[i].alt}>
+              <img src={storyMarks[i].src} alt={storyMarks[i].alt} loading="lazy"
+                   style={`height:${storyMarks[i].h}px`} />
+            </a>
+          )}
+          <p>{para}</p>
+        </div>
+      ))}
     </div>
   </div></section>
 
@@ -107,13 +138,37 @@ const mvv = [
 <style>
   /* The maker, stated once and plainly. Vithean is a POSCAR Digital product;
      everyone else on this page is a partner, which is a different thing. */
-  .maker{display:inline-flex; align-items:center; gap:.75rem; margin-bottom:1.1rem;
-    text-decoration:none; color:var(--ink-muted); font-size:.95rem}
+  .maker{display:inline-flex; align-items:center; gap:.8rem; margin:0 0 1.1rem;
+    color:var(--ink-muted); font-size:.95rem}
   .maker img{height:26px; width:auto; display:block}
-  .maker:hover span{color:var(--ink-strong)}
-  .maker:focus-visible{outline:2px solid var(--plum-600); outline-offset:3px; border-radius:4px}
+  /* :global — the anchor is injected with set:html, so it carries no scope
+     attribute and a scoped selector would never match it. */
+  .maker :global(a){color:var(--plum-600); font-weight:600; text-decoration:none}
+  .maker :global(a:hover){text-decoration:underline}
+  .maker :global(a:focus-visible){outline:2px solid var(--plum-600); outline-offset:3px; border-radius:4px}
   .person .av{width:66px; height:66px; border-radius:var(--r-pill); object-fit:cover;
     margin-bottom:.9rem; border:2px solid var(--plum-100); display:block}
+  /* flow-root, not overflow:hidden — the mark inside is floated and has to be
+     contained, but the paragraph must not become its own scroll container. */
+  .story-para{margin-top:1.15rem; display:flow-root}
+  .story-para p{margin:0}
+  /* The mark sits in the text rather than above it. A fixed box height means
+     both marks displace the same two lines despite being different shapes,
+     and each image is centred in that box at its own optical size. */
+  /* `lh` resolves against the inherited line-height, so this is two of the
+     paragraph's own line boxes. It is what clears on the third line, not the
+     border box, so the bottom margin has to stay at zero and the height a few
+     pixels short — a half-pixel over and a third line gets indented. */
+  .story-mark{float:left; display:flex; align-items:center; justify-content:center;
+    height:3.15em; margin:0 1.05rem 0 0}
+  @supports (height: 1lh){ .story-mark{height:calc(2lh - 4px)} }
+  .story-mark img{width:auto; display:block}
+  /* Below this width the column is too narrow to give up 160px to a float. */
+  @media (max-width:560px){
+    .story-mark{float:none; justify-content:flex-start; height:auto; margin:0 0 .6rem}
+  }
+  .story-mark:focus-visible{outline:2px solid var(--plum-600); outline-offset:3px; border-radius:4px}
+
   .mvv-h{font-size:.82rem; letter-spacing:.11em; text-transform:uppercase;
     color:var(--plum-600); margin-bottom:.7rem}
   .mail{color:var(--plum-600); font-weight:600}

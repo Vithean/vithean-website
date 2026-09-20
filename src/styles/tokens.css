@@ -307,14 +307,19 @@ p{margin:0} a{color:inherit} img,svg{max-width:100%}
      propagated scrollable width to the document, so the whole page scrolled
      sideways on a phone. Containment stops that at this box. */
   contain:paint}
-.matrix{width:100%; border-collapse:collapse; font-size:.97rem; min-width:660px}
+.matrix{width:100%; font-size:.97rem; min-width:660px;
+  /* `separate` (with no spacing) rather than `collapse`: collapsed borders
+     cannot carry a radius, and the recommended rail should be rounded like
+     the plan cards above it. Cells draw only a bottom edge, so nothing
+     doubles up. */
+  border-collapse:separate; border-spacing:0}
 .matrix caption{text-align:left; font-size:.79rem; font-weight:700; letter-spacing:.1em;
-  text-transform:uppercase; color:var(--ink-muted); padding:0 0 .7rem}
+  text-transform:uppercase; color:var(--ink-muted); padding:1.05rem 1.15rem .85rem}
 
 /* ── plan header ──────────────────────────────────────────────────────
    Carries the price, the seats and a CTA. A reader who has scrolled this
    far should be able to decide here rather than scroll back up. */
-.matrix thead th{padding:1.15rem 1rem 1.25rem; vertical-align:bottom;
+.matrix thead th{padding:1.3rem 1.15rem 1.35rem; vertical-align:bottom;
   background:var(--surface-muted); border-bottom:1px solid var(--line-strong)}
 .mx-corner{font-size:.78rem; letter-spacing:.09em; text-transform:uppercase;
   color:var(--ink-muted); text-align:left; vertical-align:bottom}
@@ -331,7 +336,7 @@ p{margin:0} a{color:inherit} img,svg{max-width:100%}
 .mx-cta{margin-top:.8rem; width:100%; text-align:center; padding:.42rem .7rem; font-size:.86rem}
 
 /* ── body ─────────────────────────────────────────────────────────── */
-.matrix th,.matrix td{padding:.62rem 1rem; text-align:left; border-bottom:1px solid var(--line)}
+.matrix th,.matrix td{padding:.8rem 1.15rem; text-align:left; border-bottom:1px solid var(--line)}
 .matrix tbody th{font-weight:400; color:var(--ink); width:auto}
 /* Keeps the feature name in view while the marks scroll sideways on a phone. */
 .matrix tbody th[scope="row"],.matrix thead th:first-child{position:sticky; left:0; z-index:1}
@@ -339,7 +344,7 @@ p{margin:0} a{color:inherit} img,svg{max-width:100%}
 .matrix thead th:first-child{background:var(--surface-muted)}
 .matrix td{text-align:center; width:11.5rem}
 /* Narrow screens: the marks matter more than a wide label column. */
-@media (max-width:900px){ .matrix td{width:7.5rem} .matrix th,.matrix td{padding-inline:.75rem} }
+@media (max-width:900px){ .matrix td{width:7.5rem} .matrix th,.matrix td{padding-inline:.85rem} }
 .matrix tbody tr:hover th[scope="row"]{background:var(--tint)}
 .matrix tbody tr:hover td{background:rgb(111 48 117/.045)}
 .matrix tbody tr:last-child th,.matrix tbody tr:last-child td{border-bottom:0}
@@ -352,16 +357,25 @@ p{margin:0} a{color:inherit} img,svg{max-width:100%}
 .matrix tr.differs th[scope="row"]{color:var(--ink-strong); font-weight:500}
 
 /* ── the recommended column, as one rail ──────────────────────────── */
+/* The rail now runs every row, group bands included, so the tint carries the
+   eye down the column and the border is a quiet edge rather than the whole
+   effect. Rounded to --r-md, the same corner the plan cards use. */
 .matrix .best{background:var(--plum-50); border-left:1.5px solid var(--plum-600);
   border-right:1.5px solid var(--plum-600)}
-.matrix thead th.best{border-top:1.5px solid var(--plum-600)}
-.matrix tbody tr:last-child td.best{border-bottom:1.5px solid var(--plum-600)}
+.matrix thead th.best{border-top:1.5px solid var(--plum-600);
+  border-top-left-radius:var(--r-md); border-top-right-radius:var(--r-md)}
+.matrix tbody tr:last-child td.best{border-bottom:1.5px solid var(--plum-600);
+  border-bottom-left-radius:var(--r-md); border-bottom-right-radius:var(--r-md)}
 .matrix tbody tr:hover td.best{background:var(--plum-100)}
+/* The band's own tint would flatten the rail, so inside a band the rail keeps
+   its colour and only the label cell takes the band. */
+.matrix tr.group td.mx-band{background:var(--tint); border-bottom:1px solid var(--line-strong)}
+.matrix tr.group td.mx-band.best{background:var(--plum-100)}
 
 /* ── group bands ──────────────────────────────────────────────────── */
 .matrix tr.group th{font-weight:700; color:var(--ink-strong); font-size:.78rem;
   letter-spacing:.09em; text-transform:uppercase; background:var(--tint);
-  padding:.5rem 1rem; border-bottom:1px solid var(--line-strong); position:static}
+  padding:.62rem 1.15rem; border-bottom:1px solid var(--line-strong); position:static}
 .plan-note{margin-top:var(--s4); font-size:.95rem; color:var(--ink); display:grid; gap:.45rem; max-width:70ch}
 
 .subnav{background:var(--tint); border-bottom:1px solid var(--line-strong)}
@@ -373,8 +387,18 @@ p{margin:0} a{color:inherit} img,svg{max-width:100%}
 .subnav button[aria-pressed="true"]{background:var(--plum-600); color:var(--on-plum)}
 .prod-head{display:grid; grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
   gap:var(--s6); align-items:start}
-.tiers{margin-top:var(--s3); font-size:.94rem; color:var(--ink-muted)}
-.tiers b{color:var(--plum-700)}
+/* ── which plans carry this feature ───────────────────────────────────
+   A run-on sentence made the reader parse punctuation to find their plan.
+   One item per feature, with the plan names on their own line under the
+   feature they belong to, is read at a glance instead. */
+.tiers{margin-top:var(--s3)}
+.tiers-lead{font-size:.82rem; font-weight:700; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--ink-muted)}
+.tier-list{display:grid; grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));
+  gap:.55rem 1.4rem; margin-top:.7rem; list-style:none; padding:0}
+.tier{display:grid; gap:.1rem; padding-left:.75rem; border-left:2px solid var(--plum-200)}
+.tier-feat{font-size:.9rem; color:var(--ink-muted)}
+.tier-plans{font-size:.95rem; font-weight:700; color:var(--plum-700)}
 .points{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--s3); margin-top:var(--s6);
   border-top:3px double var(--line-strong); padding-top:var(--s4)}
 .point h3{font-size:1.1rem} .point p{margin-top:.4rem; color:var(--ink)}

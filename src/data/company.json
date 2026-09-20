@@ -8,7 +8,10 @@
   "partnerFirm": {
     "name": "Fii & Associates",
     "role": "Accounting practice partner — co-builds the functional design",
-    "note": "An accounting and audit firm and a shareholder. Its practitioners shape what the system has to do; POSCAR builds and owns it. Do not describe Fii as a co-maker of the company or the software."
+    "note": "An accounting and audit firm and a shareholder. Its practitioners shape what the system has to do; POSCAR builds and owns it. Do not describe Fii as a co-maker of the company or the software.",
+    "url": "https://fii-a.com/",
+    "logo": "/assets/partners/fii-associates.png",
+    "logoHeight": 52
   },
   "provenance": {
     "en": "Built in Cambodia by POSCAR Digital Co., Ltd.",
@@ -20,9 +23,10 @@
       "km": "POSCAR Digital បង្កើត វិធាន — ដោយមានគណនេយ្យករជំនាញរួមរៀបចំមុខងារ"
     },
     "body": {
-      "en": "POSCAR Digital Co., Ltd. is a trusted Cambodian software provider powering school, university, HR, and attendance management systems nationwide. Vithean is POSCAR's flagship accounting and ERP platform, co-developed with FII & Associates.\n\nPartnering with leading Cambodian accounting and auditing firm FII & Associates, experienced practitioners help shape every workflow. That is why our general ledger behaves exactly as accountants expect and mirrors how local businesses actually operate.\n\nWe are not a foreign product relying on local resellers, nor an agency tinkering with software. We build, support, and implement the system directly alongside your team — ensuring complete data ownership and expert local support.",
+      "en": "POSCAR Digital Co., Ltd. is a trusted Cambodian software provider powering school, university, HR, and attendance management systems nationwide. Vithean is POSCAR's flagship accounting and ERP platform, co-developed with Fii & Associates.\n\nPartnering with leading Cambodian accounting and auditing firm Fii & Associates, experienced practitioners help shape every workflow. That is why our general ledger behaves exactly as accountants expect and mirrors how local businesses actually operate.\n\nWe are not a foreign product relying on local resellers, nor an agency tinkering with software. We build, support, and implement the system directly alongside your team — ensuring complete data ownership and expert local support.",
       "km": "វិធាន ត្រូវបានបង្កើត និងគាំទ្រដោយក្រុមហ៊ុន POSCAR Digital Co., Ltd. ដែលជាក្រុមហ៊ុនកម្មវិធីកម្ពុជា ហើយក៏បង្កើតប្រព័ន្ធគ្រប់គ្រងសាលារៀន សាកលវិទ្យាល័យ ធនធានមនុស្ស និងវត្តមាន ដែលប្រើប្រាស់នៅទូទាំងប្រទេស។ វិធាន ជាផលិតផលគណនេយ្យ និង ERP របស់ខ្លួន។\n\nក្រុមហ៊ុន Fii & Associates ដែលជាក្រុមហ៊ុនគណនេយ្យ និងសវនកម្មកម្ពុជា គឺជាដៃគូវិជ្ជាជីវៈគណនេយ្យរបស់ វិធាន៖ អ្នកជំនាញរបស់ខ្លួនរួមរៀបចំមុខងាររបស់ប្រព័ន្ធ។ នេះជាមូលហេតុដែលបញ្ជីគណនេយ្យដំណើរការតាមអ្វីដែលគណនេយ្យករគិត ហើយលំហូរការងារត្រូវនឹងរបៀបដែលអាជីវកម្មកម្ពុជាដំណើរការពិតប្រាកដ — ដោយសារអ្នកដែលធ្វើសវនកម្ម និងកាន់បញ្ជីគណនេយ្យជាអាជីព ជាអ្នកកំណត់ថាប្រព័ន្ធត្រូវធ្វើអ្វីខ្លះ។\n\nយើងមិនមែនជាផលិតផលបរទេសដែលមានអ្នកលក់បន្តក្នុងស្រុកទេ ហើយក៏មិនមែនជាសេវាកម្មកាន់បញ្ជីដែលសរសេរកម្មវិធីផងដែរ។ យើងបង្កើត និងគាំទ្រប្រព័ន្ធ យើងដំឡើងវាជាមួយលោកអ្នក ហើយបញ្ជីគណនេយ្យនៅតែជារបស់លោកអ្នក។"
-    }
+    },
+    "marksNote": "The first two paragraphs carry the maker mark and the practice-partner mark respectively. Order matters: keep the POSCAR paragraph first and the Fii paragraph second. Each mark floats beside its opening lines, so logoHeight is per-mark: the two source files are cropped differently (Fii's square canvas has padding baked in) and they need different heights to read at the same weight."
   },
   "mission": {
     "en": "To create a user-friendly, customised and flexible platform with the analytic data needed for easy, time-saving and effective decision-making, while meeting local requirements.",
@@ -153,7 +157,7 @@
     }
   ],
   "contact": {
-    "address": "3E:Fii Building, 6th–7th Floor, Street Vimean Ahha, Kien Klaing Village, Sangkat Chroy Changva, Khan Chroy Changvar, Phnom Penh, Cambodia",
+    "address": "3E:Fii Building, 6th Floor, Street Vimean Ahha, Kien Klaing Village, Sangkat Chroy Changva, Khan Chroy Changvar, Phnom Penh, Cambodia",
     "email": "info@vithean.com",
     "phonePrimary": "+855 95 569 568",
     "phoneSecondary": "UNCONFIRMED — footer says 081 569 568, contact page says +855 93 569 568",
@@ -161,7 +165,7 @@
     "telegram": "https://t.me/vithean_official",
     "mapUrl": "https://maps.app.goo.gl/Vobse1xK3D4RXRtz7",
     "mapNote": "Linked from the contact and support pages. A findable physical office is a trust signal in this market — people check whether a software vendor is real before they hand over their books.",
-    "addressKm": "អគារ 3E:Fii ជាន់ទី៦ និងជាន់ទី៧ ផ្លូវវិមានអាហារ ភូមិគៀនឃ្លាំង សង្កាត់ជ្រោយចង្វារ ខណ្ឌជ្រោយចង្វារ រាជធានីភ្នំពេញ កម្ពុជា",
+    "addressKm": "អគារ 3E:Fii ជាន់ទី៦ ផ្លូវវិមានអាហារ ភូមិគៀនឃ្លាំង សង្កាត់ជ្រោយចង្វារ ខណ្ឌជ្រោយចង្វារ រាជធានីភ្នំពេញ កម្ពុជា",
     "officeHoursKm": "ថ្ងៃធ្វើការ៖ ចន្ទ – សុក្រ · ម៉ោងធ្វើការ៖ ០៨:៣០ – ១៧:៣០"
   },
   "social": {
@@ -226,8 +230,10 @@
     "logoSource": "Downloaded from https://poscardigital.com/images/brand/01-Poscar.png on 2026-08-17.",
     "note": "The maker of Vithean, not a partner. Vithean is one of POSCAR Digital's product brands; POSCAR is the contracting party on the CamInv integration, the Canadia Bank partnership and the IFA memorandum.",
     "line": {
-      "en": "Vithean is a product co-developed by POSCAR Digital Co., Ltd. and FII & Associates.",
-      "km": "វិធាន ជាផលិតផលរបស់ក្រុមហ៊ុន POSCAR Digital Co., Ltd."
-    }
+      "en": "Vithean is a product co-developed by POSCAR Digital Co., Ltd. and Fii & Associates.",
+      "km": "វិធាន ជាផលិតផលដែលបង្កើតរួមគ្នាដោយក្រុមហ៊ុន POSCAR Digital Co., Ltd. និង Fii & Associates"
+    },
+    "logoNote": "Kept for provenance. The company page shows the Vithean mark and links the maker's name out to poscardigital.com instead, so this file is not rendered there at present.",
+    "logoHeight": 34
   }
 }

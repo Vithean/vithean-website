@@ -13,10 +13,15 @@
       "km": "ចន្ទ ដល់ សុក្រ"
     },
     "hours": {
-      "en": "08:30 – 17:30",
-      "km": "០៨:៣០ – ១៧:៣០"
+      "en": "8:30 AM to 5:30 PM",
+      "km": "៨:៣០ ព្រឹក ដល់ ៥:៣០ ល្ងាច"
     },
-    "timezone": "Asia/Phnom_Penh"
+    "timezone": "Asia/Phnom_Penh",
+    "phrase": {
+      "en": "Monday to Friday from 8:30 AM to 5:30 PM",
+      "km": "នៅថ្ងៃចន្ទ ដល់ ថ្ងៃសុក្រ ម៉ោង ៨:៣០ ព្រឹក ដល់ ៥:៣០ ល្ងាច"
+    },
+    "iso": "Mo-Fr 08:30-17:30"
   },
   "channels": [
     {

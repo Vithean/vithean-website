@@ -213,8 +213,8 @@ export const copy = {
     lead: t('Support is available in Khmer and English, {hours}. For step-by-step feature guides and quick tutorials, check our online help — documentation is available 24/7.',
       'សេវាជំនួយមានជាភាសាខ្មែរ និងអង់គ្លេស {hours}។ សម្រាប់របៀបធ្វើកិច្ចការជាក់លាក់ក្នុងប្រព័ន្ធ ឯកសារណែនាំលឿនជាងយើង។'),
     visitH: t('Visit us', 'អញ្ជើញមកលេងយើង'),
-    visitP: t('3E:Fii Building, 6th–7th floor, Chroy Changvar, Phnom Penh. We are a real office and you are welcome in it.',
-      'អគារ 3E:Fii ជាន់ទី៦ និងជាន់ទី៧ ជ្រោយចង្វារ រាជធានីភ្នំពេញ។ យើងមានការិយាល័យពិតប្រាកដ ហើយស្វាគមន៍លោកអ្នក។'),  // V (address)
+    visitP: t('3E:Fii Building, 6th floor, Chroy Changvar, Phnom Penh. Stop by our office — visit us, you are welcome.',
+      'អគារ 3E:Fii ជាន់ទី៦ ជ្រោយចង្វារ រាជធានីភ្នំពេញ។ អញ្ជើញមកការិយាល័យរបស់យើង — យើងស្វាគមន៍លោកអ្នក។'),  // V (address)
     visitCta: t('Open in Google Maps →', 'បើកក្នុង Google Maps →'),
     qEyebrow: t('Questions', 'សំណួរ'),
     qH2: t('The things people ask before they buy.', 'សំណួរដែលត្រូវបានសួរញឹកញាប់'),  // V (khan dropped — heading)
@@ -228,7 +228,7 @@ export const copy = {
   },
 
   product: {
-    includedIn: t('Included in —', 'រួមបញ្ចូលក្នុង —'),
+    includedIn: t('Included features by plan —', 'មុខងាររួមបញ្ចូល តាមគម្រោង —'),
     everyPlan: t('every plan', 'គ្រប់គម្រោង'),
     guide: t('Read the guide on help.vithean.com ↗', 'អានឯកសារណែនាំនៅ help.vithean.com ↗'),
     figCaminv: t(
