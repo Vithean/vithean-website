@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0.0",
+  "note": "Website-owned display text for pricing. plans.json is the core's data and is never hand-edited; this file sits on top of it at render time and changes only how a value READS. It never invents a plan, a feature, a price or a seat count — if a value is not in plans.json it does not appear on the site.",
+  "why": [
+    "The editorial strings lived in vithean-public/tools/pricing/overlay.json, which only reaches the site when build_public_data.py runs with the pricing API key. Wording agreed in a review then sat unpublished for weeks, and the pricing page contradicted its own hero. Display text does not need the core's permission to change, so it lives here and ships with the site.",
+    "Keyed on `id` for features and `slug` for plans, NOT on `coreCode`. coreCode is `PKG_` + sort_order in the core: re-sorting packages renames it, so a key built on it would silently re-point every label to the wrong feature. `id` and `slug` are the stable editorial identifiers the generator assigns, which is exactly what they are for.",
+    "check-content fails the build if a key here does not resolve in plans.json. A feature renamed or dropped in the core shows up as a failed build, not as an override that quietly stopped applying."
+  ],
+  "boundary": {
+    "here": ["label wording", "plan display name"],
+    "notHere": ["prices", "seat counts", "which plan includes what", "add-on prices", "Khmer that must travel with the data", "comparison-table grouping"],
+    "thoseLiveIn": "the core, via overlay.json and build_public_data.py"
+  },
+
+  "plans": {
+    "advance": {
+      "name": { "en": "Advanced", "km": "Advanced" },
+      "note": "The core calls this tier Advance. Review item B1 (19 Aug 2026) renamed it to Advanced everywhere it is named. Rename it in the core and this entry can go."
+    }
+  },
+
+  "features": {
+    "invoicing": {
+      "label": { "en": "Invoicing & billing", "km": "ចេញវិក្កយបត្រ" },
+      "note": "B3. Core says 'Issue invoices'."
+    },
+    "vat": {
+      "label": { "en": "VAT tracking on sales and purchases", "km": "អាករលើតម្លៃបន្ថែមលើការលក់ និងការទិញ" },
+      "note": "B4. Core omits 'tracking'."
+    },
+    "caminv": {
+      "label": { "en": "Official Cambodia E-Invoicing (CamInv)", "km": "ប្រព័ន្ធវិក្កយបត្រអេឡិចត្រូនិកកម្ពុជា (CamInv)" },
+      "note": "B5. 'Official' matters: it is the national system, not a feature name we chose."
+    }
+  }
+}

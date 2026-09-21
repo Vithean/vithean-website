@@ -4,7 +4,8 @@ import Base from '@/layouts/Base.astro';
 import PlanCard from '@/components/PlanCard.astro';
 import PriceMatrix from '@/components/PriceMatrix.astro';
 import plansData from '@/data/plans.json';
-import {getLangFromUrl, useTranslations, pick, planName, type Lang } from '@/i18n/utils';
+import {getLangFromUrl, useTranslations, pick, type Lang } from '@/i18n/utils';
+import { planName } from '@/lib/planDisplay';
 import { copy, c } from '@/i18n/copy';
 import { planSummary } from '@/lib/planCards';
 

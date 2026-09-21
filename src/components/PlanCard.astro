@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
-import { useTranslations, pick, planName, signupUrl, path, type Lang } from '@/i18n/utils';
+import { useTranslations, pick, signupUrl, path, type Lang } from '@/i18n/utils';
+import { planName, featureLabel } from '@/lib/planDisplay';
 
 interface Props {
   plan: any;
@@ -50,7 +51,7 @@ const buy = { packageId: plan.packageId, lang, promoCode };
     {items
       ? items.map((i: string) => <li class="on">{i}</li>)
       : feats.map((f: any) => (
-          <li class={f.included ? (f.id === 'caminv' ? 'brass' : 'on') : ''}>{pick(f.label, lang)}</li>
+          <li class={f.included ? (f.id === 'caminv' ? 'brass' : 'on') : ''}>{featureLabel(f, lang)}</li>
         ))}
   </ul>
   <div class="plan-cta">

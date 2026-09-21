@@ -107,6 +107,37 @@ for (const f of ['plans.json', 'promotions.json', 'company.json', 'testimonials.
   }
 }
 
+/* ── 4d. every pricing display override still resolves ─────────────── */
+/* plan-display.json only changes how a value READS; the value itself comes
+   from plans.json. If the core renames or drops a feature, an override keyed
+   on the old id stops applying — silently, because falling back to the core's
+   own label looks like a correct page. This turns that into a failed build.
+
+   Keys are `slug` and `id`, never `coreCode`: coreCode is PKG_ + sort_order in
+   the core, so re-sorting packages would repoint every override. */
+{
+  const display = JSON.parse(await readFile(join(ROOT, 'src/data/plan-display.json'), 'utf8'));
+  const plansData = JSON.parse(await readFile(join(ROOT, 'src/data/plans.json'), 'utf8'));
+
+  const slugs = new Set(plansData.plans.map((p) => p.slug));
+  const featureIds = new Set(plansData.plans.flatMap((p) => p.features.map((f) => f.id)));
+
+  for (const slug of Object.keys(display.plans ?? {})) {
+    if (!slugs.has(slug)) {
+      fail(`plan-display.json overrides a plan that is not in plans.json: "${slug}"
+` +
+           `        Either the core renamed it, or the override is stale. Known slugs: ${[...slugs].join(', ')}`);
+    }
+  }
+  for (const id of Object.keys(display.features ?? {})) {
+    if (!featureIds.has(id)) {
+      fail(`plan-display.json overrides a feature that is not in plans.json: "${id}"
+` +
+           `        Either the core renamed it, or the override is stale.`);
+    }
+  }
+}
+
 /* ── 4c. the closing CTA carries its band ──────────────────────────── */
 /* Two pages end on the same .close card before the footer. It is styled to
    dissolve into .band-close's grey field, so a .close in a plain band renders
@@ -157,4 +188,4 @@ if (errors.length) {
   console.error('');
   process.exit(1);
 }
-console.log('✓ content check passed — slugs ASCII, journals balance, reports tie, km filled, closing bands paired, svg figures intact');
+console.log('✓ content check passed — slugs ASCII, journals balance, reports tie, km filled, closing bands paired, pricing overrides resolve, svg figures intact');

@@ -13,7 +13,8 @@
  * the header to the last row, which is what gives the block a focal point.
  */
 import plansData from '@/data/plans.json';
-import { pick, planName, useTranslations, signupUrl, type Lang } from '@/i18n/utils';
+import { pick, useTranslations, signupUrl, type Lang } from '@/i18n/utils';
+import { planName, featureLabel } from '@/lib/planDisplay';
 
 interface Props { plans: any[]; lang: Lang }
 const { plans, lang } = Astro.props;
@@ -65,7 +66,7 @@ const uniform = (id: string) => plans.every((p) => has(p, id)) || plans.every((p
           </tr>
           {g.items.map((row: any) => (
             <tr class={uniform(row.id) ? 'same' : 'differs'}>
-              <th scope="row">{pick(row.label, lang)}</th>
+              <th scope="row">{featureLabel(row, lang)}</th>
               {plans.map((p) => (
                 <td class={`${has(p, row.id) ? 'y' : 'n'}${p.recommended ? ' best' : ''}`}>
                   <span class="mark" aria-hidden="true">{has(p, row.id) ? '✓' : '·'}</span>

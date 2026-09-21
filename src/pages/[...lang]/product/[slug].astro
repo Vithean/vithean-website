@@ -6,7 +6,8 @@ import ReportCard from '@/components/ReportCard.astro';
 import TrailCard from '@/components/TrailCard.astro';
 import CamInvFlow from '@/components/CamInvFlow.astro';
 import Zoomable from '@/components/Zoomable.astro';
-import { getLangFromUrl, useTranslations, path, DOCS_URL, pick, planName } from '@/i18n/utils';
+import { getLangFromUrl, useTranslations, path, DOCS_URL, pick } from '@/i18n/utils';
+import { planName, featureLabel } from '@/lib/planDisplay';
 import { breadcrumbSchema } from '@/lib/seo';
 import { copy, c } from '@/i18n/copy';
 import caminvFlowEn from '@/assets/diagrams/caminv-flow.svg?raw';
@@ -37,7 +38,7 @@ const plans = (await getCollection('plans')).sort((a, b) => a.data.order - b.dat
  * Skipped when the page authors its own `included` block.
  */
 const availability = d.featureIds.map((fid) => {
-  const label = pick(plans[0]?.data.features.find((f) => f.id === fid)?.label, lang);
+  const label = featureLabel(plans[0]?.data.features.find((f) => f.id === fid), lang);
   const inc = plans.filter((p) => p.data.features.find((f) => f.id === fid)?.included);
   const where = inc.length === plans.length
     ? c(copy.product.everyPlan, lang)
