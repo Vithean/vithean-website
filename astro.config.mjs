@@ -15,6 +15,7 @@ const PREVIEW_HOSTS = (process.env.VITHEAN_PREVIEW_HOSTS ?? '')
  * public/CNAME). If you ever publish to `<user>.github.io/vithean-website` instead,
  * set base to '/vithean-website' and nothing else needs to change.
  */
+
 export default defineConfig({
   site: 'https://vithean.com',
   base: '/',

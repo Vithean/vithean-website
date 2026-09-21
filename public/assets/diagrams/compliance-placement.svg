@@ -11,32 +11,32 @@
    it — the figure then renders as an empty box. */
 
 
-svg.figure .figBg { fill: var(--surface); }
-svg.figure .figTitle { font: 600 20px var(--sans); fill: var(--ink-strong); }
-svg.figure .panelTitle { font: 600 17px var(--sans); fill: var(--ink); }
-svg.figure .panelTitleBrand { font: 600 17px var(--sans); fill: var(--plum-600); }
-svg.figure .lbl { font: 500 15px var(--sans); fill: var(--ink-strong); }
-svg.figure .lblBrand { font: 600 17px var(--sans); fill: var(--plum-600); }
-svg.figure .lblGov { font: 600 15px var(--sans); fill: var(--brass); }
-svg.figure .sub { font: 400 12.5px var(--sans); fill: var(--ink-muted); }
-svg.figure .subGov { font: 400 11.5px var(--sans); fill: var(--brass); opacity: .85; }
-svg.figure .band { font: 600 12.5px var(--sans); fill: var(--ink); }
-svg.figure .bandBrand { font: 600 12.5px var(--sans); fill: var(--plum-600); }
-svg.figure .bandSub { font: 400 11.5px var(--sans); fill: var(--ink-muted); }
-svg.figure .caption { font: 400 12.5px var(--sans); fill: var(--ink-muted); }
-svg.figure .panelA { fill: var(--tint); stroke: var(--line-strong); stroke-width: 1.5; }
-svg.figure .panelB { fill: var(--plum-50); stroke: var(--plum-600); stroke-width: 1.5; }
-svg.figure .boxNeutral { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1.5; }
-svg.figure .boxDashed { fill: none; stroke: var(--ink-muted); stroke-width: 1.5; }
-svg.figure .boxBrand { fill: var(--surface); stroke: var(--plum-600); stroke-width: 2; }
-svg.figure .boxGov { fill: var(--brass-tint); stroke: var(--brass); stroke-width: 1.5; }
-svg.figure .divider { stroke: var(--line-strong); stroke-width: 1; }
-svg.figure .bandA { fill: var(--line); }
-svg.figure .bandB { fill: var(--plum-100); }
-svg.figure .flow { stroke: var(--ink-muted); stroke-width: 2; fill: none; }
-svg.figure .flowBrand { stroke: var(--plum-600); stroke-width: 2.5; fill: none; }
-svg.figure .hInk { fill: var(--ink-muted); }
-svg.figure .hBrand { fill: var(--plum-600); }
+svg.figure .figBg { fill: #FFFFFF; }
+svg.figure .figTitle { font: 600 20px 'Mukta','Kantumruy Pro','Segoe UI',system-ui,sans-serif; fill: #1A1720; }
+svg.figure .panelTitle { font: 600 17px 'Mukta','Kantumruy Pro','Segoe UI',system-ui,sans-serif; fill: #37333F; }
+svg.figure .panelTitleBrand { font: 600 17px 'Mukta','Kantumruy Pro','Segoe UI',system-ui,sans-serif; fill: #6F3075; }
+svg.figure .lbl { font: 500 15px 'Mukta','Kantumruy Pro','Segoe UI',system-ui,sans-serif; fill: #1A1720; }
+svg.figure .lblBrand { font: 600 17px 'Mukta','Kantumruy Pro','Segoe UI',system-ui,sans-serif; fill: #6F3075; }
+svg.figure .lblGov { font: 600 15px 'Mukta','Kantumruy Pro','Segoe UI',system-ui,sans-serif; fill: #8A6420; }
+svg.figure .sub { font: 400 12.5px 'Mukta','Kantumruy Pro','Segoe UI',system-ui,sans-serif; fill: #5C5768; }
+svg.figure .subGov { font: 400 11.5px 'Mukta','Kantumruy Pro','Segoe UI',system-ui,sans-serif; fill: #8A6420; opacity: .85; }
+svg.figure .band { font: 600 12.5px 'Mukta','Kantumruy Pro','Segoe UI',system-ui,sans-serif; fill: #37333F; }
+svg.figure .bandBrand { font: 600 12.5px 'Mukta','Kantumruy Pro','Segoe UI',system-ui,sans-serif; fill: #6F3075; }
+svg.figure .bandSub { font: 400 11.5px 'Mukta','Kantumruy Pro','Segoe UI',system-ui,sans-serif; fill: #5C5768; }
+svg.figure .caption { font: 400 12.5px 'Mukta','Kantumruy Pro','Segoe UI',system-ui,sans-serif; fill: #5C5768; }
+svg.figure .panelA { fill: #F5F2F9; stroke: #DEDBE7; stroke-width: 1.5; }
+svg.figure .panelB { fill: #F9F3FA; stroke: #6F3075; stroke-width: 1.5; }
+svg.figure .boxNeutral { fill: #FFFFFF; stroke: #DEDBE7; stroke-width: 1.5; }
+svg.figure .boxDashed { fill: none; stroke: #5C5768; stroke-width: 1.5; }
+svg.figure .boxBrand { fill: #FFFFFF; stroke: #6F3075; stroke-width: 2; }
+svg.figure .boxGov { fill: #F4EEE0; stroke: #8A6420; stroke-width: 1.5; }
+svg.figure .divider { stroke: #DEDBE7; stroke-width: 1; }
+svg.figure .bandA { fill: #EDEBF3; }
+svg.figure .bandB { fill: #F1E6F3; }
+svg.figure .flow { stroke: #5C5768; stroke-width: 2; fill: none; }
+svg.figure .flowBrand { stroke: #6F3075; stroke-width: 2.5; fill: none; }
+svg.figure .hInk { fill: #5C5768; }
+svg.figure .hBrand { fill: #6F3075; }
 
 
 </style>

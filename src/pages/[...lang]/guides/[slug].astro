@@ -62,26 +62,73 @@ const article = {
 </Base>
 
 <style>
-  .guide{max-width:72ch}
-  .guide :global(table){width:100%; border-collapse:collapse; margin:var(--s3) 0; font-size:.95rem}
-  .guide :global(th),.guide :global(td){text-align:left; padding:.6rem .7rem;
-    border-bottom:1px solid var(--line); vertical-align:top}
-  .guide :global(thead th){border-bottom:1px solid var(--line-strong); font-weight:700}
-  /* The comparison tables are wider than the measure on a phone. */
-  .guide :global(table){display:block; overflow-x:auto}
+  /* Astro scopes styles per component, so .prose from the news route does not
+     reach here. This is the guide's own typography, and it is doing more work:
+     a buyer's guide is long-form with comparison tables as its centrepiece,
+     not a short announcement. */
+  .guide{margin-top:var(--s2); max-width:72ch; font-size:1.06rem; line-height:1.72}
+  .guide > * + *{margin-top:1.15rem}
 
-  /* Starlight's ::: asides, rebuilt. Marked as an aside so the disclosure
-     about who wrote this reads as a disclosure, not as body copy. */
-  .guide :global(.gnote){margin:var(--s4) 0; padding:1rem 1.15rem;
+  .guide :global(h2){font-size:1.45rem; letter-spacing:-.02em; margin-top:2.6rem;
+    padding-top:1.1rem; border-top:1px solid var(--line)}
+  .guide :global(h3){font-size:1.12rem; margin-top:1.9rem}
+  .guide :global(h2 + p),.guide :global(h3 + p){margin-top:.7rem}
+  .guide :global(strong){color:var(--ink-strong); font-weight:700}
+  .guide :global(a){color:var(--plum-600); font-weight:600;
+    text-decoration:underline; text-underline-offset:2px;
+    text-decoration-color:color-mix(in srgb, var(--plum-600), transparent 65%)}
+  .guide :global(a:hover){text-decoration-color:var(--plum-600)}
+  .guide :global(ul),.guide :global(ol){padding-left:1.35rem; display:grid; gap:.55rem}
+  .guide :global(li)::marker{color:var(--plum-600)}
+  .guide :global(hr){border:0; border-top:1px solid var(--line-strong); margin:var(--s5) 0}
+  .guide :global(em){color:var(--ink-muted)}
+
+  /* ── comparison tables ─────────────────────────────────────────────
+     The reason someone opens this page. Wider than the measure, so the
+     wrapper scrolls rather than the row squeezing to illegibility, and the
+     first column stays put while the options scroll past it. */
+  /* The table is its own scroll container. Astro 7's default Markdown
+     processor does not take rehype plugins without swapping the whole
+     pipeline, so no wrapper element is emitted — display:block makes the
+     table scroll itself instead of dragging the page sideways. */
+  .guide :global(table){display:block; overflow-x:auto; max-width:100%;
+    margin:var(--s4) 0; border:1px solid var(--line-strong);
+    border-radius:var(--radius-md); border-collapse:separate; border-spacing:0;
+    font-size:.95rem; white-space:normal}
+  .guide :global(thead th){background:var(--surface-muted); text-align:left;
+    font-weight:700; color:var(--ink-strong); white-space:nowrap;
+    border-bottom:1px solid var(--line-strong)}
+  .guide :global(th),.guide :global(td){padding:.72rem .85rem; text-align:left;
+    vertical-align:top; border-bottom:1px solid var(--line)}
+  .guide :global(tbody tr:last-child th),
+  .guide :global(tbody tr:last-child td){border-bottom:0}
+  .guide :global(tbody th){font-weight:600; color:var(--ink-strong);
+    background:var(--surface); border-right:1px solid var(--line); min-width:11rem}
+  .guide :global(tbody tr:hover td){background:var(--tint)}
+
+  /* ── asides, rebuilt from Starlight's ::: directives ───────────────
+     The "who wrote this" disclosure has to read as a disclosure. */
+  .guide :global(.gnote){margin:var(--s4) 0; padding:1.05rem 1.2rem;
     background:var(--surface-muted); border:1px solid var(--line-strong);
     border-left:3px solid var(--plum-600); border-radius:var(--radius-md)}
-  .guide :global(.gnote-caution){border-left-color:var(--brass)}
-  .guide :global(.gnote-h){font-size:.82rem; font-weight:700; letter-spacing:.09em;
-    text-transform:uppercase; color:var(--ink-muted); margin:0 0 .5rem}
-  .guide :global(.gnote p:last-child){margin-bottom:0}
+  .guide :global(.gnote-caution){border-left-color:var(--brass);
+    background:var(--brass-tint); border-color:var(--brass-line)}
+  .guide :global(.gnote-h){font-size:.78rem; font-weight:700; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--ink-muted); margin:0 0 .45rem}
+  .guide :global(.gnote > *){margin-top:.6rem}
+  .guide :global(.gnote > :last-child){margin-bottom:0}
 
-  .guide :global(img){max-width:100%; height:auto; background:var(--logo-plate);
-    border-radius:var(--radius-md); padding:4px}
+  /* The diagram is a light-palette SVG, so it keeps a light plate under both
+     themes rather than turning into a dark rectangle. */
+  .guide :global(img){display:block; max-width:100%; height:auto; margin:var(--s4) 0;
+    background:#fff; border:1px solid var(--line-strong);
+    border-radius:var(--radius-md); padding:.6rem}
+
   .guide-updated{margin-top:var(--s5); padding-top:var(--s3);
     border-top:1px solid var(--line-strong); font-size:.92rem; color:var(--ink-muted)}
+
+  @media (max-width:560px){
+    .guide{font-size:1.02rem}
+    .guide :global(h2){font-size:1.28rem}
+  }
 </style>
