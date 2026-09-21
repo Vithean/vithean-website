@@ -18,6 +18,27 @@ const news = defineCollection({
   }),
 });
 
+/**
+ * Evergreen editorial: buyer's guides and explainers. Not news (it does not
+ * age out) and not a product page (it binds to no feature and carries no
+ * journal), so it gets its own collection rather than being forced into
+ * either template.
+ *
+ * English only for now, and `lang` says so explicitly: a guide is argued
+ * prose, and this repo writes Khmer rather than translating it.
+ */
+const guides = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/guides' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().max(200),
+    updated: z.coerce.date(),
+    lang: z.enum(['en', 'km']).default('en'),
+    /** Where it used to live, so the canonical story stays legible. */
+    movedFrom: z.string().optional(),
+  }),
+});
+
 /** Legal text is kept verbatim per language — ids are `en/term-condition`,
  *  `km/term-condition`, etc. The URI and the wording do not change. */
 const legal = defineCollection({
@@ -178,4 +199,4 @@ const testimonials = defineCollection({
   }),
 });
 
-export const collections = { news, legal, products, plans, promotions, testimonials };
+export const collections = { news, legal, guides, products, plans, promotions, testimonials };

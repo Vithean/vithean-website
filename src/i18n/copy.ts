@@ -201,6 +201,11 @@ export const copy = {
         ],
       },
     },
+    /* Linked from the page where someone is already comparing. The guide is
+       English-only, so the Khmer route sends readers to the English URL
+       rather than pretending a translation exists. */
+    guideLink: t('Comparing us with QuickBooks or Xero? Read the guide to choosing accounting software in Cambodia →',
+      'កំពុងប្រៀបធៀបជាមួយ QuickBooks ឬ Xero? អានការណែនាំអំពីការជ្រើសរើសកម្មវិធីគណនេយ្យនៅកម្ពុជា (ភាសាអង់គ្លេស) →'),
     addonsH: t('Add-ons', 'កម្មវិធីបន្ថែម'),
     addonsP: t('Anything beyond your plan, at a price you can see before you ask.',
       'អ្វីៗលើសពីគម្រោងរបស់លោកអ្នក ជាមួយតម្លៃដែលមើលឃើញមុននឹងសួរ'),
