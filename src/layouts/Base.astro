@@ -166,6 +166,22 @@ const website = {
   */}
   {lang === 'km' && <meta name="google" content="notranslate" />}
 
+  {/*
+    The /en/ loop breaker lands here with ?nocache=1 to dodge a cached redirect
+    from the old site. It has done its job by the time the page renders, so the
+    URL is tidied with replaceState — no reload, no new history entry, and the
+    visitor never sees the marker in a link they might copy.
+  */}
+  <script is:inline>
+    if (location.search.indexOf('nocache=1') !== -1) {
+      try {
+        var u = new URL(location.href);
+        u.searchParams.delete('nocache');
+        history.replaceState(null, '', u.pathname + (u.search || '') + u.hash);
+      } catch (e) { /* older browser: the marker is harmless */ }
+    }
+  </script>
+
   <script type="application/ld+json" set:html={JSON.stringify(organisation)} />
   <script type="application/ld+json" set:html={JSON.stringify(website)} />
   {schemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}

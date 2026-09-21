@@ -56,6 +56,38 @@ const from = Astro.url.pathname;
   <meta http-equiv="refresh" content={`0;url=${to}`} />
   <meta name="robots" content="noindex" />
   <link rel="canonical" href={canonical} />
+
+  {/*
+    Loop breaker.
+
+    The old WordPress site served /en/ as its canonical English home and sent
+    the bare domain there with a 301. Browsers cache a 301 permanently, so a
+    visitor from before the cutover can still be holding "/" -> "/en/". With
+    this page sending /en/ -> "/", those two bounce off each other forever, and
+    it takes the language switcher down with them because the switcher's EN
+    link is "/".
+
+    Nothing server-side is wrong — every entry point returns a clean 200 — so
+    the only place to break it is here. If we arrive twice in one session we
+    are in the loop, so the second time we redirect to the same page with a
+    query string: a cached 301 is keyed to the exact URL, and "/?..." is not
+    the URL that was cached. The homepage strips the marker once it loads.
+  */}
+  <script is:inline define:vars={{ to }}>
+    (function () {
+      var go = function (url) { location.replace(url); };
+      try {
+        var KEY = 'vth-en-redirect';
+        if (sessionStorage.getItem(KEY)) {
+          sessionStorage.removeItem(KEY);
+          go(to + (to.indexOf('?') === -1 ? '?' : '&') + 'nocache=1');
+          return;
+        }
+        sessionStorage.setItem(KEY, '1');
+      } catch (e) { /* private mode: fall through to a plain redirect */ }
+      go(to);
+    })();
+  </script>
 </head>
 <body>
   <a href={to}>Redirecting from <code>{from}</code> to <code>{to}</code></a>
