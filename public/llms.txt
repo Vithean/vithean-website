@@ -57,6 +57,10 @@ addresses redirect to the root.
   General Department of Taxation (GDT). The two are distinct regimes.
 - CamInv is switched on when a company subscribes, not during the free trial: connecting requires
   the business to be registered with CamInv at the MEF.
+- Books are kept in USD and converted to KHR at the daily rate, which is how
+  accounting is done in Cambodia. Other currencies are supported, and the rate
+  used is recorded against the transaction so a conversion can be reproduced at
+  audit. This is not generic "multi-currency".
 - Each customer company's data is held in its own database.
 - Vithean does not currently provide payroll processing or purchase orders.
 - Vithean does not provide bookkeeping, tax or advisory services. It builds and supports the

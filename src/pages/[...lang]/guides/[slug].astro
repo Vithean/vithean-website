@@ -5,24 +5,31 @@ import { getLangFromUrl, fmtDate, path } from '@/i18n/utils';
 import { breadcrumbSchema } from '@/lib/seo';
 
 /**
- * Guides are English-only today, so only the locale a guide declares gets a
- * route. Emitting a /km/ copy of English prose would put a page in the Khmer
- * sitemap that no Khmer reader can use, and hreflang would then advertise a
- * translation that does not exist.
+ * Ids are `<lang>/<slug>`, so one slug can carry both languages and a guide can
+ * exist in one language only. hreflang is emitted for the counterpart only when
+ * that counterpart is actually built — an alternate pointing at a 404 counts
+ * against the page that made the claim.
  */
 export async function getStaticPaths() {
   const guides = await getCollection('guides');
-  return guides.map((g) => ({
-    params: { lang: g.data.lang === 'en' ? undefined : g.data.lang, slug: g.id },
-    props: { entry: g },
-  }));
+  const slugsByLang = new Set(guides.map((g) => g.id));
+
+  return guides.map((g) => {
+    const [gLang, slug] = g.id.split('/');
+    const other = gLang === 'en' ? 'km' : 'en';
+    const hasCounterpart = slugsByLang.has(`${other}/${slug}`);
+    return {
+      params: { lang: gLang === 'en' ? undefined : gLang, slug },
+      props: { entry: g, slug, onlyLang: hasCounterpart ? undefined : g.data.lang },
+    };
+  });
 }
 
 const lang = getLangFromUrl(Astro.url);
-const { entry } = Astro.props;
+const { entry, slug, onlyLang } = Astro.props;
 const { Content } = await render(entry);
 const site = Astro.site ?? new URL('https://vithean.com');
-const route = `guides/${entry.id}/`;
+const route = `guides/${slug}/`;
 
 /**
  * Article, not WebPage: this is authored editorial with a date and a named
@@ -34,13 +41,13 @@ const article = {
   headline: entry.data.title,
   description: entry.data.description,
   dateModified: entry.data.updated.toISOString().slice(0, 10),
-  inLanguage: 'en-US',
-  mainEntityOfPage: new URL(`/${route}`, site).href,
+  inLanguage: entry.data.lang === 'km' ? 'km-KH' : 'en-US',
+  mainEntityOfPage: new URL(entry.data.lang === 'km' ? `/km/${route}` : `/${route}`, site).href,
   publisher: { '@id': new URL('/#organization', site).href },
 };
 ---
 <Base title={entry.data.title} description={entry.data.description} route={route}
-      onlyLang={entry.data.lang}
+      onlyLang={onlyLang}
       schemas={[article, breadcrumbSchema([
         { name: 'Vithean', url: path(lang) },
         { name: entry.data.title, url: path(lang, route) },

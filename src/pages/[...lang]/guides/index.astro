@@ -17,7 +17,10 @@ export async function getStaticPaths() {
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
+/* Each locale lists its own guides; a guide with no translation simply does
+   not appear on the other locale's index. */
 const guides = (await getCollection('guides'))
+  .filter((g) => g.data.lang === lang)
   .sort((a, b) => b.data.updated.valueOf() - a.data.updated.valueOf());
 ---
 <Base title={c(copy.guides.metaTitle, lang)} route="guides/"
@@ -31,11 +34,11 @@ const guides = (await getCollection('guides'))
   <section class="band" style="padding-top:var(--s5)"><div class="wrap">
     <div class="articles">
       {guides.map((g) => (
-        <a class="article guide-row" href={`/guides/${g.id}/`}>
+        <a class="article guide-row" href={path(lang, `guides/${g.id.split('/')[1]}/`)}>
           <time datetime={g.data.updated.toISOString().slice(0, 10)}>
             {fmtDate(g.data.updated, lang, 'short')}</time>
           <div>
-            <h3>{g.data.title}{lang === 'km' && <span class="kmflag">English</span>}</h3>
+            <h3>{g.data.title}</h3>
             <p>{g.data.description}</p>
           </div>
           <span class="tag tag-article">{t('nav.guides')}</span>

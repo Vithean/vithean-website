@@ -24,8 +24,9 @@ const news = defineCollection({
  * journal), so it gets its own collection rather than being forced into
  * either template.
  *
- * English only for now, and `lang` says so explicitly: a guide is argued
- * prose, and this repo writes Khmer rather than translating it.
+ * Filed per language like `legal`, so ids read `en/<slug>` and `km/<slug>`
+ * and one slug can carry both. A guide may exist in one language only; the
+ * route emits hreflang for the counterpart only when it is actually there.
  */
 const guides = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/guides' }),
@@ -33,9 +34,15 @@ const guides = defineCollection({
     title: z.string(),
     description: z.string().max(200),
     updated: z.coerce.date(),
-    lang: z.enum(['en', 'km']).default('en'),
+    lang: z.enum(['en', 'km']),
     /** Where it used to live, so the canonical story stays legible. */
     movedFrom: z.string().optional(),
+    /**
+     * Translated, not yet read by a native speaker. The repo's rule is that
+     * Khmer is written rather than translated; where that has not happened
+     * yet, the file says so instead of the fact living in someone's memory.
+     */
+    reviewNeeded: z.boolean().default(false),
   }),
 });
 

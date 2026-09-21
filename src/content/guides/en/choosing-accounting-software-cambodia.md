@@ -52,11 +52,21 @@ invoice with Khmer customer and item names, then print it and export it to PDF.
 Ask also whether master data can hold **both** a Khmer and an English name, so
 your records work for your team and your accountant at the same time.
 
-### 3. KHR alongside foreign currency
+### 3. USD books, KHR at the official rate
 
-Most Cambodian businesses keep books in more than one currency as a matter of
-course. Check whether multi-currency is standard or reserved for a higher-priced
-tier, and how exchange rates are handled on documents.
+Accounting in Cambodia is USD-based in practice: most businesses keep their books
+in USD and convert to KHR where the law requires it. So "does it support
+multi-currency?" is the wrong question. The right ones are narrower:
+
+* **Which rate does it apply, and as at which date?** The daily rate published by
+  the **National Bank of Cambodia**, or your bank's rate, is what has to be used —
+  not a rate typed in from memory, and not a monthly average.
+* **Is the rate stored on the document?** A conversion you cannot reproduce a year
+  later is a conversion you cannot defend in an audit.
+* **Is it on every plan, or held back for a higher-priced tier?**
+
+Vithean books in USD and records the KHR exchange rate against the transaction, so
+the rate that was used stays with the document it was used on.
 
 ### 4. Your company's legal identity
 
@@ -86,7 +96,7 @@ zone — not just whether "support" exists.
 | **CamInv e-invoicing** | Native, since July 2025 | Not native | Not native |
 | **Khmer interface** | Full interface, English or Khmer | Not native — Khmer printing needs a third-party extension | Not native |
 | **Khmer + English names on records** | Local-name field on master data, exportable | Not native | Not native |
-| **KHR and multi-currency** | Standard on every plan | Multi-currency on higher tiers | Multi-currency on higher tiers |
+| **USD books with KHR conversion** | Standard on every plan, rate recorded per transaction | Multi-currency on higher tiers | Multi-currency on higher tiers |
 | **Registration Number and TIN** | Fields on the company record | Workaround | Workaround |
 | **Users included** | 2 / 3 / 5 by plan | 1 / 3 / 5 / 25 by plan | **Unlimited on every plan** |
 | **Entry price** | $15/month | $30/month | $15/month |
