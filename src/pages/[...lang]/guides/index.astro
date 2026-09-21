@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import { getLangFromUrl, useTranslations, path, fmtDate } from '@/i18n/utils';
+import { copy, c } from '@/i18n/copy';
+
+/**
+ * The index exists in both locales even though the guides themselves are
+ * English. The header nav is bilingual, so a Khmer visitor clicking Guides has
+ * to land somewhere real rather than a 404 — this page says plainly that the
+ * writing is in English and links to it, which is honest and beats pretending
+ * a translation exists.
+ */
+export async function getStaticPaths() {
+  return [{ params: { lang: undefined } }, { params: { lang: 'km' } }];
+}
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const guides = (await getCollection('guides'))
+  .sort((a, b) => b.data.updated.valueOf() - a.data.updated.valueOf());
+---
+<Base title={c(copy.guides.metaTitle, lang)} route="guides/"
+      description={c(copy.guides.metaDesc, lang)}>
+  <section class="band band-head" style="padding-bottom:var(--s5)"><div class="wrap">
+    <p class="eyebrow">{t('nav.guides')}</p>
+    <h1 class="band-h">{c(copy.guides.h1, lang)}</h1>
+    <p class="band-p">{c(copy.guides.lead, lang)}</p>
+  </div></section>
+
+  <section class="band" style="padding-top:var(--s5)"><div class="wrap">
+    <div class="articles">
+      {guides.map((g) => (
+        <a class="article guide-row" href={`/guides/${g.id}/`}>
+          <time datetime={g.data.updated.toISOString().slice(0, 10)}>
+            {fmtDate(g.data.updated, lang, 'short')}</time>
+          <div>
+            <h3>{g.data.title}{lang === 'km' && <span class="kmflag">English</span>}</h3>
+            <p>{g.data.description}</p>
+          </div>
+          <span class="tag tag-article">{t('nav.guides')}</span>
+        </a>
+      ))}
+    </div>
+  </div></section>
+</Base>
+
+<style>
+  /* Same row as a news item; the grid is declared there. */
+  .guide-row h3{margin:0}
+</style>

@@ -232,6 +232,19 @@ export const copy = {
       'តម្លៃគិតក្នុងមួយក្រុមហ៊ុន ក្នុងមួយខែ មិនទាន់រួមបញ្ចូលអាករលើតម្លៃបន្ថែម'),
   },
 
+  guides: {
+    metaTitle: t('Guides | Vithean', 'ការណែនាំ | វិធាន'),
+    metaDesc: t(
+      'Practical guides to choosing and running accounting software in Cambodia, from the team that builds Vithean.',
+      'ការណែនាំជាក់ស្តែងអំពីការជ្រើសរើស និងប្រើប្រាស់កម្មវិធីគណនេយ្យនៅកម្ពុជា ពីក្រុមការងារដែលបង្កើត វិធាន'),
+    h1: t('Guides', 'ការណែនាំ'),
+    /* Says up front that the writing is in English. A Khmer reader should learn
+       that from the page, not from clicking through to it. */
+    lead: t(
+      'Practical writing on choosing and running accounting software in Cambodia — the local requirements, the trade-offs, and where other systems do the job better.',
+      'ការសរសេរជាក់ស្តែងអំពីការជ្រើសរើស និងប្រើប្រាស់កម្មវិធីគណនេយ្យនៅកម្ពុជា។ បច្ចុប្បន្ន ការណែនាំទាំងនេះមានជាភាសាអង់គ្លេសប៉ុណ្ណោះ។'),
+  },
+
   company: {
     /* Stated as a fact with a date, next to the story. A launch date is one
        of the first things a buyer checks to decide whether a vendor is
