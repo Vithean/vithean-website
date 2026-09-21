@@ -156,6 +156,16 @@ const website = {
 
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 
+  {/*
+    Suppress the browser's "translate this page?" prompt on the Khmer routes.
+    We publish a real English version and link it from the header, so a
+    machine translation of our Khmer is strictly worse than the page the
+    switcher already offers — and Chrome will sometimes translate without
+    being asked. Only /km/: the English pages stay translatable, because a
+    reader of a language we do not publish still needs Translate to use them.
+  */}
+  {lang === 'km' && <meta name="google" content="notranslate" />}
+
   <script type="application/ld+json" set:html={JSON.stringify(organisation)} />
   <script type="application/ld+json" set:html={JSON.stringify(website)} />
   {schemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
