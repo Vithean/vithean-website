@@ -136,7 +136,8 @@ product changes.
 What that means in practice:
 
 * **Compliance is part of the accounting**, not a second system — see
-  [What is Vithean?](https://help.vithean.com/about/) for the full feature scope
+  [how e-invoicing works](/product/e-invoicing/), or the
+  [product pages](/product/accounting/) for the full feature scope
 * **Khmer is a first-class language**, on screen and on printed documents
 * **The people who fix your problem are here**, working the same hours you do
 
