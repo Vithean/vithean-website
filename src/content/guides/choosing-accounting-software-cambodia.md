@@ -171,7 +171,7 @@ QuickBooks Online or Xero if:
 4. **Do you operate outside Cambodia?** If yes, an international platform is
    probably the right answer.
 5. **Then trial it.** Vithean's trial is 30 days and needs only your name, email
-   and phone number — see [Subscription](https://help.vithean.com/get-started/subscription/).
+   and phone number — see [plans and pricing](/pricing/).
 
 ## Common questions
 
