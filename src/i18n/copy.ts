@@ -147,14 +147,11 @@ export const copy = {
   ],
 
   pricing: {
-    // TODO(review-2026-08-19): Khmer pending a Khmer-native writer. English is
-    // from the HSD review; the Khmer below is the previous wording, kept so the
-    // /km route never renders an empty heading.
     h1: t('Scale your business with zero hidden fees.',
-      'គ្រប់គម្រោងចេញវិក្កយបត្រអេឡិចត្រូនិកស្របតាមបទប្បញ្ញត្តិ'),
+      'ពង្រីកអាជីវកម្មរបស់អ្នក ដោយគ្មានថ្លៃលាក់កំបាំង'),
     lead: t(
       'Official Cambodia E-Invoicing is included across all tiers at no extra cost. Higher plans simply unlock broader operational coverage and control.',
-      'វិក្កយបត្រអេឡិចត្រូនិកកម្ពុជា រួមបញ្ចូលចាប់ពីគម្រោងដំបូងឡើងទៅ ដោយមិនគិតថ្លៃបន្ថែម។ អ្វីដែលខុសគ្នារវាងគម្រោង គឺទំហំអាជីវកម្មដែលប្រព័ន្ធគ្របដណ្តប់។'),
+      'វិក្កយបត្រអេឡិចត្រូនិកកម្ពុជាផ្លូវការ រួមបញ្ចូលក្នុងគ្រប់គម្រោង ដោយមិនគិតថ្លៃបន្ថែម។ គម្រោងខ្ពស់ជាង គ្រាន់តែបើកឲ្យប្រើការគ្របដណ្តប់ប្រតិបត្តិការ និងការគ្រប់គ្រងកាន់តែទូលំទូលាយ។'),
     priceline: t(
       'These are starting prices, per company, per month. What you pay depends on how many people use it, which modules you need, and how much help you want setting it up.',
       'ទាំងនេះជាតម្លៃចាប់ផ្តើម ក្នុងមួយក្រុមហ៊ុន ក្នុងមួយខែ។ អ្វីដែលលោកអ្នកបង់ អាស្រ័យលើចំនួនអ្នកប្រើប្រាស់ ម៉ូឌុលដែលត្រូវការ និងកម្រិតជំនួយក្នុងការដំឡើង។'),
@@ -288,9 +285,8 @@ export const copy = {
 
   support: {
     h1: t('Ask us. Someone here answers.', 'សួរយើង — មានបុគ្គលិកឆ្លើយតប'),
-    // TODO(review-2026-08-19): Khmer pending.
     lead: t('Support is available in Khmer and English, {hours}. For step-by-step feature guides and quick tutorials, check our online help — documentation is available 24/7.',
-      'សេវាជំនួយមានជាភាសាខ្មែរ និងអង់គ្លេស {hours}។ សម្រាប់របៀបធ្វើកិច្ចការជាក់លាក់ក្នុងប្រព័ន្ធ ឯកសារណែនាំលឿនជាងយើង។'),
+      'សេវាជំនួយមានជាភាសាខ្មែរ និងអង់គ្លេស {hours}។ សម្រាប់មគ្គុទ្ទេសក៍មុខងារជាជំហានៗ និងការណែនាំរហ័ស សូមមើលជំនួយអនឡាញរបស់យើង — ឯកសារណែនាំមានជូន ២៤/៧។'),
     visitH: t('Visit us', 'អញ្ជើញមកលេងយើង'),
     visitP: t('3E:Fii Building, 6th floor, Chroy Changvar, Phnom Penh. Stop by our office — visit us, you are welcome.',
       'អគារ 3E:Fii ជាន់ទី៦ ជ្រោយចង្វារ រាជធានីភ្នំពេញ។ អញ្ជើញមកការិយាល័យរបស់យើង — យើងស្វាគមន៍លោកអ្នក។'),  // V (address)
