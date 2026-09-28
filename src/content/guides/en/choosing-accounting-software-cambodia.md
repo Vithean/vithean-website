@@ -1,7 +1,7 @@
 ---
 title: "Choosing Accounting Software in Cambodia"
 description: "What to look for when choosing accounting software for a business in Cambodia — the local requirements that rule options in or out, and how Vithean compares with QuickBooks Online and Xero."
-updated: 2026-09-21
+updated: 2026-09-28
 lang: en
 movedFrom: "https://help.vithean.com/choosing-accounting-software-cambodia/"
 ---
@@ -14,10 +14,10 @@ them.
 <aside class="gnote gnote-note">
   <p class="gnote-h">Who wrote this</p>
 
-We make Vithean, so treat the recommendation accordingly. We have tried hard to
-be accurate about the alternatives, including where they are the better choice.
-If you find something wrong or out of date, tell us at <contact@vithean.com> and
-we will correct it.
+We build Vithean, so treat our recommendations with appropriate skepticism. We
+have tried hard to be objective about the alternatives, including where they
+might be a better fit for your business. If you spot anything inaccurate or out
+of date, please let us know at <contact@vithean.com> and we will correct it.
 
 </aside>
 
@@ -26,67 +26,84 @@ we will correct it.
 These are the ones that rule options in or out. Get them wrong and no amount of
 features elsewhere makes up for it.
 
-### 1. CamInv e-invoicing
+### 1. CamInv E-Invoicing
 
 Cambodia's national e-invoicing system, **CamInv**, is administered by the
 **Ministry of Economy and Finance**. It is a centralised clearance model:
 invoices are submitted, validated and approved before they count as legally valid
 tax documents.
 
-This is the single biggest dividing line. Ask any vendor directly: *does your
-software connect to CamInv natively, or do I need a separate tool?* If the answer
-is a separate tool, you are running compliance as a parallel process — every day,
-and reconciled by hand.
+This is the single biggest dividing line between accounting tools in Cambodia.
+Ask any software vendor directly: *"Does your system connect to CamInv natively,
+or do I need a separate tool?"* If the answer is a separate tool, you will end up
+running tax compliance as a parallel manual process — every single day,
+reconciled by hand.
 
 ![Two routes to a compliant Cambodian invoice. On a typical international platform the accounting software hands off to a separate e-invoicing tool from another vendor before reaching CamInv, and the status has to be matched back to the books by hand. With Vithean, invoicing, VAT, the ledger and the CamInv connection are one system, and the status and official XML and PDF return to the same record.](/assets/diagrams/compliance-placement.svg)
 
-Both routes can produce a compliant invoice. The difference is how many systems
-have to agree — and who is responsible for keeping them agreeing.
+Both routes can eventually produce a compliant invoice, but the difference lies
+in how many systems have to stay in sync — and who is stuck doing the manual work
+to keep them aligned.
 
-### 2. Khmer on documents, not just on screen
+### 2. Khmer Language on Final Documents, not just on screen
 
-There is a difference between typing Khmer into a field and having Khmer come out
-correctly on a printed invoice or a PDF. Test this before you buy: create an
-invoice with Khmer customer and item names, then print it and export it to PDF.
+There is a huge difference between typing Khmer into an input field on screen and
+having Khmer render correctly on a printed invoice or PDF export. Always test
+this before committing: create a draft invoice with Khmer customer and line-item
+names, then export it to PDF and print it out.
 
-Ask also whether master data can hold **both** a Khmer and an English name, so
-your records work for your team and your accountant at the same time.
+You should also check whether master data can store both a Khmer name and an
+English name simultaneously, allowing your records to work seamlessly for your
+operational team and your external accountant at the same time.
 
-### 3. USD books, KHR at the official rate
+### 3. USD Books with Official KHR Rate Tracking
 
-Accounting in Cambodia is USD-based in practice: most businesses keep their books
-in USD and convert to KHR where the law requires it. So "does it support
-multi-currency?" is the wrong question. The right ones are narrower:
+While accounting in Cambodia is predominantly USD-based in daily practice, legal
+compliance requires proper KHR conversion rates. Asking "does it support
+multi-currency?" misses the point. The critical questions are:
 
-* **Which rate does it apply, and as at which date?** The daily rate published by
-  the **National Bank of Cambodia**, or your bank's rate, is what has to be used —
-  not a rate typed in from memory, and not a monthly average.
-* **Is the rate stored on the document?** A conversion you cannot reproduce a year
-  later is a conversion you cannot defend in an audit.
-* **Is it on every plan, or held back for a higher-priced tier?**
+* **Which exchange rate is applied, and as of which date?** Official daily
+  exchange rates (such as those published by the **National Bank of Cambodia**)
+  must be used — not a rate entered from memory, and not a monthly average.
+* **Is the exchange rate audit-ready?** Is the exact conversion rate hardcoded
+  onto the transaction record? If you cannot reproduce the exact rate a year
+  later, you cannot defend it in an audit.
+* **Is multi-currency included?** Is this built into standard plans, or locked
+  behind a top-tier subscription fee?
 
-Vithean books in USD and records the KHR exchange rate against the transaction, so
-the rate that was used stays with the document it was used on.
+Vithean keeps your books in USD while locking the exact KHR exchange rate
+directly onto each transaction document.
 
-### 4. Your company's legal identity
+### 4. Structured Legal Identity Fields
 
-Your **Registration Number** and **Tax Identification Number (TIN)** should be
-fields on the company record, not notes typed into a comment box.
+Your official **Registration Number** and **Tax Identification Number (TIN)**
+belong in dedicated, structured database fields on the company profile — not
+typed into generic comments or note boxes.
 
-### 5. Support you can actually reach
+### 5. Accessible, Local Support
 
-When something is wrong in your books on a Friday afternoon, the question is
-whether you can get an answer today. Check the language, the channel and the time
-zone — not just whether "support" exists.
+When something goes wrong in your general ledger on a Friday afternoon, you need
+an answer that day. Before buying, verify the support team's language
+availability, communication channels, and time zone — don't just check if a
+"24/7 help center" exists on paper.
 
-## Then the universal criteria
+## Universal Accounting Criteria
 
-* **Proper double-entry accounting** with a chart of accounts you can adapt
-* **VAT handling** on invoices and reports
-* **Inventory**, if you hold stock — including multiple locations
-* **Users** — how many are included, and what extra ones cost
-* **App ecosystem** — what it connects to
-* **Payroll** — whether it is built in or a separate system
+Once local requirements are met, evaluate options against standard accounting
+capabilities:
+
+* **Double-entry foundation:** Full chart of accounts that you can customize to
+  your operational structure.
+* **VAT handling:** Accurate tax calculation on invoices and automated reporting
+  for monthly filings.
+* **Inventory management:** Multi-location tracking, landed cost calculation, and
+  stock adjustments.
+* **User seat pricing:** Clear limits on included users and predictable costs for
+  adding team members.
+* **Ecosystem integrations:** Open APIs or native connections to point-of-sale
+  (POS) systems, banks, or payment gateways.
+* **Payroll support:** Whether payroll is natively integrated or requires
+  third-party software.
 
 ## How the options compare
 
@@ -113,10 +130,10 @@ own rates are always on the [pricing page](/pricing/).
 
 </aside>
 
-### What it costs at the same team size
+## Cost & User Scaling
 
-Comparing entry prices alone is misleading, because the plans include different
-numbers of users. At equal team sizes, using published list prices:
+Comparing entry prices alone is misleading, because plans include different
+numbers of user seats. At equal team sizes, using published standard list prices:
 
 | Team size | Vithean | QuickBooks Online | Xero |
 |---|---|---|---|
@@ -124,91 +141,97 @@ numbers of users. At equal team sizes, using published list prices:
 | 5 users | **$45/month** | $90/month (Plus) | $42/month (Growing) |
 | 10 users | Contact us | $200/month (Advanced) | **$42/month (Growing)** |
 
-The pattern is worth stating plainly: Vithean is the cheapest option for small
-teams, and **Xero becomes cheaper than Vithean somewhere around five users**,
-because its plans include unlimited users. If you have a large team and the local
-requirements above do not apply to you, that is a real advantage and you should
-weigh it.
+The pattern is worth stating plainly: Vithean is the most cost-effective option
+for small teams. Xero generally becomes cheaper than Vithean once you reach about
+five users because its plans include unlimited seats. If you have a larger team
+and the local requirements above do not apply to you, that is a clear advantage
+worth weighing.
 
-## Where Vithean comes from
+## Who Builds Vithean
 
 Vithean is built in Cambodia by [POSCAR Digital Co., Ltd.](https://poscardigital.com)
-together with the accounting firm **FII&ASSOCIATES** — software engineers and
-practising Cambodian accountants working on the same product.
+in partnership with the accounting firm **FII&ASSOCIATES** — combining software
+engineers and practising Cambodian accountants on the exact same product.
 
-That partnership is the reason the local details are handled rather than
-approximated. When CamInv launched in May 2025, Vithean's integration reached
-production that July, roughly two months later — among the first Cambodian-built
-accounting platforms connected to the national system. You can see what has
-shipped since on the [What's New](https://help.vithean.com/changelog/) page, which is updated as the
-product changes.
+That partnership is why local details are fully integrated rather than
+approximated. When CamInv launched in May 2025, Vithean's native integration
+reached production in July — roughly two months later — making it among the first
+Cambodian-built accounting platforms connected to the national system. You can
+track what has shipped since on our
+[What's New](https://help.vithean.com/changelog/) page, which is updated
+continuously.
 
 What that means in practice:
 
-* **Compliance is part of the accounting**, not a second system — see
-  [how e-invoicing works](/product/e-invoicing/), or the
-  [product pages](/product/accounting/) for the full feature scope
-* **Khmer is a first-class language**, on screen and on printed documents
-* **The people who fix your problem are here**, working the same hours you do
+* **Native Compliance:** Tax compliance is built into your everyday accounting,
+  not handled by a secondary system. See
+  [how e-invoicing works](/product/e-invoicing/), or review our
+  [full feature scope](/product/accounting/).
+* **First-Class Khmer Support:** Khmer renders natively on screen, on printed
+  invoices, and on PDF exports.
+* **Local Support:** The team resolving your technical questions works in your
+  time zone, during your business hours.
 
-## When an international platform is the better choice
+## When an International Platform is the Better Choice
 
-We would rather you chose the right tool than chose us. Look seriously at
-QuickBooks Online or Xero if:
+We would rather you choose the right tool than force a bad fit. We recommend
+looking closely at QuickBooks Online or Xero if:
 
-* **You operate in more than one country** and need local compliance in each. This
-  is the clearest case — Vithean is built for Cambodia and does not try to cover
-  other jurisdictions.
-* **You have a large team.** Xero includes unlimited users on every plan. Past
-  roughly five users that is likely to be cheaper than Vithean, and simpler to
+* **You operate in multiple countries:** If you need native tax compliance across
+  several jurisdictions, an international platform is ideal. Vithean is built for
+  Cambodia and does not attempt to cover other jurisdictions.
+* **You have a large team:** Xero includes unlimited user seats on its plans.
+  Beyond roughly five users, Xero will likely be cheaper and simpler to
   administer.
-* **You depend on a large app ecosystem** — e-commerce platforms, payment
-  processors, expense tools, third-party payroll. Both have hundreds of
-  integrations. Ours is much smaller.
-* **Your accountant or investors require it.** If the people reviewing your books
-  work in one of those products daily and will not move, that is a genuine
+* **You rely on a large app ecosystem:** If you need extensive third-party
+  integrations (e-commerce platforms, payment processors, expense tools,
+  specialized payroll), both have hundreds of connections. Ours is much smaller.
+* **Your accountant or investors require it:** If your external advisors work
+  exclusively in QuickBooks or Xero and refuse to change, that is a practical
   constraint worth respecting.
-* **You need payroll inside the same product**, and you are in a market where they
-  offer it. Vithean has no payroll module.
+* **You need built-in payroll in a supported market:** Vithean does not currently
+  offer an integrated payroll module.
 
-## A short way to decide
+## A Quick Decision Checklist
 
-1. **Do you need CamInv e-invoicing?** If yes, ask every vendor whether it is
-   native. That question alone narrows the field quickly.
-2. **Does your team work in Khmer?** If yes, test Khmer on a printed invoice and a
-   PDF before you commit to anything.
-3. **How many people need access?** Under five, Vithean is usually the cheapest.
-   Well over five, price Xero properly before deciding.
-4. **Do you operate outside Cambodia?** If yes, an international platform is
-   probably the right answer.
-5. **Then trial it.** Vithean's trial is 30 days and needs only your name, email
-   and phone number — see [plans and pricing](/pricing/).
+1. **Do you need CamInv e-invoicing?** If yes, ask every vendor if their
+   integration is native. That single question will narrow your options
+   instantly.
+2. **Does your team work in Khmer?** If yes, test Khmer text rendering on a
+   printed invoice and exported PDF before committing.
+3. **How many people need access?** Under five users, Vithean is usually the most
+   cost-effective. Well over five users, evaluate Xero's flat pricing structure.
+4. **Do you operate outside Cambodia?** If yes, a global accounting platform is
+   likely the better choice.
+5. **Ready to test it out?** Vithean offers a 30-day free trial — requiring only
+   your name, email, and phone number. See [plans and pricing](/pricing/).
 
-## Common questions
+## Frequently Asked Questions
 
-### Can I use QuickBooks or Xero in Cambodia at all?
+### Can I use QuickBooks or Xero in Cambodia?
 
-Yes — both can be subscribed to from Cambodia, and QuickBooks has local partners
-offering Khmer printing and tax-filing add-ons. The trade-off is that the local
-requirements are handled by additional tools rather than by the accounting system
-itself, which means another vendor, another cost and another integration to keep
-working.
+Yes. Both platforms are accessible in Cambodia, and local partners offer
+third-party add-ons for Khmer printing and tax filings. However, local
+requirements must be handled through secondary tools — meaning extra vendor
+costs, multiple software subscriptions, and additional integrations to maintain.
 
-### Is Vithean only for Cambodia?
+### Is Vithean only for Cambodia-based entities?
 
-Vithean is built for businesses operating in Cambodia. If you need to run books
-for entities in several countries, it is not the right fit.
+Yes. Vithean is built specifically for businesses operating in Cambodia. If you
+need to manage entity books across multiple countries, it is not the right fit.
 
-### What if we already use another system?
+### What if we are migrating from another accounting system?
 
-Customer and vendor lists import in bulk, and the setup wizard walks through your
-company details and chart of accounts. Talk to <sales@vithean.com> about your
-situation before you start.
+You can import your customer lists, vendor databases, and opening balances in
+bulk, and our setup wizard guides you through your company details and chart of
+accounts. Contact <sales@vithean.com> to discuss your migration before getting
+started.
 
-### Where can I see what Vithean actually does?
+### Where can I see Vithean's full capabilities?
 
-The whole [user manual](https://help.vithean.com/) is public — every feature, with screenshots and video
-tutorials. Nothing is behind a sales call.
+Our complete [user manual](https://help.vithean.com/) is public — featuring
+detailed guides, screenshots, and video tutorials for every feature. You don't
+need to schedule a sales call just to see how the product works.
 
 ---
 
