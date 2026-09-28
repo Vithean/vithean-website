@@ -114,7 +114,7 @@ capabilities:
 | **Khmer + English names on records** | Local-name field on master data, exportable | Not native | Not native |
 | **USD books with KHR conversion** | Standard on every plan, rate recorded per transaction | Multi-currency on higher tiers | Multi-currency on higher tiers |
 | **Registration Number and TIN** | Fields on the company record | Workaround | Workaround |
-| **Users included** | 2 / 3 / 5 by plan | 1 / 3 / 5 / 25 by plan | **Unlimited on every plan** |
+| **Users included** | 2 / 3 / 5 by plan, then $7 per extra seat | 1 / 3 / 5 / 25 by plan | **Unlimited on every plan** |
 | **Entry price** | $15/month | $30/month | $15/month |
 | **Local support** | Khmer or English, phone / Telegram / email, Cambodian hours | Global support, plus local partners | Global support |
 | **App ecosystem** | Small | Very large | Very large |
@@ -136,9 +136,13 @@ numbers of user seats. At equal team sizes, using published standard list prices
 
 | Team size | Vithean | QuickBooks Online | Xero |
 |---|---|---|---|
-| 3 users | **$25/month** | $60/month (Essentials) | $42/month (Growing) |
-| 5 users | **$45/month** | $90/month (Plus) | $42/month (Growing) |
-| 10 users | Contact us | $200/month (Advanced) | **$42/month (Growing)** |
+| 3 users | **$25/month** (Standard) | $60/month (Essentials) | $42/month (Growing) |
+| 5 users | **$45/month** (Advanced) | $90/month (Plus) | $42/month (Growing) |
+| 10 users | $80/month (Advanced + 5 seats) | $200/month (Advanced) | **$42/month (Growing)** |
+
+Vithean's plans include 2, 3 and 5 users; beyond that, a seat is $7 per month.
+That is where the ten-user figure comes from — $45 for Advanced plus five seats
+at $7 — rather than from a quote.
 
 The pattern is worth stating plainly: Vithean is the most cost-effective option
 for small teams. Xero generally becomes cheaper than Vithean once you reach about
