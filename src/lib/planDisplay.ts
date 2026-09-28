@@ -15,6 +15,7 @@ import { pick, type Lang } from '@/i18n/utils';
  */
 const plans = display.plans as Record<string, { name: { en: string; km: string } }>;
 const features = display.features as Record<string, { label: { en: string; km: string } }>;
+const groups = display.featureGroups as Record<string, { label: { en: string; km: string } }>;
 
 export function planName(plan: { slug: string; name: { en: string; km: string | null } }, lang: Lang): string {
   return pick(plans[plan.slug]?.name ?? plan.name, lang);
@@ -28,6 +29,14 @@ export function featureLabel(
   return pick(features[feature.id]?.label ?? feature.label, lang);
 }
 
+export function groupLabel(
+  group: { id: string; label: { en: string; km: string | null } },
+  lang: Lang,
+): string {
+  return pick(groups[group.id]?.label ?? group.label, lang);
+}
+
 /** Every key the site overrides, for the build guard to check against plans.json. */
 export const overriddenPlanSlugs = Object.keys(plans);
 export const overriddenFeatureIds = Object.keys(features);
+export const overriddenGroupIds = Object.keys(groups);

@@ -17,9 +17,14 @@ const storyParas = pick(company.story.body, lang).split('\n\n');
    partner, so each carries that company's mark. The third has no owner. */
 const storyMarks = [
   { src: company.maker.logo, alt: company.maker.legalName, href: company.maker.url,
-    h: company.maker.logoHeight },
+    h: company.maker.logoHeight, dy: 0 },
   { src: company.partnerFirm.logo, alt: company.partnerFirm.name, href: company.partnerFirm.url,
-    h: company.partnerFirm.logoHeight },
+    h: company.partnerFirm.logoHeight, dy: company.partnerFirm.logoOffsetY },
+  /* The closing paragraph speaks for Vithean rather than for either company
+     behind it, so it carries our own mark — and no link, because it marks the
+     page the reader is already on. */
+  { src: company.brandMark.logo, alt: company.brand, href: null,
+    h: company.brandMark.logoHeight, dy: 0 },
 ];
 /* The mark shown here is Vithean's; the company names inside the line link
    out individually, so the whole line is not one big off-site link. */
@@ -53,13 +58,19 @@ const mvv = [
     <div style="font-size:1.05rem">
       {storyParas.map((para, i) => (
         <div class="story-para">
-          {storyMarks[i] && (
-            <a class="story-mark" href={storyMarks[i].href} target="_blank" rel="noopener"
-               aria-label={storyMarks[i].alt}>
-              <img src={storyMarks[i].src} alt={storyMarks[i].alt} loading="lazy"
-                   style={`height:${storyMarks[i].h}px`} />
-            </a>
-          )}
+          {storyMarks[i] && (() => {
+            const m = storyMarks[i];
+            const Tag = m.href ? 'a' : 'span';
+            return (
+              <Tag class="story-mark" href={m.href ?? undefined}
+                   target={m.href ? '_blank' : undefined}
+                   rel={m.href ? 'noopener' : undefined}
+                   aria-label={m.href ? m.alt : undefined}
+                   style={m.dy ? `position:relative; top:${m.dy}px` : undefined}>
+                <img src={m.src} alt={m.alt} loading="lazy" style={`height:${m.h}px`} />
+              </Tag>
+            );
+          })()}
           <p>{para}</p>
         </div>
       ))}

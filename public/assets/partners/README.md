@@ -39,7 +39,7 @@ permission for the CamInv mark on file.
 
 | File | Organisation | Taken from |
 |---|---|---|
-| `fii-associates.png` | Fii & Associates | `fii-a.com` |
+| `fii-associates.png` | FII&ASSOCIATES | `fii-a.com` |
 | `canadia-bank.jpg` | Canadia Bank | site navigation, `canadiabank.com.kh` |
 | `ifa.png` | Institute of Finance and Accounting | `ifa.edu.kh/web/img/logo.png` |
 | `kicpaa.png` | KICPAA | `kicpaa.org/wp-content/uploads/2023/07/kicpaas-logo.png` |

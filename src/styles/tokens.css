@@ -389,17 +389,31 @@ p{margin:0} a{color:inherit} img,svg{max-width:100%}
 
 /* ── pricing ── */
 .price-head{display:flex; justify-content:space-between; align-items:flex-end; gap:var(--s3); flex-wrap:wrap}
-.plans{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--s3); margin-top:var(--s5)}
+/* Subgrid, so the cards read across as well as down: the name, the who-it-is-for
+   line, the price, the inclusions and the buttons each sit on a shared row, and
+   a longer description in one plan pushes the price down in all three rather
+   than only its own. Five rows, matching the five blocks a card renders. */
+.plans{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--s3);
+  grid-template-rows:auto auto auto 1fr auto; margin-top:var(--s5)}
 .plan{background:var(--surface); border:1px solid var(--line-strong); border-radius:var(--r-md);
   box-shadow:var(--shadow-card);
-  padding:1.45rem; display:flex; flex-direction:column; box-shadow:var(--shadow-card)}
-.plan-best{border:1.5px solid var(--plum-600); position:relative; transform:translateY(-6px);
+  padding:1.45rem; display:grid; grid-row:span 5; grid-template-rows:subgrid; align-content:start}
+/* No translateY on the recommended card: lifting it by 6px would break the
+   very alignment the subgrid is there to create. The border, the badge and a
+   deeper shadow carry the emphasis instead. */
+.plan-best{border:1.5px solid var(--plum-600); position:relative;
   box-shadow:0 2px 4px rgb(29 26 34/.04), 0 20px 40px -20px rgb(74 32 80/.35)}
+/* Browsers without subgrid fall back to the old column, which stacks correctly
+   and simply does not align across cards. */
+@supports not (grid-template-rows: subgrid){
+  .plans{grid-template-rows:none}
+  .plan{display:flex; flex-direction:column}
+}
 .plan-badge{position:absolute; top:-.75rem; left:1.45rem;
   background:var(--plum-600); color:var(--on-plum); font-size:.7rem; font-weight:700;
   letter-spacing:.08em; text-transform:uppercase; padding:.2rem .65rem; border-radius:var(--r-pill)}
 .plan h3{font-size:1.18rem}
-.plan .who{font-size:.95rem; color:var(--ink); margin-top:.3rem; min-height:2.8em}
+.plan .who{font-size:.95rem; color:var(--ink); margin-top:.3rem}
 .plan .amt{margin-top:1rem; display:flex; align-items:baseline; gap:.35rem}
 .plan .from{font-size:.85rem; color:var(--ink-muted); font-weight:600}
 .plan .amt b{font-size:2.5rem; font-weight:800; letter-spacing:-.04em; color:var(--ink-strong)}
@@ -412,7 +426,7 @@ p{margin:0} a{color:inherit} img,svg{max-width:100%}
 .plan li.on::before{content:"\2713"; color:var(--success-text); font-weight:700}
 .plan li.brass{color:var(--brass); font-weight:600}
 .plan li.brass::before{content:"\2713"; color:var(--brass)}
-.plan-cta{margin-top:auto; padding-top:1.15rem; display:grid; gap:.45rem}
+.plan-cta{padding-top:1.15rem; display:grid; gap:.45rem; align-self:end}
 .plan .btn{width:100%}
 .priceline{margin-top:var(--s3); font-size:.95rem; color:var(--ink); max-width:64ch}
 .addons{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--s2); margin-top:var(--s3)}

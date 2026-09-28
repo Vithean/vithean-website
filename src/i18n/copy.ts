@@ -349,8 +349,8 @@ export const copy = {
     companyTitle: t('About Vithean — Built in Cambodia by POSCAR Digital',
                     'អំពី វិធាន — បង្កើតនៅកម្ពុជាដោយ POSCAR Digital'),
     companyDesc: t(
-      'Vithean is built in Cambodia by POSCAR Digital Co., Ltd., with practising accountants from Fii & Associates shaping what the system does.',
-      'វិធាន បង្កើតនៅកម្ពុជាដោយក្រុមហ៊ុន POSCAR Digital Co., Ltd. ដោយមានគណនេយ្យករជំនាញពី Fii & Associates រួមរៀបចំមុខងាររបស់ប្រព័ន្ធ។'),
+      'Vithean is built in Cambodia by POSCAR Digital Co., Ltd., with practising accountants from FII&ASSOCIATES shaping what the system does.',
+      'វិធាន បង្កើតនៅកម្ពុជាដោយក្រុមហ៊ុន POSCAR Digital Co., Ltd. ដោយមានគណនេយ្យករជំនាញពី FII&ASSOCIATES រួមរៀបចំមុខងាររបស់ប្រព័ន្ធ។'),
     supportTitle: t('Support', 'ជំនួយ'),
     supportDesc: t(
       'Talk to the Vithean team in Phnom Penh — Telegram, phone or email, Monday to Friday. Guides and answers to the questions people ask before they start.',

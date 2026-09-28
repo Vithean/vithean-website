@@ -1,10 +1,10 @@
 ---
 title: "Hire someone without handing over the keys."
 nav: "Control & access"
-eyebrow: "Control and access"
+eyebrow: "Control & access"
 order: 5
 description: "Roles, approval workflow and a field-level audit trail. Delegate the work in Vithean without handing over the keys to the business."
-lead: "Delegating is hard when software forces an all-or-nothing choice. Give your team the access they need to do their jobs — without exposing sensitive financial data or key operational controls."
+lead: "Delegating is hard when software forces an all-or-nothing choice. Vithean gives your team the access they need to do their jobs — without exposing sensitive financial data or key operational controls."
 featureIds: ["authorisation"]
 included:
   lead: "Included in Advanced plan:"

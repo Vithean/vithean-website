@@ -4,15 +4,15 @@ date: 2024-09-17
 category: event
 lang: en
 featured: true
-excerpt: "Siem Reap, 17 September 2024 — The Digital Training Boot Camp held at Regency Angkor Hotel, organized by GIZ ICONE Cambodia in collaboration with Fii & Associates, gathered SME representatives and fin"
+excerpt: "Siem Reap, 17 September 2024 — The Digital Training Boot Camp held at Regency Angkor Hotel, organized by GIZ ICONE Cambodia in collaboration with FII&ASSOCIATES, gathered SME representatives and fin"
 sourceUrl: "https://vithean.com/en/vithean-showcased-at-giz-icone-digital-training-boot-camp-in-siem-reap/"
 legacyId: "2151"
 ---
-**Siem Reap, 17 September 2024** — The *Digital Training Boot Camp* held at Regency Angkor Hotel, organized by **GIZ ICONE Cambodia** in collaboration with **Fii & Associates**, gathered SME representatives and financial experts to enhance digital literacy in accounting and financial management.
+**Siem Reap, 17 September 2024** — The *Digital Training Boot Camp* held at Regency Angkor Hotel, organized by **GIZ ICONE Cambodia** in collaboration with **FII&ASSOCIATES**, gathered SME representatives and financial experts to enhance digital literacy in accounting and financial management.
 
 During the workshop, **Vithean**, a Cambodian-developed **cloud-based accounting system**, was showcased as a key digital tool empowering SMEs to improve their financial transparency, accuracy, and productivity.
 
-The presentation by **Fii & Associates**, titled *“Experience Sharing on Common Issues of Financial Statements and Vithean System”*, highlighted:
+The presentation by **FII&ASSOCIATES**, titled *“Experience Sharing on Common Issues of Financial Statements and Vithean System”*, highlighted:
 
 - Common challenges SMEs face in preparing financial statements.
 - The benefits of transitioning from manual bookkeeping to digital accounting.

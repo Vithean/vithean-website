@@ -1,10 +1,10 @@
 ---
 title: "Know what the goods really cost."
 nav: "Inventory & costing"
-eyebrow: "Inventory and landed cost"
+eyebrow: "Inventory & costing"
 order: 2
-description: "Freight and duty belong in the cost of the goods. Vithean spreads landed cost across a shipment so a Cambodian importer knows the true unit cost."
-lead: "The supplier invoice is not the cost. Freight, duty and handling belong in the cost of the goods — not in a note on the side, and not discovered at year end."
+description: "A supplier invoice is only part of the cost. Vithean puts freight, duty and handling into unit cost as it happens, so margins are right from day one."
+lead: "A supplier's invoice only tells part of the story. True profitability requires incorporating freight, customs duties, and handling into your unit costs — immediately, not as a painful year-end surprise. Vithean automates landed cost tracking to ensure fully loaded, accurate margins from day one."
 featureIds: ["inventory-standard", "inventory-advanced", "multi-location"]
 visual: journal
 posts: {"caption": "A container is received and costed", "ref": "GRN-2026-0188 · LCV-2026-0031", "meta": "500 units · consignment from supplier · 12 Aug 2026", "beforeCaption": "What arrived, and what it took to land it", "before": [{"label": "Goods · 500 units @ $12.00", "amount": "6,000.00"}, {"label": "Freight", "amount": "840.00"}, {"label": "Import duty 7%", "amount": "420.00"}], "lines": [{"no": "1300", "acct": "Inventory at landed cost", "dr": "7,260.00", "cr": ""}, {"no": "2150", "acct": "Goods received not invoiced", "dr": "", "cr": "6,000.00"}, {"no": "2160", "acct": "Freight payable", "dr": "", "cr": "840.00"}, {"no": "2170", "acct": "Duty payable", "dr": "", "cr": "420.00"}], "total": {"dr": "7,260.00", "cr": "7,260.00"}, "chips": [{"kind": "ok", "text": "✓ Unit cost $14.52, not $12.00"}, {"kind": "plain", "text": "21% more than the invoice price"}]}

@@ -1,7 +1,7 @@
 # Vithean
 
 > Vithean is a cloud accounting and ERP system built in Cambodia by POSCAR Digital Co., Ltd. with
-> the accounting firm Fii & Associates. It combines double-entry accounting, inventory and landed
+> the accounting firm FII&ASSOCIATES. It combines double-entry accounting, inventory and landed
 > costing, sales, purchasing and payables, banking and reporting on one ledger, with Cambodia
 > E-Invoicing (CamInv) built in and Khmer and English throughout. It is designed for Cambodian
 > businesses of 5–100 staff that must keep compliant, auditable books.
@@ -24,7 +24,7 @@ CamInv e-invoicing is included in every paid plan.
 - [Documentation](https://help.vithean.com/): Complete product reference and how-to guides.
 
 ## Company
-- [About](https://vithean.com/company/): POSCAR Digital Co., Ltd. with Fii & Associates, Phnom Penh.
+- [About](https://vithean.com/company/): POSCAR Digital Co., Ltd. with FII&ASSOCIATES, Phnom Penh.
 - [News and press](https://vithean.com/news/): Announcements, including the CamInv integration.
 - [Support](https://vithean.com/support/): Contact channels and frequently asked questions.
 

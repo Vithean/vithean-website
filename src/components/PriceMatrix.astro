@@ -14,7 +14,7 @@
  */
 import plansData from '@/data/plans.json';
 import { pick, useTranslations, signupUrl, type Lang } from '@/i18n/utils';
-import { planName, featureLabel } from '@/lib/planDisplay';
+import { planName, featureLabel, groupLabel } from '@/lib/planDisplay';
 
 interface Props { plans: any[]; lang: Lang }
 const { plans, lang } = Astro.props;
@@ -23,7 +23,7 @@ const t = useTranslations(lang);
 /** Groups in published order, each carrying the rows that belong to it. */
 const rows: any[] = plans[0]?.features ?? [];
 const groups = plansData.featureGroups
-  .map((g: any) => ({ label: g.label, items: rows.filter((f) => f.group === g.id) }))
+  .map((g: any) => ({ id: g.id, label: g.label, items: rows.filter((f) => f.group === g.id) }))
   .filter((g) => g.items.length);
 
 const has = (p: any, id: string) => !!p.features.find((f: any) => f.id === id)?.included;
@@ -59,7 +59,7 @@ const uniform = (id: string) => plans.every((p) => has(p, id)) || plans.every((p
           {/* One cell per column rather than a colspan: a band that spans the
               whole width cuts the recommended column's rail into segments. */}
           <tr class="group">
-            <th scope="colgroup">{pick(g.label, lang)}</th>
+            <th scope="colgroup">{groupLabel(g, lang)}</th>
             {plans.map((p) => (
               <td class={`mx-band${p.recommended ? ' best' : ''}`} aria-hidden="true"></td>
             ))}

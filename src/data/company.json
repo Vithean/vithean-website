@@ -8,12 +8,14 @@
   "launchDate": "2022-09-01",
   "launchNote": "Vithean went to market on 1 September 2022 and the business treats that as the product's founding date. foundedYear 2020 is when the work started, which is why the two differ; the Organization schema publishes launchDate, because the entity that schema names is the Vithean brand.",
   "partnerFirm": {
-    "name": "Fii & Associates",
+    "name": "FII&ASSOCIATES",
     "role": "Accounting practice partner — co-builds the functional design",
     "note": "An accounting and audit firm and a shareholder. Its practitioners shape what the system has to do; POSCAR builds and owns it. Do not describe Fii as a co-maker of the company or the software.",
     "url": "https://fii-a.com/",
     "logo": "/assets/partners/fii-associates.png",
-    "logoHeight": 52
+    "logoHeight": 52,
+    "logoOffsetY": 7,
+    "logoOffsetNote": "Nudges the mark down so its optical centre lands level with the first line of its paragraph. The POSCAR wordmark is a wide, short crop and sits right without one; the FII mark is a square canvas with padding baked in, so centring it in the same box reads high."
   },
   "provenance": {
     "en": "Built in Cambodia by POSCAR Digital Co., Ltd.",
@@ -25,8 +27,8 @@
       "km": "POSCAR Digital បង្កើត វិធាន — ដោយមានគណនេយ្យករជំនាញរួមរៀបចំមុខងារ"
     },
     "body": {
-      "en": "POSCAR Digital Co., Ltd. is a trusted Cambodian software provider powering school, university, HR, and attendance management systems nationwide. Vithean is POSCAR's flagship accounting and ERP platform, co-developed with Fii & Associates.\n\nPartnering with leading Cambodian accounting and auditing firm Fii & Associates, experienced practitioners help shape every workflow. That is why our general ledger behaves exactly as accountants expect and mirrors how local businesses actually operate.\n\nWe are not a foreign product relying on local resellers, nor an agency tinkering with software. We build, support, and implement the system directly alongside your team — ensuring complete data ownership and expert local support.",
-      "km": "វិធាន ត្រូវបានបង្កើត និងគាំទ្រដោយក្រុមហ៊ុន POSCAR Digital Co., Ltd. ដែលជាក្រុមហ៊ុនកម្មវិធីកម្ពុជា ហើយក៏បង្កើតប្រព័ន្ធគ្រប់គ្រងសាលារៀន សាកលវិទ្យាល័យ ធនធានមនុស្ស និងវត្តមាន ដែលប្រើប្រាស់នៅទូទាំងប្រទេស។ វិធាន ជាផលិតផលគណនេយ្យ និង ERP របស់ខ្លួន។\n\nក្រុមហ៊ុន Fii & Associates ដែលជាក្រុមហ៊ុនគណនេយ្យ និងសវនកម្មកម្ពុជា គឺជាដៃគូវិជ្ជាជីវៈគណនេយ្យរបស់ វិធាន៖ អ្នកជំនាញរបស់ខ្លួនរួមរៀបចំមុខងាររបស់ប្រព័ន្ធ។ នេះជាមូលហេតុដែលបញ្ជីគណនេយ្យដំណើរការតាមអ្វីដែលគណនេយ្យករគិត ហើយលំហូរការងារត្រូវនឹងរបៀបដែលអាជីវកម្មកម្ពុជាដំណើរការពិតប្រាកដ — ដោយសារអ្នកដែលធ្វើសវនកម្ម និងកាន់បញ្ជីគណនេយ្យជាអាជីព ជាអ្នកកំណត់ថាប្រព័ន្ធត្រូវធ្វើអ្វីខ្លះ។\n\nយើងមិនមែនជាផលិតផលបរទេសដែលមានអ្នកលក់បន្តក្នុងស្រុកទេ ហើយក៏មិនមែនជាសេវាកម្មកាន់បញ្ជីដែលសរសេរកម្មវិធីផងដែរ។ យើងបង្កើត និងគាំទ្រប្រព័ន្ធ យើងដំឡើងវាជាមួយលោកអ្នក ហើយបញ្ជីគណនេយ្យនៅតែជារបស់លោកអ្នក។"
+      "en": "POSCAR Digital Co., Ltd. is a trusted Cambodian software provider powering school, university, HR, and attendance management systems nationwide. Vithean is POSCAR's flagship accounting and ERP platform, co-developed with FII&ASSOCIATES.\n\nPartnering with leading Cambodian accounting and auditing firm FII&ASSOCIATES, experienced practitioners help shape every workflow. That is why our general ledger behaves exactly as accountants expect and mirrors how local businesses actually operate.\n\nWe are not a foreign product relying on local resellers, nor an agency tinkering with software. We build, support, and implement the system directly alongside your team — ensuring complete data ownership and expert local support.",
+      "km": "វិធាន ត្រូវបានបង្កើត និងគាំទ្រដោយក្រុមហ៊ុន POSCAR Digital Co., Ltd. ដែលជាក្រុមហ៊ុនកម្មវិធីកម្ពុជា ហើយក៏បង្កើតប្រព័ន្ធគ្រប់គ្រងសាលារៀន សាកលវិទ្យាល័យ ធនធានមនុស្ស និងវត្តមាន ដែលប្រើប្រាស់នៅទូទាំងប្រទេស។ វិធាន ជាផលិតផលគណនេយ្យ និង ERP របស់ខ្លួន។\n\nក្រុមហ៊ុន FII&ASSOCIATES ដែលជាក្រុមហ៊ុនគណនេយ្យ និងសវនកម្មកម្ពុជា គឺជាដៃគូវិជ្ជាជីវៈគណនេយ្យរបស់ វិធាន៖ អ្នកជំនាញរបស់ខ្លួនរួមរៀបចំមុខងាររបស់ប្រព័ន្ធ។ នេះជាមូលហេតុដែលបញ្ជីគណនេយ្យដំណើរការតាមអ្វីដែលគណនេយ្យករគិត ហើយលំហូរការងារត្រូវនឹងរបៀបដែលអាជីវកម្មកម្ពុជាដំណើរការពិតប្រាកដ — ដោយសារអ្នកដែលធ្វើសវនកម្ម និងកាន់បញ្ជីគណនេយ្យជាអាជីព ជាអ្នកកំណត់ថាប្រព័ន្ធត្រូវធ្វើអ្វីខ្លះ។\n\nយើងមិនមែនជាផលិតផលបរទេសដែលមានអ្នកលក់បន្តក្នុងស្រុកទេ ហើយក៏មិនមែនជាសេវាកម្មកាន់បញ្ជីដែលសរសេរកម្មវិធីផងដែរ។ យើងបង្កើត និងគាំទ្រប្រព័ន្ធ យើងដំឡើងវាជាមួយលោកអ្នក ហើយបញ្ជីគណនេយ្យនៅតែជារបស់លោកអ្នក។"
     },
     "marksNote": "The first two paragraphs carry the maker mark and the practice-partner mark respectively. Order matters: keep the POSCAR paragraph first and the Fii paragraph second. Each mark floats beside its opening lines, so logoHeight is per-mark: the two source files are cropped differently (Fii's square canvas has padding baked in) and they need different heights to read at the same weight."
   },
@@ -60,12 +62,12 @@
       "name": "Ms. HENG Seida",
       "role": "Board Director",
       "credential": "Past President of KICPAA · FCCA (UK) · CIA (US)",
-      "bio": "Over 20 years in internal and external audit and in building internal control systems. Served as Vice President then President of KICPAA across two mandates; during her terms the national CPA and CAT qualifications were developed. Co-founder and Managing Partner of Fii & Associates.",
+      "bio": "Over 20 years in internal and external audit and in building internal control systems. Served as Vice President then President of KICPAA across two mandates; during her terms the national CPA and CAT qualifications were developed. Co-founder and Managing Partner of FII&ASSOCIATES.",
       "photo": "assets/people/heng-seida.jpg",
       "nameKm": "កញ្ញា ហេង សិតា",
       "roleKm": "សមាជិកក្រុមប្រឹក្សាភិបាល",
       "credentialKm": "អតីតប្រធាន KICPAA · FCCA (ចក្រភពអង់គ្លេស) · CIA (សហរដ្ឋអាមេរិក)",
-      "bioKm": "កញ្ញា សិតា មានបទពិសោធជាង ២០ឆ្នាំក្នុងផ្នែកសវនកម្មផ្ទៃក្នុង និងសវនកម្មខាងក្រៅ និងការកសាងប្រព័ន្ធត្រួតពិនិត្យផ្ទៃក្នុង។ កញ្ញាបានបំពេញតួនាទីជាអនុប្រធាន រួចជាប្រធាន KICPAA រយៈពេលពីរអាណត្តិ ដែលក្នុងអំឡុងនោះ វិជ្ជាជីវៈគណនេយ្យករ (CPA) និងបច្ចេកទេសគណនេយ្យ (CAT) ថ្នាក់ជាតិត្រូវបានបង្កើតឡើង។ កញ្ញាជាសហស្ថាបនិក និងជាដៃគូគ្រប់គ្រងនៃ Fii & Associates។"
+      "bioKm": "កញ្ញា សិតា មានបទពិសោធជាង ២០ឆ្នាំក្នុងផ្នែកសវនកម្មផ្ទៃក្នុង និងសវនកម្មខាងក្រៅ និងការកសាងប្រព័ន្ធត្រួតពិនិត្យផ្ទៃក្នុង។ កញ្ញាបានបំពេញតួនាទីជាអនុប្រធាន រួចជាប្រធាន KICPAA រយៈពេលពីរអាណត្តិ ដែលក្នុងអំឡុងនោះ វិជ្ជាជីវៈគណនេយ្យករ (CPA) និងបច្ចេកទេសគណនេយ្យ (CAT) ថ្នាក់ជាតិត្រូវបានបង្កើតឡើង។ កញ្ញាជាសហស្ថាបនិក និងជាដៃគូគ្រប់គ្រងនៃ FII&ASSOCIATES។"
     },
     {
       "slug": "ngorn-moi",
@@ -234,10 +236,15 @@
     "logoSource": "Downloaded from https://poscardigital.com/images/brand/01-Poscar.png on 2026-08-17.",
     "note": "The maker of Vithean, not a partner. Vithean is one of POSCAR Digital's product brands; POSCAR is the contracting party on the CamInv integration, the Canadia Bank partnership and the IFA memorandum.",
     "line": {
-      "en": "Vithean is a product co-developed by POSCAR Digital Co., Ltd. and Fii & Associates.",
-      "km": "វិធាន ជាផលិតផលដែលបង្កើតរួមគ្នាដោយក្រុមហ៊ុន POSCAR Digital Co., Ltd. និង Fii & Associates"
+      "en": "Vithean is a product co-developed by POSCAR Digital Co., Ltd. and FII&ASSOCIATES.",
+      "km": "វិធាន ជាផលិតផលដែលបង្កើតរួមគ្នាដោយក្រុមហ៊ុន POSCAR Digital Co., Ltd. និង FII&ASSOCIATES"
     },
     "logoNote": "Kept for provenance. The company page shows the Vithean mark and links the maker's name out to poscardigital.com instead, so this file is not rendered there at present.",
     "logoHeight": 34
+  },
+  "brandMark": {
+    "logo": "/assets/logo-full.png",
+    "logoHeight": 30,
+    "note": "Carried by the third story paragraph, the one that speaks for Vithean rather than for either company behind it. No link: it marks the page you are already on."
   }
 }

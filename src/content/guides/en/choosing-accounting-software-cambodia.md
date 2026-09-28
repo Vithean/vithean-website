@@ -133,7 +133,7 @@ weigh it.
 ## Where Vithean comes from
 
 Vithean is built in Cambodia by [POSCAR Digital Co., Ltd.](https://poscardigital.com)
-together with the accounting firm **Fii & Associates** — software engineers and
+together with the accounting firm **FII&ASSOCIATES** — software engineers and
 practising Cambodian accountants working on the same product.
 
 That partnership is the reason the local details are handled rather than

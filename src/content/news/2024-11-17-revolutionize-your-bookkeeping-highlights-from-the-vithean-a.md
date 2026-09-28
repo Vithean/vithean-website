@@ -12,7 +12,7 @@ legacyId: "2157"
 **Date:** November 22, 2024
 **Location:** Siem Reap, Cambodia
 
-Accounting doesn’t have to be a complicated, paper-based chore! On November 22, 2024, business owners and accounting professionals in Siem Reap experienced a look into the future of financial management at our workshop focusing on the **Vithean Accounting System**. This system, developed by local experts including the leading accounting firm Fii & Associates, is designed to be a **simplified, customized, and affordable** solution that meets local Cambodian requirements.
+Accounting doesn’t have to be a complicated, paper-based chore! On November 22, 2024, business owners and accounting professionals in Siem Reap experienced a look into the future of financial management at our workshop focusing on the **Vithean Accounting System**. This system, developed by local experts including the leading accounting firm FII&ASSOCIATES, is designed to be a **simplified, customized, and affordable** solution that meets local Cambodian requirements.
 
 If you missed the event, here are the key takeaways on how Vithean is transforming accounting for businesses of all sizes, from sole proprietorships to multi-location enterprises.
 

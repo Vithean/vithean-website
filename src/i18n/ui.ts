@@ -26,7 +26,7 @@ export const ui: Record<Lang, Dict> = {
     'cta.trialNav': 'Free Trial',
     'cta.login': 'Log in',
     'cta.buy': 'Buy now',
-    'cta.sales': 'Talk to sales',
+    'cta.sales': 'Talk to us',
     'cta.comparePlans': 'Compare everything →',
     'cta.plansPricing': 'See plans and pricing →',
     'theme.label': 'Theme',
@@ -90,7 +90,7 @@ export const ui: Record<Lang, Dict> = {
     'cta.trialNav': 'សាកល្បងឥតគិតថ្លៃ',
     'cta.login': 'ចូល',
     'cta.buy': 'ទិញឥឡូវនេះ',
-    'cta.sales': 'ពិភាក្សាជាមួយផ្នែកលក់',   // G ការលក់
+    'cta.sales': 'ទាក់ទងមកយើង',
     'cta.comparePlans': 'ប្រៀបធៀបទាំងអស់ →',   // G គម្រោង
     'cta.plansPricing': 'មើលគម្រោង និងតម្លៃ →',   // G គម្រោង, តម្លៃ
     'theme.label': 'ទម្រង់ពណ៌',
