@@ -173,10 +173,12 @@ export const copy = {
       basic: {
         who: t('Sole proprietorships, startups, and businesses with straightforward transaction needs.',
           'អាជីវកម្មម្ចាស់តែម្នាក់ អាជីវកម្មទើបចាប់ផ្តើម និងអាជីវកម្មដែលមានប្រតិបត្តិការមិនស្មុគស្មាញ'),
+        /* Seat count last, as it is in the other two plans: the reader scans
+           the same position in each card for it. */
         items: [
           t('Core accounting', 'គណនេយ្យមូលដ្ឋាន'),
-          t('{users} users', 'អ្នកប្រើ {users} នាក់'),
           t('Single location', 'ទីតាំងតែមួយ'),
+          t('{users} users', 'អ្នកប្រើ {users} នាក់'),
         ],
       },
       standard: {
