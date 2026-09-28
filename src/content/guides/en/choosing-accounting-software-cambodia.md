@@ -6,10 +6,9 @@ lang: en
 movedFrom: "https://help.vithean.com/choosing-accounting-software-cambodia/"
 ---
 
-If you run a business in Cambodia, you are usually choosing between an
-international accounting platform and one built here. This page sets out the
-criteria that actually matter locally, then compares the main options against
-them.
+If you run a business in Cambodia, you are usually choosing between a global
+accounting platform and one built locally. This page sets out the criteria that
+actually matter on the ground, then compares your main options against them.
 
 <aside class="gnote gnote-note">
   <p class="gnote-h">Who wrote this</p>
@@ -23,8 +22,8 @@ of date, please let us know at <contact@vithean.com> and we will correct it.
 
 ## Start with the local requirements
 
-These are the ones that rule options in or out. Get them wrong and no amount of
-features elsewhere makes up for it.
+These are the criteria that rule software options in or out. Get them wrong and
+no amount of extra features elsewhere can make up for it.
 
 ### 1. CamInv E-Invoicing
 
