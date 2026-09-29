@@ -26,10 +26,10 @@ export const copy = {
     eyebrow: t('Cambodian business system of record', 'ប្រព័ន្ធកត់ត្រាអាជីវកម្មកម្ពុជា'),
     h1a: t('Grow your business without ', 'ពង្រីកអាជីវកម្មរបស់អ្នក ដោយមិន'),
     h1em: t('losing control', 'បាត់បង់ការគ្រប់គ្រង'),
-    h1b: t('', ''),
+    h1b: t('.', ''),
     sub: t(
-      'Accounting, inventory, sales, purchasing and banking on one platform — in Khmer and English.',
-      'គណនេយ្យ សន្និធិ ការលក់ ការទិញ និងធនាគារ ក្នុងប្រព័ន្ធតែមួយ — ជាភាសាខ្មែរ និងអង់គ្លេស'),
+      'Accounting, inventory, sales, purchasing and banking on one platform — available in Khmer and English.',
+      'គណនេយ្យ សន្និធិ ការលក់ ការទិញ និងធនាគារ ក្នុងប្រព័ន្ធតែមួយ — មានជាភាសាខ្មែរ និងអង់គ្លេស'),
 
     /* Describes the panels on the shot, not figures: the screenshot is
        replaced from time to time and numbers in alt text go stale silently. */

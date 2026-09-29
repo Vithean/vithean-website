@@ -1,7 +1,7 @@
 ---
 title: "From quote to cash. From purchase to bill."
-nav: "Purchase and Payable"
-eyebrow: "Purchase and Payable"
+nav: "Purchase & Payable"
+eyebrow: "Purchase & Payable"
 order: 3
 description: "Purchase and payable on one ledger. Vithean moves each document through your business and your books at once — nothing is re-keyed."
 lead: "Your business operations and financial books stay synced in real time. Documents flow automatically — no double entry, no manual rekeying, and zero inbox bottlenecks."
